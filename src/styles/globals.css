@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-color: black;
+  --background-color: white;
+}
+
+[data-theme='dark'] {
+  --text-color: white;
+  --background-color: black;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
