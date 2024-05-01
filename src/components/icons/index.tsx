@@ -20,3 +20,6 @@ export { Docker } from './logos/docker';
 export { Xstate } from './logos/xstate';
 export { Aws } from './logos/aws';
 export { Tailwind } from './logos/tailwind';
+
+export { Instagram } from './logos/instagram';
+export { Tiktok } from './logos/tiktok';

@@ -51,8 +51,8 @@ const logos: Record<Tech, (props: SVGProps<SVGSVGElement>) => JSX.Element> = {
 
 export default function Page() {
   return (
-    <main className="p-4 max-w-4xl m-auto">
-      <h1 className="font-[family-name:var(--font-satisfy)] text-4xl sm:text-[80px] text-center my-10 mt-20">
+    <main className="p-4 pb-32 max-w-4xl m-auto">
+      <h1 className="font-[family-name:var(--font-satisfy)] text-5xl sm:text-[80px] text-center py-2 pt-20 sm:py-4 sm:pt-20">
         Engineering
       </h1>
 
