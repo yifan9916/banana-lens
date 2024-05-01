@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { GeistSans } from 'geist/font/sans';
 import { Satisfy } from 'next/font/google';
 
@@ -38,9 +39,12 @@ export default function LocaleLayout(props: Props) {
         <AppProvider>
           <ThemeProvider>
             <header className="flex items-center justify-between p-4 sm:p-12">
-              <span className="font-[family-name:var(--font-satisfy)] text-xl">
+              <Link
+                href={`/${locale}`}
+                className="font-[family-name:var(--font-satisfy)] text-xl"
+              >
                 Banana Lens
-              </span>
+              </Link>
               <div className="flex items-end gap-2">
                 <ThemeSwitcher />
                 <LocaleSwitcher />
