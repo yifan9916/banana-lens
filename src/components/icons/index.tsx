@@ -2,7 +2,7 @@ export { Computer } from './computer';
 export { Moon } from './moon';
 export { Sun } from './sun';
 
-export { FlagUs } from './flag-us';
-export { FlagCn } from './flag-cn';
-export { FlagNl } from './flag-nl';
-export { FlagDe } from './flag-de';
+export { FlagUs } from './flags/flag-us';
+export { FlagCn } from './flags/flag-cn';
+export { FlagNl } from './flags/flag-nl';
+export { FlagDe } from './flags/flag-de';
