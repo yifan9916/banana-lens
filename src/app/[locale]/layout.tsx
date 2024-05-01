@@ -50,6 +50,7 @@ export default function LocaleLayout(props: Props) {
                 <LocaleSwitcher />
               </div>
             </header>
+
             {children}
           </ThemeProvider>
         </AppProvider>
