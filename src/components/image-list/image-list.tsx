@@ -39,7 +39,7 @@ export const ImageList = (props: Props) => {
         <div
           className={[
             'flex justify-center fixed bottom-0 left-0 h-dvh w-0 bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end',
-            segments.length ? '!w-[100dvw] p-5 sm:p-0' : '',
+            segments.length ? '!w-dvw p-5 sm:p-0' : '',
           ].join(' ')}
         >
           {children}

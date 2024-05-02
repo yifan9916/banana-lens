@@ -16,7 +16,7 @@ export default function Page(props: Props) {
   })[0];
 
   return (
-    <div className="flex flex-col justify-center h-full max-h-[100svh]">
+    <div className="flex flex-col justify-center h-full max-h-dvh">
       <Image
         src={image.src}
         alt={image.name}
