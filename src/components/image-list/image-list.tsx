@@ -21,11 +21,7 @@ export const ImageList = (props: Props) => {
         {list.map((img) => {
           return (
             <li key={img.name} className="rounded-2xl overflow-hidden">
-              <Link
-                key={img.name}
-                href={`/photography/${img.name}.jpg`}
-                locale={'en'}
-              >
+              <Link key={img.name} href={`/photography/${img.name}.jpg`}>
                 <Image
                   src={img.src}
                   alt={img.name}
