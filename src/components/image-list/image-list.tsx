@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
-import { Link } from '@/navigation';
 import { TODO_Image } from '@/images';
+import { Link } from '@/navigation';
 
 type Props = {
   children?: React.ReactNode;
@@ -36,12 +36,7 @@ export const ImageList = (props: Props) => {
       </ul>
 
       {!!segments.length && (
-        <div
-          className={[
-            'flex justify-center fixed bottom-0 left-0 h-dvh w-0 bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end',
-            segments.length ? '!w-dvw p-5 sm:p-0' : '',
-          ].join(' ')}
-        >
+        <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-5 sm:p-0">
           {children}
         </div>
       )}

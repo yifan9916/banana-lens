@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 import { locales, type Locale } from '@/i18n';
 import { FlagUs, FlagCn, FlagNl, FlagDe } from '@/components/icons/';
+import { Link, usePathname } from '@/navigation';
 
 const flags = {
   en: FlagUs,
@@ -16,18 +16,8 @@ const flags = {
 
 export const LocaleSwitcher = () => {
   const pathName = usePathname();
+  const params = useParams();
   const [isSelection, setIsSelection] = useState(false);
-
-  const currentLocale = pathName.split('/')[1];
-
-  const redirectedPathName = (locale: Locale) => {
-    if (!pathName) return '/';
-
-    const segments = pathName.split('/');
-    segments[1] = locale;
-
-    return segments.join('/');
-  };
 
   const handleClick: React.ComponentProps<'div'>['onClick'] = (e) => {
     if (isSelection) {
@@ -39,7 +29,7 @@ export const LocaleSwitcher = () => {
   };
 
   const handleStyles = (locale: Locale) => {
-    const isCurrentLocale = currentLocale === locale;
+    const isCurrentLocale = params.locale === locale;
 
     const localeStyles = isCurrentLocale ? 'opacity-100' : 'opacity-50';
     const selectionStyles = isSelection ? '' : isCurrentLocale ? '' : '!w-0';
@@ -67,7 +57,7 @@ export const LocaleSwitcher = () => {
             >
               <Link
                 locale={locale}
-                href={redirectedPathName(locale)}
+                href={pathName}
                 className="h-full w-full flex justify-center items-center"
               >
                 <Flag style={{ height: '20px', width: '20px' }} />

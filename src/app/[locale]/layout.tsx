@@ -1,7 +1,6 @@
 import '@/styles/globals.css';
 
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { GeistSans } from 'geist/font/sans';
 import { Satisfy } from 'next/font/google';
 
@@ -9,6 +8,7 @@ import { AppProvider } from '@/contexts/app-context';
 import { ThemeProvider } from '@/contexts/theme-context/theme-context';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { ThemeSwitcher } from '@/components/theme-switcher';
+import { Link } from '@/navigation';
 
 const satisfy = Satisfy({
   weight: '400',
@@ -40,7 +40,7 @@ export default function LocaleLayout(props: Props) {
           <ThemeProvider>
             <header className="flex items-center justify-between p-4 sm:p-12">
               <Link
-                href={`/${locale}`}
+                href="/"
                 className="font-[family-name:var(--font-satisfy)] text-xl"
               >
                 Banana Lens
