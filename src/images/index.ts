@@ -1,18 +1,18 @@
 import { StaticImageData } from 'next/image';
 
-import Chongqing01 from '@/public/photography/chongqing-01.jpg';
-import Chongqing02 from '@/public/photography/chongqing-02.jpg';
-import Chongqing03 from '@/public/photography/chongqing-03.jpg';
-import Chongqing04 from '@/public/photography/chongqing-04.jpg';
-import Chongqing05 from '@/public/photography/chongqing-05.jpg';
-import Chongqing06 from '@/public/photography/chongqing-06.jpg';
-import Chongqing07 from '@/public/photography/chongqing-07.jpg';
-import Chongqing08 from '@/public/photography/chongqing-08.jpg';
-import Chongqing09 from '@/public/photography/chongqing-09.jpg';
-import Chongqing10 from '@/public/photography/chongqing-10.jpg';
-import Chongqing11 from '@/public/photography/chongqing-11.jpg';
-import Chongqing12 from '@/public/photography/chongqing-12.jpg';
-import Chongqing13 from '@/public/photography/chongqing-13.jpg';
+import Chongqing01 from '@/public/photography/m-chongqing-01.jpg';
+import Chongqing02 from '@/public/photography/m-chongqing-02.jpg';
+import Chongqing03 from '@/public/photography/m-chongqing-03.jpg';
+import Chongqing04 from '@/public/photography/m-chongqing-04.jpg';
+import Chongqing05 from '@/public/photography/m-chongqing-05.jpg';
+import Chongqing06 from '@/public/photography/m-chongqing-06.jpg';
+import Chongqing07 from '@/public/photography/m-chongqing-07.jpg';
+import Chongqing08 from '@/public/photography/m-chongqing-08.jpg';
+import Chongqing09 from '@/public/photography/m-chongqing-09.jpg';
+import Chongqing10 from '@/public/photography/m-chongqing-10.jpg';
+import Chongqing11 from '@/public/photography/m-chongqing-11.jpg';
+import Chongqing12 from '@/public/photography/m-chongqing-12.jpg';
+import Chongqing13 from '@/public/photography/m-chongqing-13.jpg';
 
 export type TODO_Image = {
   src: StaticImageData;
