@@ -21,15 +21,15 @@ export const ImageList = (props: Props) => {
         {list.map((img) => {
           return (
             <li key={img.name} className="rounded-2xl overflow-hidden">
-              <Link key={img.name} href={`/photography/${img.name}.jpg`}>
-                <Image
-                  src={img.src}
-                  alt={img.name}
-                  placeholder="blur"
-                  quality={1}
-                />
-                <div className="text-xs font-light p-2">{img.name}</div>
-              </Link>
+              {/* <Link key={img.name} href={`/photography/${img.name}.jpg`}> */}
+              <Image
+                src={img.src}
+                alt={img.name}
+                placeholder="blur"
+                quality={1}
+              />
+              <div className="text-xs font-light p-2">{img.name}</div>
+              {/* </Link> */}
             </li>
           );
         })}
