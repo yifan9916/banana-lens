@@ -1,7 +1,5 @@
 'use client';
 
-import styles from './image-list.module.css';
-
 import Image from 'next/image';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
@@ -19,7 +17,7 @@ export const ImageList = (props: Props) => {
 
   return (
     <div className="relative">
-      <ul className="grid grid-cols-2 p-3 gap-2 sm:grid-cols-4">
+      <ul className="grid grid-cols-2 p-2 gap-2 sm:grid-cols-4">
         {list.map((img) => {
           return (
             <li key={img.name} className="rounded-2xl overflow-hidden">
@@ -33,7 +31,7 @@ export const ImageList = (props: Props) => {
       </ul>
 
       {!!segments.length && (
-        <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-5 sm:p-0">
+        <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-2 sm:p-0">
           {children}
         </div>
       )}

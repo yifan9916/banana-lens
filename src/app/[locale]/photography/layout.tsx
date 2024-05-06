@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Instagram, Tiktok } from '@/components/icons';
 import { ImageList } from '@/components/image-list/image-list';
-import { images } from '@/images';
+import { previewImages } from '@/images';
 
 type Props = {
   children?: React.ReactNode;
@@ -11,7 +11,7 @@ export default function Layout(props: Props) {
   const { children } = props;
 
   return (
-    <main className="p-6 pb-32 max-w-4xl m-auto">
+    <main className="pb-32 max-w-4xl m-auto">
       <h1 className="font-[family-name:var(--font-satisfy)] text-5xl sm:text-[80px] text-center py-2 pt-20 sm:py-4 sm:pt-20">
         Photography
       </h1>
@@ -37,7 +37,7 @@ export default function Layout(props: Props) {
         mi suscipit molestie id et erat. Integer eleifend auctor condimentum.
       </p>
 
-      <ImageList list={images}>{children}</ImageList>
+      <ImageList list={previewImages}>{children}</ImageList>
     </main>
   );
 }

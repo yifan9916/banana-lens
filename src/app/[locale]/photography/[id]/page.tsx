@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { images } from '@/images';
+import { hiResImages } from '@/images';
 
 type Props = {
   params: {
@@ -11,7 +11,7 @@ type Props = {
 export default function Page(props: Props) {
   const { params } = props;
 
-  const image = images.filter((img) => {
+  const image = hiResImages.filter((img) => {
     return `${img.name}.jpg` === params.id;
   })[0];
 
