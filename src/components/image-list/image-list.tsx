@@ -1,5 +1,7 @@
 'use client';
 
+import styles from './image-list.module.css';
+
 import Image from 'next/image';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
@@ -31,7 +33,12 @@ export const ImageList = (props: Props) => {
       </ul>
 
       {!!segments.length && (
-        <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-5 sm:p-0">
+        <div
+          className={[
+            'flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-5 sm:p-0',
+            styles.test,
+          ].join(' ')}
+        >
           {children}
         </div>
       )}
