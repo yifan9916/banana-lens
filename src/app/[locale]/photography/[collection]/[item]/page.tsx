@@ -4,7 +4,7 @@ import { hiResImages } from '@/images';
 
 type Props = {
   params: {
-    id: string;
+    item: string;
   };
 };
 
@@ -12,7 +12,7 @@ export default function Page(props: Props) {
   const { params } = props;
 
   const image = hiResImages.filter((img) => {
-    return `${img.name}.jpg` === params.id;
+    return `${img.name}.jpg` === params.item;
   })[0];
 
   return (
