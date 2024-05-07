@@ -58,6 +58,7 @@ export const LocaleSwitcher = () => {
               <Link
                 locale={locale}
                 href={pathName}
+                scroll={false}
                 replace
                 className="h-full w-full flex justify-center items-center"
               >
