@@ -1,10 +1,13 @@
 import Image from 'next/image';
 
-import { TODO_Image } from '@/images';
 import { Link } from '@/navigation';
+import { TODO_Image } from '@/libs/photography/types';
 
 type Props = {
-  list: TODO_Image[];
+  list: {
+    id: string;
+    items: TODO_Image[];
+  };
 };
 
 export const ImageList = (props: Props) => {
@@ -13,15 +16,23 @@ export const ImageList = (props: Props) => {
   return (
     <div className="relative max-w-4xl m-auto">
       <ul className="grid grid-cols-2 p-2 gap-2 sm:grid-cols-4">
-        {list.map((img) => {
+        {list.items.map((img) => {
           return (
-            <li key={img.name} className="rounded-2xl overflow-hidden">
+            <li key={img.id} className="rounded-2xl overflow-hidden">
               <Link
-                key={img.name}
-                href={`/photography/chongqing/${img.name}.jpg`}
+                key={img.id}
+                href={`/photography/${list.id}/${img.id}.jpg`}
+                className="flex h-full flex-col"
               >
-                <Image src={img.src} alt={img.name} placeholder="blur" />
-                <div className="text-sm font-light p-2">{img.name}</div>
+                <Image
+                  src={img.src.preview}
+                  alt={img.id}
+                  placeholder="blur"
+                  className="flex-1 object-cover"
+                />
+                <div className="text-sm font-light p-2">
+                  {img.title || img.id}
+                </div>
               </Link>
             </li>
           );

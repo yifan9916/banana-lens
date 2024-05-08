@@ -1,0 +1,17 @@
+export { default as Alberobello01 } from '@/public/photography/europe/hi-res/alberobello-01.jpg';
+export { default as Barcelona01 } from '@/public/photography/europe/hi-res/barcelona-01.jpg';
+export { default as Barcelona02 } from '@/public/photography/europe/hi-res/barcelona-02.jpg';
+export { default as Barcelona03 } from '@/public/photography/europe/hi-res/barcelona-03.jpg';
+export { default as Bari01 } from '@/public/photography/europe/hi-res/bari-01.jpg';
+export { default as Chiemsee01 } from '@/public/photography/europe/hi-res/chiemsee-01.jpg';
+export { default as London01 } from '@/public/photography/europe/hi-res/london-01.jpg';
+export { default as London02 } from '@/public/photography/europe/hi-res/london-02.jpg';
+export { default as Munich01 } from '@/public/photography/europe/hi-res/munich-01.jpg';
+export { default as Munich02 } from '@/public/photography/europe/hi-res/munich-02.jpg';
+export { default as Rome01 } from '@/public/photography/europe/hi-res/rome-01.jpg';
+export { default as Rome02 } from '@/public/photography/europe/hi-res/rome-02.jpg';
+export { default as Sevilla01 } from '@/public/photography/europe/hi-res/sevilla-01.jpg';
+export { default as Sevilla02 } from '@/public/photography/europe/hi-res/sevilla-02.jpg';
+export { default as Toledo01 } from '@/public/photography/europe/hi-res/toledo-01.jpg';
+export { default as Toledo02 } from '@/public/photography/europe/hi-res/toledo-02.jpg';
+export { default as Toledo03 } from '@/public/photography/europe/hi-res/toledo-03.jpg';

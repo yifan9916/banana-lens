@@ -3,20 +3,27 @@
 import { useSelectedLayoutSegments } from 'next/navigation';
 
 import { ImageList } from '@/components/image-list/image-list';
-import { previewImages } from '@/images';
+import { useCollection } from '@/libs/photography/use-collection';
+import type { CollectionKey } from '@/libs/photography/types';
 
 type Props = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
+  params: {
+    collection: string;
+  };
 };
 
 export default function Layout(props: Props) {
-  const { children } = props;
+  const { children, params } = props;
+  const collectionKey = params.collection as CollectionKey;
 
   const segments = useSelectedLayoutSegments();
 
+  const collection = useCollection(collectionKey);
+
   return (
     <>
-      <ImageList list={previewImages} />
+      <ImageList list={{ id: collection.id, items: collection.items }} />
 
       {!!segments.length && (
         <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-2 sm:p-0">

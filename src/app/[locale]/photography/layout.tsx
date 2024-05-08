@@ -1,34 +1,21 @@
 'use client';
 
-import { useSelectedLayoutSegments } from 'next/navigation';
 import Image from 'next/image';
+import { useSelectedLayoutSegments } from 'next/navigation';
 
-import { Instagram, Tiktok } from '@/components/icons';
-import { previewImages } from '@/images';
 import { Link } from '@/navigation';
+import { useCollections } from '@/libs/photography/use-collections';
+import { Instagram, Tiktok } from '@/components/icons';
 
 type Props = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
-
-const collections = [
-  {
-    src: previewImages[0].src,
-    name: 'chongqing',
-  },
-  {
-    src: previewImages[1].src,
-    name: 'europe',
-  },
-  {
-    src: previewImages[2].src,
-    name: 'other',
-  },
-];
 
 export default function Layout(props: Props) {
   const { children } = props;
   const segments = useSelectedLayoutSegments();
+
+  const collections = useCollections();
 
   return (
     <main className="pb-32">
@@ -56,16 +43,16 @@ export default function Layout(props: Props) {
         {collections.map((collection) => {
           return (
             <Link
-              key={collection.name}
-              href={`/photography/${collection.name}`}
+              key={collection.id}
+              href={`/photography/${collection.id}`}
               className={[
                 'flex-1 opacity-50 hover:opacity-100',
-                segments[0] === collection.name ? '!opacity-100 !flex-[2]' : '',
+                segments[0] === collection.id ? '!opacity-100 !flex-[2]' : '',
               ].join(' ')}
             >
               <Image
-                src={collection.src}
-                alt={collection.name}
+                src={collection.cover.src.preview}
+                alt={collection.title}
                 placeholder="blur"
                 className="object-cover h-full"
               />

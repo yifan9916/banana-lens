@@ -25,7 +25,9 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  params: {
+    locale: string;
+  };
 };
 
 export default function LocaleLayout(props: Props) {
