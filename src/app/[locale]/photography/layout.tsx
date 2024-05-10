@@ -39,15 +39,15 @@ export default function Layout(props: Props) {
         </Link>
       </p>
 
-      <section className="mb-20 flex max-w-4xl m-auto w-full h-[400px] sm:h-[80dvh]">
+      <section className="mb-20 flex max-w-4xl m-auto w-full h-[400px] sm:h-[80dvh] max-h-[600px]">
         {collections.map((collection) => {
           return (
             <Link
               key={collection.id}
               href={`/photography/${collection.id}`}
               className={[
-                'flex-1 opacity-50 hover:opacity-100',
-                segments[0] === collection.id ? '!opacity-100 !flex-[2]' : '',
+                'flex-1 opacity-50 hover:opacity-100 transition-all duration-1000',
+                segments[0] === collection.id ? '!opacity-100 !flex-[1.5]' : '',
               ].join(' ')}
             >
               <Image
