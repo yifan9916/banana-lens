@@ -26,7 +26,7 @@ export default function Layout(props: Props) {
       <ImageList list={{ id: collection.id, items: collection.items }} />
 
       {!!segments.length && (
-        <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll items-end w-dvw p-2 sm:p-0">
+        <div className="flex justify-center fixed bottom-0 left-0 h-dvh bg-black/80 dark:bg-black/50 backdrop-blur-md overflow-scroll w-dvw p-2 py-10 sm:p-0">
           {children}
         </div>
       )}
