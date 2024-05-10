@@ -21,8 +21,8 @@ export default function Page(props: Props) {
   })[0];
 
   return (
-    <div className="flex flex-col align-middle text-white">
-      <div className="flex h-full m-auto flex-col sm:flex-row">
+    <>
+      <div className="flex h-full flex-col sm:flex-row">
         <Image
           src={image.src['hi-res']}
           alt={image.id}
@@ -37,15 +37,13 @@ export default function Page(props: Props) {
 
         {image.settings && <Settings settings={image.settings} />}
       </div>
-
       <h1 className="font-[family-name:var(--font-satisfy)] text-center text-2xl sm:text-4xl p-8">
         {image.title || image.id}
       </h1>
-
       {image.description && (
         <p className="max-w-2xl p-6 m-auto">{image.description}</p>
       )}
-    </div>
+    </>
   );
 }
 
