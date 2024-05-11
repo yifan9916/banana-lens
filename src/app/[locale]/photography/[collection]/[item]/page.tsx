@@ -22,7 +22,7 @@ export default function Page(props: Props) {
 
   return (
     <div className="fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll bg-black/80 backdrop-blur-md text-white">
-      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto p-2">
+      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-10 sm:px-0 sm:mt-0">
         <Image
           src={image.src['hi-res']}
           alt={image.id}
