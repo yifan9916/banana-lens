@@ -9,10 +9,33 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      animation: {
+        'fade-in': 'fade-in 3s ease-in-out',
+        'fade-out': 'fade-out 3s ease-in-out',
+      },
+      keyframes: {
+        'fade-out': {
+          '0%': {
+            opacity: '1',
+          },
+          '75%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '0',
+          },
+        },
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+          },
+          '25%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
       },
     },
   },

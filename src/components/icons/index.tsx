@@ -1,6 +1,7 @@
 export { Computer } from './computer';
 export { Moon } from './moon';
 export { Sun } from './sun';
+export { ArrowDownDouble } from './arrow-double';
 
 export { FlagUs } from './flags/flag-us';
 export { FlagCn } from './flags/flag-cn';
