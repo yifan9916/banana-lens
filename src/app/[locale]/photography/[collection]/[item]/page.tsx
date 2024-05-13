@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import { Link } from '@/navigation';
@@ -13,7 +16,10 @@ type Props = {
 };
 
 export default function Page(props: Props) {
+  const ANIMATION_TIME_IN_MS = 3000;
+
   const { params } = props;
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const collectionKey = params.collection as CollectionKey;
   const collection = useCollection(collectionKey);
@@ -22,8 +28,39 @@ export default function Page(props: Props) {
     return `${img.id}.jpg` === params.item;
   })[0];
 
+  const handleClick: React.ComponentProps<'div'>['onClick'] = (e) => {
+    setIsAnimating(true);
+  };
+
+  const handleScroll: React.ComponentProps<'div'>['onScroll'] = (e) => {
+    setIsAnimating(true);
+  };
+
+  useEffect(() => {
+    let animationTimerId: ReturnType<typeof setTimeout>;
+
+    if (isAnimating) {
+      animationTimerId = setTimeout(() => {
+        setIsAnimating(false);
+      }, ANIMATION_TIME_IN_MS);
+    }
+
+    return () => {
+      if (animationTimerId) {
+        clearTimeout(animationTimerId);
+      }
+    };
+  }, [isAnimating]);
+
   return (
-    <div className="fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll bg-black/80 backdrop-blur-md text-white">
+    <div
+      className={[
+        'group fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll bg-black/80 backdrop-blur-md text-white',
+        isAnimating ? 'animating' : '',
+      ].join(' ')}
+      onClick={handleClick}
+      onScroll={handleScroll}
+    >
       <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0">
         <Image
           src={image.src['hi-res']}
@@ -32,6 +69,7 @@ export default function Page(props: Props) {
           className="w-auto sm:h-full object-contain"
           placeholder="blur"
         />
+
         {image.settings && <Settings settings={image.settings} />}
 
         {image.description && (
@@ -61,7 +99,7 @@ const Settings = (props: { settings: NonNullable<TODO_Image['settings']> }) => {
   const { settings } = props;
 
   return (
-    <div className="p-3 text-xs absolute top-0 sm:p-6 opacity-0 animate-fade-out hover:animate-fade-in">
+    <div className="p-3 text-xs absolute top-0 sm:p-6 opacity-0 animate-fade-out group-[.animating]:animate-fade-in">
       <p>
         <i>{settings?.focalLength}</i>
       </p>
