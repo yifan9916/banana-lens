@@ -18,7 +18,7 @@ export default function Layout(props: Props) {
   const collections = useCollections();
 
   return (
-    <main className="pb-32">
+    <main>
       <h1 className="font-[family-name:var(--font-satisfy)] text-5xl sm:text-[80px] text-center py-2 pt-20 sm:py-4 sm:pt-20">
         Photography
       </h1>

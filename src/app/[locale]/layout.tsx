@@ -41,20 +41,21 @@ export default function LocaleLayout(props: Props) {
       <body className={`${GeistSans.variable} ${satisfy.variable}`}>
         <AppProvider>
           <ThemeProvider>
-            <header className="flex items-center justify-between p-4 sm:p-12">
+            <header className="flex justify-center p-4 sm:p-12">
               <Link
                 href="/"
                 className="font-[family-name:var(--font-satisfy)] text-xl"
               >
                 Banana Lens
               </Link>
-              <div className="flex items-end gap-2">
-                <ThemeSwitcher />
-                <LocaleSwitcher />
-              </div>
             </header>
 
             {children}
+
+            <footer className="flex justify-end items-end gap-2 p-12 pt-20">
+              <ThemeSwitcher />
+              <LocaleSwitcher />
+            </footer>
           </ThemeProvider>
         </AppProvider>
         <SpeedInsights />

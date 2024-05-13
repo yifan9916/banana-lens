@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <p id="description" className="px-10 pb-20 max-w-4xl m-auto">
+    <p id="description" className="px-10 max-w-4xl m-auto">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
       accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend
       turpis, quis porttitor ante. Sed luctus, enim vitae vulputate
