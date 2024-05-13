@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        'fade-in': 'fade-in 3s ease-in-out',
-        'fade-out': 'fade-out 3s ease-in-out',
+        'fade-in': 'fade-in 1.5s ease-in-out',
+        'fade-out': 'fade-out 1.5s ease-in-out',
       },
       keyframes: {
         'fade-out': {

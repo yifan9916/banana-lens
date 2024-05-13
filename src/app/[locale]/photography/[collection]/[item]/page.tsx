@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-  const ANIMATION_TIME_IN_MS = 3000;
+  const ANIMATION_TIME_IN_MS = 1500;
 
   const { params } = props;
   const [isAnimating, setIsAnimating] = useState(false);
@@ -99,7 +99,7 @@ const Settings = (props: { settings: NonNullable<TODO_Image['settings']> }) => {
   const { settings } = props;
 
   return (
-    <div className="p-3 text-xs absolute top-0 sm:p-6 opacity-0 animate-fade-out group-[.animating]:animate-fade-in">
+    <div className="p-3 text-xs absolute top-0 sm:p-6 opacity-0 animate-fade-out hover:animate-fade-in group-[.animating]:animate-fade-in">
       <p>
         <i>{settings?.focalLength}</i>
       </p>
