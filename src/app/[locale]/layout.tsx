@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { Satisfy } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { AppProvider } from '@/contexts/app-context';
@@ -58,6 +59,8 @@ export default function LocaleLayout(props: Props) {
             </footer>
           </ThemeProvider>
         </AppProvider>
+
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
