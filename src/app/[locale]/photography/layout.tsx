@@ -5,7 +5,7 @@ import { useSelectedLayoutSegments } from 'next/navigation';
 
 import { Link } from '@/navigation';
 import { useCollections } from '@/libs/photography/use-collections';
-import { Instagram, Tiktok } from '@/components/icons';
+import { Arrow, Instagram, Tiktok } from '@/components/icons';
 
 type Props = {
   children: React.ReactNode;
@@ -46,7 +46,8 @@ export default function Layout(props: Props) {
               key={collection.id}
               href={`/photography/${collection.id}`}
               className={[
-                'flex-1 opacity-50 hover:opacity-100 transition-all duration-1000',
+                'relative flex-1 opacity-50 hover:opacity-100 transition-all duration-1000',
+                'after:absolute after:h-full after:w-full after:top-0 after:bg-gradient-to-t after:from-black/50',
                 segments[0] === collection.id ? '!opacity-100 !flex-[1.5]' : '',
               ].join(' ')}
             >
@@ -56,6 +57,8 @@ export default function Layout(props: Props) {
                 placeholder="blur"
                 className="object-cover h-full"
               />
+
+              <Arrow className="absolute h-6 w-6 bottom-0 left-1/2 -translate-x-1/2 text-white/70 z-10 mb-2" />
             </Link>
           );
         })}

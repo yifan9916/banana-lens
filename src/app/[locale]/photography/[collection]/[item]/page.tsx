@@ -55,7 +55,7 @@ export default function Page(props: Props) {
   return (
     <div
       className={[
-        'group fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in',
+        'group z-50 fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in',
         isAnimating ? 'animating' : '',
       ].join(' ')}
       onClick={handleClick}
