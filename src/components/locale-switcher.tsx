@@ -62,7 +62,7 @@ export const LocaleSwitcher = () => {
                 replace
                 className="h-full w-full flex justify-center items-center"
               >
-                <Flag style={{ height: '20px', width: '20px' }} />
+                <Flag className="h-5 w-5" />
               </Link>
             </li>
           );

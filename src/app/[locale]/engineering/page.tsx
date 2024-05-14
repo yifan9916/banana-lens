@@ -56,9 +56,9 @@ export default function Page() {
         Engineering
       </h1>
 
-      <p className="flex justify-center pb-20">
+      <p className="flex justify-center pt-4 pb-20">
         <Link href="https://github.com/yifan9916">
-          <Github style={{ height: '40px', width: '40px' }} />
+          <Github className="h-8 w-8" />
         </Link>
       </p>
 
@@ -91,7 +91,7 @@ export default function Page() {
           const Logo = logos[tech];
           return (
             <li title={tech} key={tech}>
-              <Logo style={{ height: '32px', width: '32px' }} />
+              <Logo className="h-7 w-7" />
             </li>
           );
         })}

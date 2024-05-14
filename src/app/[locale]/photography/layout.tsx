@@ -23,12 +23,12 @@ export default function Layout(props: Props) {
         Photography
       </h1>
 
-      <p className="flex justify-center max-w-4xl m-auto pb-20 gap-4">
+      <p className="flex justify-center max-w-4xl m-auto pt-4 pb-20 gap-4">
         <Link href="https://www.instagram.com/fanguyyi/">
-          <Instagram style={{ height: '40px', width: '40px' }} />
+          <Instagram className="h-8 w-8" />
         </Link>
         <Link href="https://www.tiktok.com/@fanguyyi">
-          <Tiktok style={{ height: '40px', width: '40px' }} />
+          <Tiktok className="h-8 w-8" />
         </Link>
       </p>
 

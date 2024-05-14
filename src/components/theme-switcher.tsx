@@ -51,19 +51,19 @@ export const ThemeSwitcher = () => {
       >
         <Button
           title="Light Theme"
-          icon={<Sun style={{ height: '20px', width: '20px' }} />}
+          icon={<Sun className="h-5 w-5" />}
           onClick={() => handleClick('light')}
           className={handleStyles('light')}
         />
         <Button
           title="System Theme"
-          icon={<Computer style={{ height: '20px', width: '20px' }} />}
+          icon={<Computer className="h-5 w-5" />}
           onClick={() => handleClick('system')}
           className={handleStyles('system')}
         />
         <Button
           title="Dark Theme"
-          icon={<Moon style={{ height: '20px', width: '20px' }} />}
+          icon={<Moon className="h-5 w-5" />}
           onClick={() => handleClick('dark')}
           className={handleStyles('dark')}
         />
