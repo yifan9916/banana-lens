@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-  const ANIMATION_TIME_IN_MS = 1500;
+  const FADE_IN_TIME_IN_MS = 1000; // don't forget to keep this in sync with the animation time
 
   const { params } = props;
   const [isAnimating, setIsAnimating] = useState(false);
@@ -42,7 +42,7 @@ export default function Page(props: Props) {
     if (isAnimating) {
       animationTimerId = setTimeout(() => {
         setIsAnimating(false);
-      }, ANIMATION_TIME_IN_MS);
+      }, FADE_IN_TIME_IN_MS);
     }
 
     return () => {
@@ -61,7 +61,7 @@ export default function Page(props: Props) {
       onClick={handleClick}
       onScroll={handleScroll}
     >
-      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0 opacity-0 animate-[slide-in_500ms_ease-in-out_750ms_forwards]">
+      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0 opacity-0 animate-slide-in animation-delay-[500ms]">
         <Image
           src={image.src['hi-res']}
           alt={image.id}

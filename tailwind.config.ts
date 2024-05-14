@@ -11,9 +11,9 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        'fade-in': 'fade-in 1.5s ease-in-out',
-        'fade-out': 'fade-out 1.5s ease-in-out',
-        'blur-in': 'blur-in 750ms ease-in-out forwards',
+        'fade-in': 'fade-in 2s ease-in-out',
+        'fade-out': 'fade-out 4s ease-in-out',
+        'blur-in': 'blur-in 500ms ease-in-out forwards',
         'slide-in': 'slide-in 500ms ease-in-out forwards',
       },
       keyframes: {
@@ -47,7 +47,7 @@ const config: Config = {
           },
           to: {
             'background-color': 'rgb(0 0 0 / 0.8)',
-            'backdrop-filter': 'blur(12px)',
+            'backdrop-filter': 'blur(8px)',
           },
         },
         'slide-in': {
