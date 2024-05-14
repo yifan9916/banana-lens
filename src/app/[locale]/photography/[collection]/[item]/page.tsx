@@ -82,12 +82,15 @@ export default function Page(props: Props) {
         )}
       </div>
 
-      <h1 className="font-[family-name:var(--font-satisfy)] text-center text-2xl sm:text-4xl p-8">
+      <h1 className="font-[family-name:var(--font-satisfy)] text-center text-2xl sm:text-4xl p-8 opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1.25s]">
         {image.title || image.id}
       </h1>
 
       {image.description && (
-        <p id="description" className="max-w-2xl p-6 m-auto">
+        <p
+          id="description"
+          className="max-w-2xl p-6 m-auto opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1.25s]"
+        >
           {image.description}
         </p>
       )}
