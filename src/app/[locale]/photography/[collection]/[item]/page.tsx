@@ -55,13 +55,13 @@ export default function Page(props: Props) {
   return (
     <div
       className={[
-        'group fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll bg-black/80 backdrop-blur-md text-white',
+        'group fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in',
         isAnimating ? 'animating' : '',
       ].join(' ')}
       onClick={handleClick}
       onScroll={handleScroll}
     >
-      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0">
+      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0 opacity-0 animate-slide-in animation-delay-[750ms]">
         <Image
           src={image.src['hi-res']}
           alt={image.id}
@@ -75,7 +75,7 @@ export default function Page(props: Props) {
         {image.description && (
           <Link
             href={'#description'}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 p-2 mb-4 bg-black/50 rounded-full opacity-0 animate-fade-out hover:animate-fade-in"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 p-2 mb-4 bg-black/50 rounded-full opacity-0 animate-fade-out animation-delay-[1.25s] hover:animate-fade-in"
           >
             <ArrowDownDouble className="h-5 w-5" />
           </Link>
@@ -99,7 +99,7 @@ const Settings = (props: { settings: NonNullable<TODO_Image['settings']> }) => {
   const { settings } = props;
 
   return (
-    <div className="p-3 text-xs absolute top-0 sm:p-6 opacity-0 animate-fade-out hover:animate-fade-in group-[.animating]:animate-fade-in">
+    <div className="p-3 text-xs absolute top-0 sm:p-6 opacity-0 animate-fade-out animation-delay-[1.25s] hover:animate-fade-in group-[.animating]:animate-fade-in">
       <p>
         <i>{settings?.focalLength}</i>
       </p>
