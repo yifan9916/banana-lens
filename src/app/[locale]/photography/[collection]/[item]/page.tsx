@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { Link } from '@/navigation';
 import { useCollection } from '@/libs/photography/use-collection';
-import type { TODO_Image, CollectionKey } from '@/libs/photography/types';
+import type { Photograph, CollectionKey } from '@/libs/photography/types';
 import { ArrowDownDouble } from '@/components/icons';
 
 type Props = {
@@ -98,7 +98,7 @@ export default function Page(props: Props) {
   );
 }
 
-const Settings = (props: { settings: NonNullable<TODO_Image['settings']> }) => {
+const Settings = (props: { settings: NonNullable<Photograph['settings']> }) => {
   const { settings } = props;
 
   return (

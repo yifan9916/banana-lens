@@ -1,8 +1,8 @@
 import * as preview from './preview/images';
 import * as hiRes from './hi-res/images';
-import type { TODO_Image } from '../../types';
+import type { Photograph } from '../../types';
 
-export const data: TODO_Image[] = [
+export const data: Photograph[] = [
   {
     id: 'chongqing-01',
     title: 'Hong Ya Dong',

@@ -45,7 +45,6 @@ export default function Layout(props: Props) {
             <Link
               key={collection.id}
               href={`/photography/${collection.id}`}
-              scroll={false}
               className={[
                 'relative flex-1 opacity-50 hover:opacity-100 transition-all duration-1000',
                 'after:absolute after:h-full after:w-full after:top-0 after:bg-gradient-to-t after:from-black/50',

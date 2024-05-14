@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
 import { Link } from '@/navigation';
-import { TODO_Image } from '@/libs/photography/types';
+import { Photograph } from '@/libs/photography/types';
 
 type Props = {
   list: {
     id: string;
-    items: TODO_Image[];
+    items: Photograph[];
   };
 };
 

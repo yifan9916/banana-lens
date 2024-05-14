@@ -1,13 +1,19 @@
 import { StaticImageData } from 'next/image';
 
-export type TODO_Image = {
+export type Photograph = {
   id: string;
   src: {
     preview: StaticImageData;
     'hi-res': StaticImageData;
   };
   title?: string;
+  date?: Date;
+  location?: {
+    country: string;
+    city: string;
+  };
   description?: string;
+  camera?: 'a7iv' | 'iphone15';
   settings?: {
     focalLength: string;
     aperture: string;
@@ -21,11 +27,11 @@ export type CollectionKey = 'chongqing' | 'europe';
 export type Collection = {
   id: CollectionKey;
   title: string;
-  cover: TODO_Image;
+  cover: Photograph;
   description?: string;
 };
 
 export type CollectionExtended = {
   id: CollectionKey;
-  items: TODO_Image[];
+  items: Photograph[];
 };
