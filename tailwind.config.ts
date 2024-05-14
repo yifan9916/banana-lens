@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        'fade-in': 'fade-in 2s ease-in-out',
+        'fade-in': 'fade-in 1s ease-in-out',
         'fade-out': 'fade-out 4s ease-in-out',
         'blur-in': 'blur-in 500ms ease-in-out forwards',
         'slide-in': 'slide-in 500ms ease-in-out forwards',
