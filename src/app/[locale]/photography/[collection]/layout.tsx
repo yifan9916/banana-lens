@@ -17,7 +17,9 @@ export default function Layout(props: Props) {
 
   return (
     <>
-      <ImageList list={{ id: collection.id, items: collection.items }} />
+      <div className="relative max-w-4xl m-auto opacity-0 animate-slide-down animation-delay-500">
+        <ImageList list={{ id: collection.id, items: collection.items }} />
+      </div>
 
       {children}
     </>

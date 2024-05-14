@@ -61,7 +61,7 @@ export default function Page(props: Props) {
       onClick={handleClick}
       onScroll={handleScroll}
     >
-      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0 opacity-0 animate-slide-in animation-delay-[500ms]">
+      <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0 opacity-0 animate-slide-up animation-delay-[500ms]">
         <Image
           src={image.src['hi-res']}
           alt={image.id}

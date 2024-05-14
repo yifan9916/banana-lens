@@ -11,10 +11,11 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
+        'blur-in': 'blur-in 2s ease-in-out forwards',
         'fade-in': 'fade-in 1s ease-in-out',
         'fade-out': 'fade-out 4s ease-in-out',
-        'blur-in': 'blur-in 500ms ease-in-out forwards',
-        'slide-in': 'slide-in 500ms ease-in-out forwards',
+        'slide-up': 'slide-up 500ms ease-in-out forwards',
+        'slide-down': 'slide-down 500ms ease-in-out forwards',
       },
       keyframes: {
         'fade-out': {
@@ -50,10 +51,20 @@ const config: Config = {
             'backdrop-filter': 'blur(8px)',
           },
         },
-        'slide-in': {
+        'slide-up': {
           from: {
             opacity: '0',
             transform: 'translate3d(0, 5%,0)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        'slide-down': {
+          from: {
+            opacity: '0',
+            transform: 'translate3d(0, -5%,0)',
           },
           to: {
             opacity: '1',
