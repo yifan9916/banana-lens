@@ -14,9 +14,9 @@ type Props = {
 
 export default function Page(props: Props) {
   const { params } = props;
-  const dict = useTranslations('Photography.Collection.europe.Item');
-
   const collectionKey = params.collection as CollectionKey;
+
+  const dict = useTranslations(`Photography.Collection.${collectionKey}.Item`);
   const collection = useCollection(collectionKey);
 
   const image = collection.items.filter((img) => {
@@ -27,8 +27,8 @@ export default function Page(props: Props) {
     <Container>
       <Content
         image={image}
-        title={dict('alberobello-01.title')}
-        description={dict('alberobello-01.description')}
+        title={dict(`${image.id}.title`)}
+        description={dict(`${image.id}.description`)}
       />
     </Container>
   );
