@@ -8,7 +8,7 @@ export const data: Photograph[] = [
     title: 'Hong Ya Dong',
     src: {
       preview: preview['Chongqing01'],
-      'hi-res': hiRes['Chongqing01'],
+      hiRes: hiRes['Chongqing01'],
     },
     settings: {
       focalLength: '85mm',
@@ -21,7 +21,7 @@ export const data: Photograph[] = [
     id: 'chongqing-02',
     src: {
       preview: preview['Chongqing02'],
-      'hi-res': hiRes['Chongqing02'],
+      hiRes: hiRes['Chongqing02'],
     },
     settings: {
       focalLength: '',
@@ -34,7 +34,7 @@ export const data: Photograph[] = [
     id: 'chongqing-03',
     src: {
       preview: preview['Chongqing03'],
-      'hi-res': hiRes['Chongqing03'],
+      hiRes: hiRes['Chongqing03'],
     },
     settings: {
       focalLength: '',
@@ -47,7 +47,7 @@ export const data: Photograph[] = [
     id: 'chongqing-04',
     src: {
       preview: preview['Chongqing04'],
-      'hi-res': hiRes['Chongqing04'],
+      hiRes: hiRes['Chongqing04'],
     },
     settings: {
       focalLength: '',
@@ -60,7 +60,7 @@ export const data: Photograph[] = [
     id: 'chongqing-05',
     src: {
       preview: preview['Chongqing05'],
-      'hi-res': hiRes['Chongqing05'],
+      hiRes: hiRes['Chongqing05'],
     },
     settings: {
       focalLength: '',
@@ -73,7 +73,7 @@ export const data: Photograph[] = [
     id: 'chongqing-06',
     src: {
       preview: preview['Chongqing06'],
-      'hi-res': hiRes['Chongqing06'],
+      hiRes: hiRes['Chongqing06'],
     },
     settings: {
       focalLength: '',
@@ -86,7 +86,7 @@ export const data: Photograph[] = [
     id: 'chongqing-07',
     src: {
       preview: preview['Chongqing07'],
-      'hi-res': hiRes['Chongqing07'],
+      hiRes: hiRes['Chongqing07'],
     },
     settings: {
       focalLength: '',
@@ -99,7 +99,7 @@ export const data: Photograph[] = [
     id: 'chongqing-08',
     src: {
       preview: preview['Chongqing08'],
-      'hi-res': hiRes['Chongqing08'],
+      hiRes: hiRes['Chongqing08'],
     },
     settings: {
       focalLength: '',
@@ -112,7 +112,7 @@ export const data: Photograph[] = [
     id: 'chongqing-09',
     src: {
       preview: preview['Chongqing09'],
-      'hi-res': hiRes['Chongqing09'],
+      hiRes: hiRes['Chongqing09'],
     },
     settings: {
       focalLength: '',
@@ -125,7 +125,7 @@ export const data: Photograph[] = [
     id: 'chongqing-10',
     src: {
       preview: preview['Chongqing10'],
-      'hi-res': hiRes['Chongqing10'],
+      hiRes: hiRes['Chongqing10'],
     },
     settings: {
       focalLength: '',
@@ -138,7 +138,7 @@ export const data: Photograph[] = [
     id: 'chongqing-11',
     src: {
       preview: preview['Chongqing11'],
-      'hi-res': hiRes['Chongqing11'],
+      hiRes: hiRes['Chongqing11'],
     },
     settings: {
       focalLength: '',
@@ -151,7 +151,7 @@ export const data: Photograph[] = [
     id: 'chongqing-12',
     src: {
       preview: preview['Chongqing12'],
-      'hi-res': hiRes['Chongqing12'],
+      hiRes: hiRes['Chongqing12'],
     },
     settings: {
       focalLength: '',

@@ -4,7 +4,7 @@ export type Photograph = {
   id: string;
   src: {
     preview: StaticImageData;
-    'hi-res': StaticImageData;
+    hiRes: StaticImageData;
   };
   title?: string;
   date?: Date;

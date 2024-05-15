@@ -11,8 +11,8 @@ type Props = {
 
 export default function Layout(props: Props) {
   const { children, params } = props;
-  const collectionKey = params.collection as CollectionKey;
 
+  const collectionKey = params.collection as CollectionKey;
   const collection = useCollection(collectionKey);
 
   return (

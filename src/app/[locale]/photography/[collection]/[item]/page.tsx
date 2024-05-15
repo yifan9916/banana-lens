@@ -63,7 +63,7 @@ export default function Page(props: Props) {
     >
       <div className="relative w-fit sm:h-full sm:max-h-dvh m-auto px-2 mt-20 sm:px-0 sm:mt-0 opacity-0 animate-slide-up animation-delay-[500ms]">
         <Image
-          src={image.src['hi-res']}
+          src={image.src.hiRes}
           alt={image.id}
           priority={true}
           className="w-auto sm:h-full object-contain"
@@ -82,14 +82,14 @@ export default function Page(props: Props) {
         )}
       </div>
 
-      <h1 className="font-[family-name:var(--font-satisfy)] text-center text-2xl sm:text-4xl p-8 opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1.25s]">
+      <h1 className="font-[family-name:var(--font-satisfy)] text-center text-2xl sm:text-4xl p-8 opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1s]">
         {image.title || image.id}
       </h1>
 
       {image.description && (
         <p
           id="description"
-          className="max-w-2xl p-6 m-auto opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1.25s]"
+          className="max-w-2xl p-6 m-auto opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1s]"
         >
           {image.description}
         </p>
