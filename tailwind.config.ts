@@ -54,7 +54,7 @@ const config: Config = {
         'slide-up': {
           from: {
             opacity: '0',
-            transform: 'translate3d(0, 5%,0)',
+            transform: 'translate3d(0, 1%,0)',
           },
           to: {
             opacity: '1',
@@ -64,7 +64,7 @@ const config: Config = {
         'slide-down': {
           from: {
             opacity: '0',
-            transform: 'translate3d(0, -5%,0)',
+            transform: 'translate3d(0, -1%,0)',
           },
           to: {
             opacity: '1',

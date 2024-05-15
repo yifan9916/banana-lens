@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect } from 'react';
 
-import { useLocalStorage } from '@/libs/local-storage/use-local-storage';
+import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
 import { script } from './script';
 
 type Theme = 'system' | 'light' | 'dark';
