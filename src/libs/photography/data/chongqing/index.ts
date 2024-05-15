@@ -5,7 +5,6 @@ import type { Photograph } from '../../types';
 export const data: Photograph[] = [
   {
     id: 'chongqing-01',
-    title: 'Hong Ya Dong',
     src: {
       preview: preview['Chongqing01'],
       hiRes: hiRes['Chongqing01'],

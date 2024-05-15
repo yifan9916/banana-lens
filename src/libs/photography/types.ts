@@ -6,13 +6,7 @@ export type Photograph = {
     preview: StaticImageData;
     hiRes: StaticImageData;
   };
-  title?: string;
   date?: Date;
-  location?: {
-    country: string;
-    city: string;
-  };
-  description?: string;
   camera?: 'a7iv' | 'iphone15';
   settings?: {
     focalLength: string;

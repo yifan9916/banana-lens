@@ -26,7 +26,7 @@ export const Content = (props: Props) => {
 
         {image.settings && <Settings settings={image.settings} />}
 
-        {image.description && (
+        {description && (
           <Link
             href={'#description'}
             className="absolute bottom-0 left-1/2 -translate-x-1/2 p-2 mb-4 bg-black/50 rounded-full opacity-0 animate-fade-out hover:animate-fade-in"

@@ -14,7 +14,7 @@ type Props = {
 
 export default function Page(props: Props) {
   const { params } = props;
-  const dict = useTranslations('Photography.Collection.Item');
+  const dict = useTranslations('Photography.Collection.europe.Item');
 
   const collectionKey = params.collection as CollectionKey;
   const collection = useCollection(collectionKey);

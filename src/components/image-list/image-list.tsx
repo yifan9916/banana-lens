@@ -1,26 +1,26 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import { Link } from '@/navigation';
-import { Photograph } from '@/libs/photography/types';
+import { CollectionKey, Photograph } from '@/libs/photography/types';
 
 type Props = {
-  list: {
-    id: string;
-    items: Photograph[];
-  };
+  collectionKey: CollectionKey;
+  items: Photograph[];
 };
 
 export const ImageList = (props: Props) => {
-  const { list } = props;
+  const { collectionKey, items } = props;
+  const dict = useTranslations(`Photography.Collection.${collectionKey}.Item`);
 
   return (
     <ul className="grid grid-cols-2 p-2 gap-2 sm:grid-cols-4">
-      {list.items.map((img) => {
+      {items.map((img) => {
         return (
           <li key={img.id} className="rounded-2xl overflow-hidden">
             <Link
               key={img.id}
-              href={`/photography/${list.id}/${img.id}.jpg`}
+              href={`/photography/${collectionKey}/${img.id}.jpg`}
               className="flex h-full flex-col"
             >
               <Image
@@ -30,7 +30,7 @@ export const ImageList = (props: Props) => {
                 className="flex-1 object-cover"
               />
               <div className="text-sm font-light p-2">
-                {img.title || img.id}
+                {dict(`${img.id}.title`) || img.id}
               </div>
             </Link>
           </li>
