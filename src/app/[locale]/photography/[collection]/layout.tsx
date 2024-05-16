@@ -25,6 +25,8 @@ export default function Layout(props: Props) {
           {dict('title')}
         </h2>
 
+        <p className="px-10 mb-20 max-w-4xl m-auto">{dict('description')}</p>
+
         <div className="relative opacity-0 animate-slide-down animation-delay-500">
           <ImageList collectionKey={collection.id} items={collection.items} />
         </div>

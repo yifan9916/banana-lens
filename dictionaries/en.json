@@ -4,9 +4,11 @@
   },
   "Photography": {
     "title": "Photography",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis.",
     "Collection": {
       "chongqing": {
         "title": "Chong Qing",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat.",
         "Item": {
           "chongqing-01": {
             "title": "Hong Ya Dong",
@@ -60,6 +62,7 @@
       },
       "europe": {
         "title": "Europe",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat.",
         "Item": {
           "alberobello-01": {
             "title": "Alberobello",

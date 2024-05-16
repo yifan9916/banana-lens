@@ -27,8 +27,8 @@ export default function Layout(props: Props) {
         </Link>
       </p>
 
-      <p className="px-10 pb-20 max-w-4xl m-auto">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
+      <p className="px-10 mb-20 max-w-4xl m-auto">
+        {dict('description')}{' '}
         <Link href="/photography#description" className="underline">
           more
         </Link>
