@@ -19,7 +19,7 @@ export default function Layout(props: Props) {
 
   return (
     <main>
-      <h1 className="font-[family-name:var(--font-satisfy)] text-5xl sm:text-[80px] text-center py-2 pt-20 sm:py-4 sm:pt-20">
+      <h1 className="font-[family-name:var(--font-satisfy)] text-6xl sm:text-8xl text-center py-2 pt-20 sm:py-4 sm:pt-20">
         Photography
       </h1>
 
@@ -53,7 +53,7 @@ export default function Layout(props: Props) {
             >
               <Image
                 src={collection.cover.src.preview}
-                alt={collection.title}
+                alt={collection.name}
                 placeholder="blur"
                 className="object-cover h-full"
               />

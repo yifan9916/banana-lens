@@ -5,6 +5,7 @@
   "Photography": {
     "Collection": {
       "chongqing": {
+        "title": "Chong Qing",
         "Item": {
           "chongqing-01": {
             "title": "Hong Ya Dong",
@@ -57,6 +58,7 @@
         }
       },
       "europe": {
+        "title": "Europe",
         "Item": {
           "alberobello-01": {
             "title": "Alberobello",

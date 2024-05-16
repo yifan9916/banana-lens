@@ -20,12 +20,12 @@ export type CollectionKey = 'chongqing' | 'europe';
 
 export type Collection = {
   id: CollectionKey;
-  title: string;
+  date?: Date;
+  name: string;
   cover: Photograph;
   description?: string;
 };
 
-export type CollectionExtended = {
-  id: CollectionKey;
+export type CollectionPhotos = Collection & {
   items: Photograph[];
 };

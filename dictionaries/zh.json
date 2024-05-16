@@ -5,6 +5,7 @@
   "Photography": {
     "Collection": {
       "chongqing": {
+        "title": "重庆",
         "Item": {
           "chongqing-01": {
             "title": "洪崖洞",
@@ -57,6 +58,7 @@
         }
       },
       "europe": {
+        "title": "欧洲",
         "Item": {
           "alberobello-01": {
             "title": "阿尔贝罗贝洛",

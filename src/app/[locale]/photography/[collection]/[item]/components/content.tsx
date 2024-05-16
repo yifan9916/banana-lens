@@ -43,7 +43,7 @@ export const Content = (props: Props) => {
       {description && (
         <p
           id="description"
-          className="max-w-2xl p-6 m-auto opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1s]"
+          className="max-w-2xl p-6 pb-16 m-auto opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1s]"
         >
           {description}
         </p>

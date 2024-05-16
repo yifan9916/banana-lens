@@ -5,6 +5,7 @@
   "Photography": {
     "Collection": {
       "chongqing": {
+        "title": "Chong Qing",
         "Item": {
           "chongqing-01": {
             "title": "Hong Ya Dong",
@@ -31,32 +32,33 @@
             "description": ""
           },
           "chongqing-07": {
-            "title": "Luo Han Temple",
+            "title": "Luo Han Tempel",
             "description": ""
           },
           "chongqing-08": {
-            "title": "Luo Han Temple",
+            "title": "Luo Han Tempel",
             "description": ""
           },
           "chongqing-09": {
-            "title": "Luo Han Temple",
+            "title": "Luo Han Tempel",
             "description": ""
           },
           "chongqing-10": {
-            "title": "Luo Han Temple",
+            "title": "Luo Han Tempel",
             "description": ""
           },
           "chongqing-11": {
-            "title": "Luo Han Temple",
+            "title": "Luo Han Tempel",
             "description": ""
           },
           "chongqing-12": {
-            "title": "Luo Han Temple",
+            "title": "Luo Han Tempel",
             "description": ""
           }
         }
       },
       "europe": {
+        "title": "Europa",
         "Item": {
           "alberobello-01": {
             "title": "Alberobello",
@@ -91,7 +93,7 @@
             "description": ""
           },
           "munich-01": {
-            "title": "Munich",
+            "title": "München",
             "description": ""
           },
           "munich-02": {
@@ -99,7 +101,7 @@
             "description": ""
           },
           "rome-01": {
-            "title": "Vatican",
+            "title": "Vatikan",
             "description": ""
           },
           "rome-02": {

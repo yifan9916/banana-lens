@@ -5,6 +5,7 @@
   "Photography": {
     "Collection": {
       "chongqing": {
+        "title": "Chong Qing",
         "Item": {
           "chongqing-01": {
             "title": "Hong Ya Dong",
@@ -57,6 +58,7 @@
         }
       },
       "europe": {
+        "title": "Europa",
         "Item": {
           "alberobello-01": {
             "title": "Alberobello",
@@ -83,11 +85,11 @@
             "description": ""
           },
           "london-01": {
-            "title": "London",
+            "title": "Londen",
             "description": ""
           },
           "london-02": {
-            "title": "London",
+            "title": "Londen",
             "description": ""
           },
           "munich-01": {
@@ -99,7 +101,7 @@
             "description": ""
           },
           "rome-01": {
-            "title": "Vatican",
+            "title": "Vaticaan",
             "description": ""
           },
           "rome-02": {
