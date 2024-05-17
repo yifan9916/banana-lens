@@ -81,7 +81,7 @@ const config: Config = {
           },
           to: {
             opacity: '1',
-            flex: '1.5',
+            flex: '1.2',
           },
         },
       },

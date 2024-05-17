@@ -47,6 +47,7 @@ export const Collections = () => {
     >
       {collections.map((collection, i) => {
         const isFirstItem = i === 0;
+        const shouldAnimate = !segments.length && isFirstItem && hasIntersected;
 
         return (
           <Link
@@ -56,7 +57,7 @@ export const Collections = () => {
               'relative flex-1 opacity-50 hover:opacity-100 transition-all duration-1000',
               'after:absolute after:h-full after:w-full after:top-0 after:bg-gradient-to-t after:from-black/50',
               segments[0] === collection.id ? '!opacity-100 !flex-[1.5]' : '',
-              isFirstItem && hasIntersected
+              shouldAnimate
                 ? 'group-[.intersect]:animate-attention-collection'
                 : '',
             ].join(' ')}
