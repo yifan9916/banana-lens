@@ -1,17 +1,19 @@
+import type { Collection, CollectionPhotos, CollectionKey } from '../types';
 import { data as chongQingData } from './chongqing';
 import { data as europeData } from './europe';
-import type { Collection, CollectionPhotos, CollectionKey } from '../types';
+import { Rome01 } from './europe/preview/images';
+import { Chongqing01 } from './chongqing/preview/images';
 
 const chongQingCollection: Collection = {
   id: 'chongqing',
   name: 'chongqing',
-  cover: chongQingData[0],
+  cover: Chongqing01,
 };
 
 const europeCollection: Collection = {
   id: 'europe',
   name: 'europe',
-  cover: europeData[0],
+  cover: Rome01,
 };
 
 export const collections: Collection[] = [

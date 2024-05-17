@@ -16,6 +16,8 @@ const config: Config = {
         'fade-out': 'fade-out 4s ease-in-out',
         'slide-up': 'slide-up 500ms ease-in-out forwards',
         'slide-down': 'slide-down 500ms ease-in-out forwards',
+        'attention-collection':
+          'attention-collection 1s ease-in-out 500ms 2 alternate',
       },
       keyframes: {
         'fade-out': {
@@ -71,6 +73,17 @@ const config: Config = {
             transform: 'translate3d(0, 0, 0)',
           },
         },
+
+        'attention-collection': {
+          from: {
+            opacity: '0.5',
+            flex: '1',
+          },
+          to: {
+            opacity: '1',
+            flex: '1.5',
+          },
+        },
       },
     },
   },
@@ -89,6 +102,31 @@ const config: Config = {
         }
       );
     }),
+    plugin(
+      ({ matchUtilities, theme }) => {
+        matchUtilities(
+          {
+            'animation-iteration': (value) => {
+              return {
+                'animation-iteration-count': value,
+              };
+            },
+          },
+          {
+            values: theme('animationIteration'),
+          }
+        );
+      },
+      {
+        theme: {
+          animationIteration: {
+            1: '1',
+            2: '2',
+            3: '3',
+          },
+        },
+      }
+    ),
   ],
 };
 export default config;

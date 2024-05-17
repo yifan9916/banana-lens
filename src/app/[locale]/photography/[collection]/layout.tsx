@@ -21,7 +21,7 @@ export default function Layout(props: Props) {
   return (
     <>
       <div className="max-w-4xl m-auto">
-        <h2 className="font-[family-name:var(--font-satisfy)] text-4xl sm:text-6xl text-center p-5 mb-14">
+        <h2 className="font-[family-name:var(--font-satisfy)] text-4xl sm:text-6xl text-center p-5 mb-8 sm:mb-14">
           {dict('title')}
         </h2>
 

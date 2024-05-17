@@ -22,7 +22,7 @@ export type Collection = {
   id: CollectionKey;
   date?: Date;
   name: string;
-  cover: Photograph;
+  cover: StaticImageData;
   description?: string;
 };
 
