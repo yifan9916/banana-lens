@@ -55,10 +55,20 @@ const Logo = (props: { visible: boolean }) => {
   return (
     <div
       className={[
-        'fixed h-14 w-14 left-1/2 -translate-x-1/2 z-50 border-2 border-black rounded-full opacity-0 bottom-0 sm:top-0 my-5 bg-gradient-to-tr from-[#00c8c833] backdrop-blur-sm',
+        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center dark:border-white rounded-full opacity-0 bottom-0 sm:top-0 my-5 backdrop-blur-sm',
         visible ? '!opacity-100' : '',
       ].join(' ')}
+      style={{
+        background:
+          'linear-gradient(to bottom left, #00c8c833, transparent), linear-gradient(to top right, #0000c833, transparent);',
+      }}
       onClick={handleBack}
-    ></div>
+    >
+      <div className="absolute h-full w-full border-2 rounded-full mix-blend-color-burn"></div>
+
+      <div className="text-nowrap pointer-events-none text-xs text-white mix-blend-overlay">
+        Banana Lens
+      </div>
+    </div>
   );
 };
