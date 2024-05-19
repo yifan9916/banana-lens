@@ -1,9 +1,8 @@
 'use client';
 
-import { Link, useRouter } from '@/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-import { useTimeout } from '@/utils/use-timeout/use-timeout';
+import { Link, useRouter } from '@/navigation';
 import { CameraLens } from '../icons';
 
 export const Header = () => {
@@ -49,22 +48,28 @@ export const Header = () => {
 
 const SmartNav = () => {
   const router = useRouter();
-  const navRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
     let wait = false;
     let throttleId: ReturnType<typeof setTimeout>;
+    let visibleTimerId: ReturnType<typeof setTimeout>;
 
     const onInteraction = () => {
       if (wait) return;
 
       setIsActive(true);
+
+      clearTimeout(visibleTimerId);
+      visibleTimerId = setTimeout(() => {
+        setIsActive(false);
+      }, 5000);
+
       wait = true;
 
       throttleId = setTimeout(() => {
         wait = false;
-      }, 5000);
+      }, 1000);
     };
 
     window.addEventListener('scroll', onInteraction, true);
@@ -72,12 +77,11 @@ const SmartNav = () => {
 
     return () => {
       clearTimeout(throttleId);
+      clearTimeout(visibleTimerId);
       window.removeEventListener('scroll', onInteraction, true);
       window.removeEventListener('click', onInteraction, true);
     };
   }, []);
-
-  useTimeout(() => setIsActive(false), 1000, isActive);
 
   const handleBack = () => {
     router.back();
@@ -85,13 +89,11 @@ const SmartNav = () => {
 
   return (
     <div
-      ref={navRef}
       className={[
-        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5',
+        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5 transition-opacity',
         'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
         'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
-        'opacity-0 animate-fade-out', // TODO something goes wrong here on mobile never fades back in
-        isActive ? '!animate-fade-in' : '',
+        isActive ? 'opacity-100' : 'opacity-0',
       ].join(' ')}
       onClick={handleBack}
     >
