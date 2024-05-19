@@ -51,6 +51,7 @@ const SmartNav = () => {
   const router = useRouter();
   const navRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(true);
+  const [counter, setCounter] = useState(1);
 
   useEffect(() => {
     let wait = false;
@@ -59,12 +60,13 @@ const SmartNav = () => {
     const onScroll = () => {
       if (wait) return;
 
+      setCounter((prev) => prev + 1);
       setIsActive(true);
       wait = true;
 
       throttleId = setTimeout(() => {
         wait = false;
-      }, 5000);
+      }, 1000);
     };
 
     window.addEventListener('scroll', onScroll, true);
@@ -85,17 +87,20 @@ const SmartNav = () => {
     <div
       ref={navRef}
       className={[
-        isActive ? 'animate-fade-in' : '',
-        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5 opacity-0 animate-fade-out',
+        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5',
         'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
         'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
+        // 'opacity-0 animate-fade-out',
+        // isActive ? 'animate-fade-in' : '',
       ].join(' ')}
       onClick={handleBack}
     >
       <div className="absolute h-[135%] w-[135%]">
         <CameraLens className="h-full w-full text-[#fafafae0]" />
       </div>
-      <div className="text-nowrap text-xs text-black">Banana Lens</div>
+      <div className="text-nowrap text-xs text-black">
+        Banana Lens {counter}
+      </div>
     </div>
   );
 };
