@@ -3,18 +3,21 @@
 import { Link, useRouter } from '@/navigation';
 import { useEffect, useRef, useState } from 'react';
 
+import { useTimeout } from '@/utils/use-timeout/use-timeout';
+import { CameraLens } from '../icons';
+
 export const Header = () => {
   const observerRef = useRef<IntersectionObserver>();
   const intersectionRef = useRef<HTMLElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isSmartNav, setIsSmartNav] = useState(false);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          setIsVisible(false);
+          setIsSmartNav(false);
         } else {
-          setIsVisible(true);
+          setIsSmartNav(true);
         }
       });
     });
@@ -39,14 +42,40 @@ export const Header = () => {
         </Link>
       </header>
 
-      <Logo visible={isVisible} />
+      {isSmartNav && <SmartNav />}
     </>
   );
 };
 
-const Logo = (props: { visible: boolean }) => {
-  const { visible } = props;
+const SmartNav = () => {
   const router = useRouter();
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    let wait = false;
+    let throttleId: ReturnType<typeof setTimeout>;
+
+    const onScroll = () => {
+      if (wait) return;
+
+      setIsActive(true);
+      wait = true;
+
+      throttleId = setTimeout(() => {
+        wait = false;
+      }, 5000);
+    };
+
+    window.addEventListener('scroll', onScroll, true);
+
+    return () => {
+      clearTimeout(throttleId);
+      window.removeEventListener('scroll', onScroll, true);
+    };
+  }, []);
+
+  useTimeout(() => setIsActive(false), 1000, isActive);
 
   const handleBack = () => {
     router.back();
@@ -54,21 +83,19 @@ const Logo = (props: { visible: boolean }) => {
 
   return (
     <div
+      ref={navRef}
       className={[
-        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center dark:border-white rounded-full opacity-0 bottom-0 sm:top-0 my-5 backdrop-blur-sm',
-        visible ? '!opacity-100' : '',
+        isActive ? 'animate-fade-in' : '',
+        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5 opacity-0 animate-fade-out',
+        'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
+        'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
       ].join(' ')}
-      style={{
-        background:
-          'linear-gradient(to bottom left, #00c8c833, transparent), linear-gradient(to top right, #0000c833, transparent);',
-      }}
       onClick={handleBack}
     >
-      <div className="absolute h-full w-full border-2 rounded-full mix-blend-color-burn"></div>
-
-      <div className="text-nowrap pointer-events-none text-xs text-white mix-blend-overlay">
-        Banana Lens
+      <div className="absolute h-[135%] w-[135%]">
+        <CameraLens className="h-full w-full text-[#fafafae0]" />
       </div>
+      <div className="text-nowrap text-xs text-black">Banana Lens</div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ export { Moon } from './moon';
 export { Sun } from './sun';
 export { Arrow } from './arrow';
 export { ArrowDownDouble } from './arrow-double';
+export { CameraLens } from './camera-lens';
 
 export { FlagUs } from './flags/flag-us';
 export { FlagCn } from './flags/flag-cn';
