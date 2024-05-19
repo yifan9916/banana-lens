@@ -51,7 +51,6 @@ const SmartNav = () => {
   const router = useRouter();
   const navRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(true);
-  const [counter, setCounter] = useState(1);
 
   useEffect(() => {
     let wait = false;
@@ -60,7 +59,6 @@ const SmartNav = () => {
     const onInteraction = () => {
       if (wait) return;
 
-      setCounter((prev) => prev + 1);
       setIsActive(true);
       wait = true;
 
@@ -93,7 +91,7 @@ const SmartNav = () => {
         'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
         'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
         'opacity-0 animate-fade-out', // TODO something goes wrong here on mobile never fades back in
-        isActive ? 'animate-fade-in' : '',
+        isActive ? '!animate-fade-in' : '',
       ].join(' ')}
       onClick={handleBack}
     >
