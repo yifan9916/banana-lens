@@ -57,7 +57,7 @@ const SmartNav = () => {
     let wait = false;
     let throttleId: ReturnType<typeof setTimeout>;
 
-    const onScroll = () => {
+    const onInteraction = () => {
       if (wait) return;
 
       setCounter((prev) => prev + 1);
@@ -69,11 +69,13 @@ const SmartNav = () => {
       }, 5000);
     };
 
-    window.addEventListener('scroll', onScroll, true);
+    window.addEventListener('scroll', onInteraction, true);
+    window.addEventListener('click', onInteraction, true);
 
     return () => {
       clearTimeout(throttleId);
-      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('scroll', onInteraction, true);
+      window.removeEventListener('click', onInteraction, true);
     };
   }, []);
 
@@ -90,7 +92,7 @@ const SmartNav = () => {
         'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5',
         'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
         'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
-        'opacity-0 animate-fade-out',
+        'opacity-0 animate-fade-out', // TODO something goes wrong here on mobile never fades back in
         isActive ? 'animate-fade-in' : '',
       ].join(' ')}
       onClick={handleBack}
@@ -98,9 +100,7 @@ const SmartNav = () => {
       <div className="absolute h-[135%] w-[135%]">
         <CameraLens className="h-full w-full text-[#fafafae0]" />
       </div>
-      <div className="text-nowrap text-xs text-black">
-        Banana Lens {counter}
-      </div>
+      <div className="text-nowrap text-xs text-black">Banana Lens</div>
     </div>
   );
 };
