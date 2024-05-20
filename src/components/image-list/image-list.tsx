@@ -20,7 +20,10 @@ export const ImageList = (props: Props) => {
           <li key={img.id} className="rounded-2xl overflow-hidden">
             <Link
               key={img.id}
-              href={`/photography/${collectionKey}/${img.id}.jpg`}
+              href={{
+                pathname: `/photography/${collectionKey}/${img.id}.jpg`,
+                query: { loupe: true },
+              }}
               className="flex h-full flex-col"
             >
               <Image

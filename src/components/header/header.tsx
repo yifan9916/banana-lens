@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { Link, useRouter } from '@/navigation';
 import { CameraLens } from '../icons';
@@ -8,6 +9,7 @@ import { CameraLens } from '../icons';
 export const Header = () => {
   const observerRef = useRef<IntersectionObserver>();
   const intersectionRef = useRef<HTMLElement | null>(null);
+  const searchParams = useSearchParams();
   const [isSmartNav, setIsSmartNav] = useState(false);
 
   useEffect(() => {
@@ -41,12 +43,15 @@ export const Header = () => {
         </Link>
       </header>
 
-      {isSmartNav && <SmartNav />}
+      {(searchParams.get('loupe') || isSmartNav) && <SmartNav />}
     </>
   );
 };
 
 const SmartNav = () => {
+  const VISIBILITY_TIMER_IN_MS = 5000;
+  const SCROLL_THROTTLE_TIMER_IN_MS = 1000;
+
   const router = useRouter();
   const [isActive, setIsActive] = useState(true);
 
@@ -63,13 +68,13 @@ const SmartNav = () => {
       clearTimeout(visibleTimerId);
       visibleTimerId = setTimeout(() => {
         setIsActive(false);
-      }, 5000);
+      }, VISIBILITY_TIMER_IN_MS);
 
       wait = true;
 
       throttleId = setTimeout(() => {
         wait = false;
-      }, 1000);
+      }, SCROLL_THROTTLE_TIMER_IN_MS);
     };
 
     window.addEventListener('scroll', onInteraction, true);
@@ -83,24 +88,31 @@ const SmartNav = () => {
     };
   }, []);
 
-  const handleBack = () => {
-    router.back();
+  const handleClick = () => {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/');
+    }
   };
 
   return (
     <div
       className={[
-        'font-[family-name:var(--font-satisfy)] fixed h-16 w-16 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-5 transition-opacity',
+        'fixed h-14 w-14 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-8 transition-opacity sm:top-0',
         'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
         'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
         isActive ? 'opacity-100' : 'opacity-0',
       ].join(' ')}
-      onClick={handleBack}
+      onClick={handleClick}
     >
       <div className="absolute h-[135%] w-[135%]">
         <CameraLens className="h-full w-full text-[#fafafae0]" />
       </div>
-      <div className="text-nowrap text-xs text-black">Banana Lens</div>
+
+      <div className="font-[family-name:var(--font-satisfy)] text-nowrap text-xs text-black">
+        Banana Lens
+      </div>
     </div>
   );
 };

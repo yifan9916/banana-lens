@@ -1,12 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { usePathname, useRouter } from '@/navigation';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
 
 export const Container = (props: { children: React.ReactNode }) => {
-  const { children } = props;
   const FADE_IN_TIME_IN_MS = 1000; // don't forget to keep this in sync with the animation time
+
+  const { children } = props;
+  const pathname = usePathname();
+  const router = useRouter();
   const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    router.replace(`${pathname}?loupe=true`);
+  }, []);
 
   useTimeout(() => setIsAnimating(false), FADE_IN_TIME_IN_MS, isAnimating);
 
