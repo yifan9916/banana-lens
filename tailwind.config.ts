@@ -45,11 +45,11 @@ const config: Config = {
 
         'blur-in': {
           from: {
-            'background-color': 'rgb(0 0 0 / 0)',
+            'background-color': '#0000',
             'backdrop-filter': 'blur(0px)',
           },
           to: {
-            'background-color': 'rgb(0 0 0 / 0.8)',
+            'background-color': '#000c',
             'backdrop-filter': 'blur(8px)',
           },
         },
