@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { Satisfy } from 'next/font/google';
@@ -41,7 +42,9 @@ export default function LocaleLayout(props: Props) {
       <body className={`${GeistSans.variable} ${satisfy.variable}`}>
         <AppProvider>
           <ThemeProvider>
-            <Header />
+            <Suspense>
+              <Header />
+            </Suspense>
 
             {children}
             <Footer />
