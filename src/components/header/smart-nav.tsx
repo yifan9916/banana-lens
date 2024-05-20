@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { usePathname, useRouter } from '@/navigation';
-import { CameraLens } from '../icons';
+import { Arrow, CameraLens } from '../icons';
 
 export const SmartNav = () => {
   const router = useRouter();
@@ -47,7 +47,7 @@ export const SmartNav = () => {
           hasNavigated ? 'opacity-100' : 'opacity-0',
         ].join(' ')}
       >
-        <span className="font-[family-name:var(--font-satisfy)]">Back</span>
+        <Arrow className="-rotate-90 h-7 w-7" />
       </div>
     </div>
   );
@@ -98,6 +98,7 @@ const useInteractionEvent = () => {
 
 const useNavigationEvent = () => {
   const RECENT_NAVIGATION_TIMER_IN_MS = 3000;
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isMounted, setIsMounted] = useState(false);

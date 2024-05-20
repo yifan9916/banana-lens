@@ -11,7 +11,7 @@ export const Arrow = (props: SVGProps<SVGSVGElement>) => {
     >
       <path
         fill="currentColor"
-        d="m12 15.632l8.968-4.748l-.936-1.768L12 13.368L3.968 9.116l-.936 1.768z"
+        d="m12 10.828l-4.95 4.95l-1.414-1.414L12 8l6.364 6.364l-1.414 1.414z"
       ></path>
     </svg>
   );
