@@ -97,7 +97,7 @@ const useInteractionEvent = () => {
 };
 
 const useNavigationEvent = () => {
-  const RECENT_NAVIGATION_TIMER_IN_MS = 3000;
+  const RECENT_NAVIGATION_TIMER_IN_MS = 1500;
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
