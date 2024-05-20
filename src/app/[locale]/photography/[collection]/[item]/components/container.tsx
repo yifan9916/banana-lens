@@ -30,7 +30,7 @@ export const Container = (props: { children: React.ReactNode }) => {
   return (
     <div
       className={[
-        'group z-40 fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in',
+        'group z-40 fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in pb-28',
         isAnimating ? 'animating' : '',
       ].join(' ')}
       onClick={handleClick}
