@@ -36,6 +36,7 @@ export const SmartNav = () => {
         className={[
           'font-[family-name:var(--font-satisfy)] text-nowrap text-xs text-black group-hover:opacity-0 transition-opacity',
           hasNavigated ? 'opacity-0' : 'opacity-100',
+          'min-w-16 text-center', // text-nowrap is unsupported in safari???
         ].join(' ')}
       >
         Banana Lens
