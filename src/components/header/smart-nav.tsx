@@ -21,7 +21,7 @@ export const SmartNav = () => {
   return (
     <div
       className={[
-        'group fixed h-14 w-14 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-8 transition-opacity sm:top-0',
+        'cursor-pointer group fixed h-14 w-14 left-1/2 -translate-x-1/2 z-50 flex justify-center items-center rounded-full bottom-0 my-8 transition-opacity sm:top-0 hover:opacity-100',
         'before:absolute before:h-[120%] before:w-[120%] before:rounded-full before:bg-white/80 before:-z-10 before:backdrop-blur-md',
         'after:absolute after:h-[110%] after:w-[110%] after:border-2 after:border-black/80 after:rounded-full',
         hasInteracted ? 'opacity-100' : 'opacity-0',
