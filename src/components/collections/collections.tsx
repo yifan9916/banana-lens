@@ -1,53 +1,32 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
-import { useCollections } from '@/libs/photography/use-collections';
 import { Link } from '@/navigation';
+import { useIntersection } from '@/utils/intersection/use-intersection';
+import { useCollections } from '@/libs/photography/use-collections';
 
 export const Collections = () => {
   const segments = useSelectedLayoutSegments();
-  const observerRef = useRef<IntersectionObserver>();
-  const intersectionRef = useRef<HTMLElement | null>(null);
-  const [hasIntersected, setHasIntersected] = useState(false);
+
+  const intersectionRef = useRef<HTMLElement>(null);
+  const { isIntersecting } = useIntersection(intersectionRef);
 
   const collections = useCollections();
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setHasIntersected(true);
-            observerRef.current?.disconnect();
-          }
-        });
-      },
-      { threshold: 1 }
-    );
-
-    if (intersectionRef.current) {
-      observerRef.current?.observe(intersectionRef.current);
-    }
-
-    return () => {
-      observerRef.current?.disconnect();
-    };
-  }, []);
 
   return (
     <section
       ref={intersectionRef}
       className={[
         'group mb-20 flex max-w-4xl m-auto w-full h-[400px] sm:h-[80dvh] max-h-[600px]',
-        hasIntersected ? 'intersect' : '',
+        isIntersecting ? 'intersect' : '',
       ].join(' ')}
     >
       {collections.map((collection, i) => {
         const isFirstItem = i === 0;
-        const shouldAnimate = !segments.length && isFirstItem && hasIntersected;
+        const shouldAnimate = !segments.length && isFirstItem && isIntersecting;
 
         return (
           <Link

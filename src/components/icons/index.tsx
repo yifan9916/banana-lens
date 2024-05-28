@@ -4,6 +4,7 @@ export { Sun } from './sun';
 export { Arrow } from './arrow';
 export { ArrowDownDouble } from './arrow-double';
 export { CameraLens } from './camera-lens';
+export { Typing } from './typing';
 
 export { FlagUs } from './flags/flag-us';
 export { FlagCn } from './flags/flag-cn';

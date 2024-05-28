@@ -1,4 +1,8 @@
 {
+  "general": {
+    "view_messages": "view {count, plural, =1 {message} other {# messages}}",
+    "hide_messages": "hide {count, plural, =1 {message} other {messages}}"
+  },
   "Home": {
     "title": "Bald verfügbar..."
   },
@@ -133,6 +137,51 @@
             "description": ""
           }
         }
+      }
+    }
+  },
+  "Engineering": {
+    "messages": {
+      "intro": {
+        "01": "👋 Hey there! Welcome to my little space for all things web and engineering. 🏡",
+        "02": "It's a work in progress, but I'm handling everything from content to design and implementation. 💻",
+        "03": "Curious about what, why, and how I do things? Dive into the threads below and keep reading! 👇"
+      },
+      "current": {
+        "01": "Right now, I'm focusing on the Photography space, turning it into my personal social media app. 📷",
+        "02": "For the engineering section, I want to keep it simple as a blog. 📝",
+        "03": "But check back later - you might find this chat window turned into a fully functional one!",
+        "04": "🔍 Why I'm doing all of this?",
+        "05": "I love creating things and doing them myself, especially if it can bring value to others. 🌟",
+        "06": "I'm fascinated by how different cultures approach technology, so stay tuned for more on that! 🌍"
+      },
+      "background": {
+        "01": "I studied Media Informatics - a computer science major focused on project work. 🎓",
+        "02": "We did everything from requirements gathering to prototyping, designing, development, research, and analysis.",
+        "03": "It was demanding, but I loved learning how to do it all.",
+        "04": "My focus areas were multimedia, human-computer interaction, and engineering.",
+        "05": "I particularly enjoy creating eye-catching, highly interactive and engaging user experiences that are fun to use.",
+        "06": "For my thesis, I developed a game using eye-tracking and gesture controls. 🎮",
+        "07": "That was almost ten years ago, and now we have tech like Meta Quest and Apple Vision Pro!"
+      },
+      "professional": {
+        "01": "I've been a professional web software engineer since 2017. 💼",
+        "02": "I've gained experience developing high-performing, scalable solutions and most importantly, solutions that were easy to work with for me peers.",
+        "03": "The best times at work are when I'm involved in everything to implement impactful solutions.",
+        "04": "I've had great relationships with mentors and superiors, always picking their brains non-stop. 🧠",
+        "05": "I've delved into every step needed to deploy features, microservices, and apps from small to international scale.",
+        "06": "From implementation, testing, automation, and QA to monitoring and analytics. 🔄",
+        "07": "I've focused a lot on Frontend, Web Performance, tooling, SEO, CMS, and A/B testing.",
+        "08": "I'm also very interested in diving deeper into real-time systems, payments, AI, and user-related topics. All vital for creating more impactful and user-centric solutions. 🤖"
+      },
+      "tools": {
+        "01": "These days, most of my work is with JavaScript/TypeScript and NodeJS. 🛠️",
+        "02": "I primarily use frameworks like React and NextJS to build dynamic, high-performance web applications."
+      },
+      "outro": {
+        "01": "Alright, that's it for now! Hope this gives you a good overview.",
+        "02": "If you have exciting opportunities or challenges that resonate with my skill set and interests I'd love to hear from you. 📬",
+        "03": "🤝 Let's Connect!"
       }
     }
   }

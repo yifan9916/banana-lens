@@ -1,57 +1,65 @@
-import { SVGProps } from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import {
-  Aws,
-  Css,
-  Docker,
-  Git,
-  Github,
-  Html,
-  Javascript,
-  NextJs,
-  NodeJs,
-  React,
-  Tailwind,
-  Typescript,
-  Xstate,
-} from '@/components/icons';
-
-const stack = [
-  'javascript',
-  'typescript',
-  'nodejs',
-  'css',
-  'html',
-  'react',
-  'nextjs',
-  'git',
-  'tailwind',
-  'xstate',
-  'docker',
-  'aws',
-] as const;
-
-type Tech = (typeof stack)[number];
-
-const logos: Record<Tech, (props: SVGProps<SVGSVGElement>) => JSX.Element> = {
-  react: React,
-  nextjs: NextJs,
-  nodejs: NodeJs,
-  javascript: Javascript,
-  typescript: Typescript,
-  css: Css,
-  html: Html,
-  docker: Docker,
-  xstate: Xstate,
-  aws: Aws,
-  git: Git,
-  tailwind: Tailwind,
-};
+  type Message,
+  MessageThread,
+} from '@/components/messages/thread/message-thread';
+import { LiveMessageThread } from '@/components/messages/live/live-message-thread';
+import { Github } from '@/components/icons';
 
 export default function Page() {
+  const dict = useTranslations('Engineering.messages');
+
+  const intro: Message[] = [
+    { body: dict('intro.01') },
+    { body: dict('intro.02') },
+    { body: dict('intro.03') },
+  ];
+
+  const current: Message[] = [
+    { body: dict('current.01') },
+    { body: dict('current.02') },
+    { body: dict('current.03') },
+    { body: dict('current.04') },
+    { body: dict('current.05') },
+    { body: dict('current.06') },
+  ];
+
+  const background: Message[] = [
+    { body: dict('background.01') },
+    { body: dict('background.02') },
+    { body: dict('background.03') },
+    { body: dict('background.04') },
+    { body: dict('background.05') },
+    { body: dict('background.06') },
+    { body: dict('background.07') },
+  ];
+
+  const professional: Message[] = [
+    { body: dict('professional.01') },
+    { body: dict('professional.02') },
+    { body: dict('professional.03') },
+    { body: dict('professional.04') },
+    { body: dict('professional.05') },
+    { body: dict('professional.06') },
+    { body: dict('professional.07') },
+    { body: dict('professional.08') },
+  ];
+
+  const tools: Message[] = [
+    { body: dict('tools.01') },
+    { body: dict('tools.02') },
+  ];
+
+  const outro: Message[] = [
+    { body: dict('outro.01') },
+    { body: dict('outro.02') },
+    { body: dict('outro.03') },
+  ];
+
   return (
-    <main className="p-6 pb-32 max-w-4xl m-auto">
+    <main className="p-4 pb-32 max-w-2xl m-auto">
       <h1 className="font-[family-name:var(--font-satisfy)] text-6xl sm:text-8xl text-center py-2 pt-20 sm:py-4 sm:pt-20">
         Engineering
       </h1>
@@ -62,40 +70,13 @@ export default function Page() {
         </Link>
       </p>
 
-      <p className="pb-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et
-        eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate
-        sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non
-        ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus
-        orci. Sed tristique eu arcu a consequat. Donec scelerisque, orci non
-        porta aliquet, diam ligula blandit turpis, pharetra imperdiet est ligula
-        et lacus. Quisque in iaculis diam, ut ultricies tortor. Nunc a enim non
-        mi suscipit molestie id et erat. Integer eleifend auctor condimentum.
-      </p>
+      <MessageThread messages={intro} />
+      <MessageThread messages={current} collapse />
+      <MessageThread messages={background} collapse />
+      <MessageThread messages={professional} collapse />
+      <MessageThread messages={tools} />
 
-      <p className="pb-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et
-        eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate
-        sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non
-        ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus
-        orci. Sed tristique eu arcu a consequat. Donec scelerisque, orci non
-        porta aliquet, diam ligula blandit turpis, pharetra imperdiet est ligula
-        et lacus. Quisque in iaculis diam, ut ultricies tortor. Nunc a enim non
-        mi suscipit molestie id et erat. Integer eleifend auctor condimentum.
-      </p>
-
-      <ul className="flex gap-4 flex-wrap flex-dire justify-center py-8">
-        {stack.map((tech) => {
-          const Logo = logos[tech];
-          return (
-            <li title={tech} key={tech}>
-              <Logo className="h-7 w-7" />
-            </li>
-          );
-        })}
-      </ul>
+      <LiveMessageThread messages={outro} />
     </main>
   );
 }
