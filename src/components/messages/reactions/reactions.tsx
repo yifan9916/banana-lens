@@ -25,7 +25,7 @@ export const Reactions = (props: { reactions: Reaction[] }) => {
         </ul>
       </button>
 
-      <div className="hidden fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-96 pt-6 pb-24 sm:pb-0 border rounded-t-3xl bg-white dark:bg-black z-40 peer-focus:flex justify-center items-center">
+      <div className="hidden fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-96 pt-6 pb-24 sm:pb-0 border border-b-0 rounded-t-3xl bg-white dark:bg-black z-40 peer-focus:flex justify-center items-center">
         <ul className="grid grid-cols-2 gap-6 p-4">
           {reactions.map((r) => {
             const reaction = reactionMap[r];

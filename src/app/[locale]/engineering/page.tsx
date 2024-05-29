@@ -49,7 +49,18 @@ export default function Page() {
 
   const tools: Message[] = [
     { body: dict('tools.01') },
-    { body: dict('tools.02') },
+    {
+      body: dict('tools.02'),
+      reactions: [
+        'javascript',
+        'typescript',
+        'nodejs',
+        'html',
+        'css',
+        'react',
+        'react',
+      ],
+    },
   ];
 
   const outro: Message[] = [
