@@ -4,7 +4,14 @@
     "hide_messages": "hide {count, plural, =1 {message} other {messages}}"
   },
   "Home": {
-    "title": "Coming soon..."
+    "introduction": {
+      "01": "Hey there! I'm Yi",
+      "02": "I'm a <nav>Software Engineer</nav>. I love building things for the web. 💻",
+      "03": "And I'm a <nav>photography</nav> enthusiast behind the lens. 📸",
+      "04": "Curious?",
+      "05": "It's a work in progress, haven't settled on a direction, yet.",
+      "06": "Click through to see some of my photography and learn more about what I'm up to!"
+    }
   },
   "Photography": {
     "title": "Photography",
@@ -188,7 +195,7 @@
       },
       "professional": {
         "01": "I've been a professional web software engineer since 2017. 💼",
-        "02": "I've gained experience developing high-performing, scalable solutions and most importantly, solutions that were easy to work with for me peers.",
+        "02": "I've gained experience developing high-performing, scalable solutions and most importantly, solutions that were easy to work with for my peers.",
         "03": "The best times at work are when I'm involved in everything to implement impactful solutions.",
         "04": "I've had great relationships with mentors and superiors, always picking their brains non-stop. 🧠",
         "05": "I've delved into every step needed to deploy features, microservices, and apps from small to international scale.",
