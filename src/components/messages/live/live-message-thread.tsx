@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 
 import { MessageBubble } from '@/components/messages/bubble/message-bubble';
 import { Message } from '@/components/messages/thread/message-thread';
-import { useIntersection } from '@/utils/intersection/use-intersection';
+import { useIntersection } from '@/utils/use-intersection/use-intersection';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
 import { ChatWrapper } from '@/components/messages/chat-wrapper';
 import { Typing } from '@/components/icons';

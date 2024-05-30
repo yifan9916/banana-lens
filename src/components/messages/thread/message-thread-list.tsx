@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
+import type { Props as ParentProps } from './message-thread';
 import { MessageBubble } from '../bubble/message-bubble';
-import { Props as ParentProps } from './message-thread';
 
 type Props = ParentProps & {
   labels: {

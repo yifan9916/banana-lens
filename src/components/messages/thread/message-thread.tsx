@@ -4,7 +4,10 @@ import type { Reaction } from '../reactions/reactions';
 import { MessageThreadList } from './message-thread-list';
 import { ChatWrapper } from '../chat-wrapper';
 
-export type Message = { body: string; reactions?: Reaction[] };
+export type Message = {
+  body: React.ReactNode;
+  reactions?: Reaction[];
+};
 
 export type Props = {
   messages: Message[];

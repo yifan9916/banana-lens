@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
 import { Link } from '@/navigation';
-import { useIntersection } from '@/utils/intersection/use-intersection';
+import { useIntersection } from '@/utils/use-intersection/use-intersection';
 import { useCollections } from '@/libs/photography/use-collections';
 
 export const Collections = () => {
