@@ -86,12 +86,13 @@
       "europe": {
         "title": "Europa",
         "description": {
-          "01": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat."
+          "01": "Traveling through Europe always feels familiar, yet fresh with so many new places to explore.",
+          "02": "Revisiting old spots or seeing new ones for the first time is even more exciting with a camera in hand, capturing scenes just as I envision them. Check out some of my favorite shots!"
         },
         "Item": {
           "alberobello-01": {
             "title": "Alberobello",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat. Donec scelerisque, orci non porta aliquet, diam ligula blandit turpis, pharetra imperdiet est ligula et lacus. Quisque in iaculis diam, ut ultricies tortor. Nunc a enim non mi suscipit molestie id et erat. Integer eleifend auctor condimentum."
+            "description": ""
           },
           "barcelona-01": {
             "title": "La Sagrada Família",

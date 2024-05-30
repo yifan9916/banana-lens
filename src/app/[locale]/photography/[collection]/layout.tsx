@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 
+import type { CollectionKey } from '@/libs/photography/types';
 import { ImageList } from '@/components/image-list/image-list';
 import { useCollection } from '@/libs/photography/use-collection';
-import type { CollectionKey } from '@/libs/photography/types';
 import { MessageThread } from '@/components/messages/thread/message-thread';
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 
 const descriptionMessages = {
   chongqing: ['01', '02', '03', '04', '05', '06'],
-  europe: ['01'],
+  europe: ['01', '02'],
 };
 
 export default function Layout(props: Props) {
@@ -36,7 +36,7 @@ export default function Layout(props: Props) {
         </h2>
 
         <div className="px-4 sm:px-10 mb-20 max-w-2xl m-auto">
-          <MessageThread messages={messages} collapse={messages.length > 1} />
+          <MessageThread messages={messages} collapse={messages.length > 2} />
         </div>
 
         <div className="relative opacity-0 animate-slide-down animation-delay-500">
