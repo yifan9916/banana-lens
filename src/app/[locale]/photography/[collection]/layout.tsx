@@ -3,12 +3,18 @@ import { useTranslations } from 'next-intl';
 import { ImageList } from '@/components/image-list/image-list';
 import { useCollection } from '@/libs/photography/use-collection';
 import type { CollectionKey } from '@/libs/photography/types';
+import { MessageThread } from '@/components/messages/thread/message-thread';
 
 type Props = {
   children: React.ReactNode;
   params: {
     collection: string;
   };
+};
+
+const descriptionMessages = {
+  chongqing: ['01', '02', '03', '04', '05', '06'],
+  europe: ['01'],
 };
 
 export default function Layout(props: Props) {
@@ -18,6 +24,10 @@ export default function Layout(props: Props) {
   const dict = useTranslations(`Photography.Collection.${collectionKey}`);
   const collection = useCollection(collectionKey);
 
+  const messages = descriptionMessages[collectionKey].map((m) => ({
+    body: dict(`description.${m}`),
+  }));
+
   return (
     <>
       <div className="max-w-4xl m-auto">
@@ -25,7 +35,9 @@ export default function Layout(props: Props) {
           {dict('title')}
         </h2>
 
-        <p className="px-10 mb-20 max-w-4xl m-auto">{dict('description')}</p>
+        <div className="px-4 sm:px-10 mb-20 max-w-2xl m-auto">
+          <MessageThread messages={messages} collapse={messages.length > 1} />
+        </div>
 
         <div className="relative opacity-0 animate-slide-down animation-delay-500">
           <ImageList collectionKey={collection.id} items={collection.items} />

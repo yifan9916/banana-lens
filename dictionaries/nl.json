@@ -24,7 +24,14 @@
     "Collection": {
       "chongqing": {
         "title": "Chong Qing",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat.",
+        "description": {
+          "01": "Chong Qing, Mountain City, Cyberpunk Utopia, Wartime Capital, captured my curiosity for its blend of tradition and futuristic elements.",
+          "02": "In 2023, I finally ticked off Chongqing from my bucket list. As a lover of noodles and the numbing spices, it sounded like paradise to me.",
+          "03": "With the city's dramatic contrasts and layered mountainous landscape, it's also a photographer's dream.",
+          "04": "Its towering structures and waterfront views reminded me a lot of Hong Kong, but with everything way bigger and brighter, less cosmopolitan but with a bolder, more indigenous feel.",
+          "05": "I've often seen 'Chungking', the older romanization of Chong Qing, in relation to Hong Kong and it got me wondering about the connection between these two cities.",
+          "06": "It turns out that Chungking Mansions, a historic hub in Hong Kong, shares a connection with Chong Qing's history as a wartime capital. Its name apparently originated from the influx of people who converged in the area during and after the Japanese invasion. This iconic building would then be immortalized in Wong Kar Wai's famous 'Chungking Express'."
+        },
         "Item": {
           "chongqing-01": {
             "title": "Hong Ya Dong",
@@ -78,7 +85,9 @@
       },
       "europe": {
         "title": "Europa",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat.",
+        "description": {
+          "01": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan augue mi, blandit viverra arcu malesuada id. Maecenas et eleifend turpis, quis porttitor ante. Sed luctus, enim vitae vulputate sollicitudin, magna nisl ullamcorper est, sed suscipit lacus nibh non ligula. Vestibulum lobortis aliquam urna quis facilisis. Nunc id cursus orci. Sed tristique eu arcu a consequat."
+        },
         "Item": {
           "alberobello-01": {
             "title": "Alberobello",
