@@ -8,7 +8,19 @@
   },
   "Photography": {
     "title": "摄影",
-    "description": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買!",
+    "introduction": {
+      "01": "📸 Welcome to my photography space! I've prepared two collections for now: the stunning mountain city of Chongqing and a showcase of travel pictures from across Europe.",
+      "02": "I'm excited to share more soon, but take a look at these for now! I've been avidly taking pictures since 2022... <more>Read more</more>"
+    },
+    "body": {
+      "01": "I love capturing people and how they interact with their surroundings. What's a place without its people, after all? 📸",
+      "02": "I enjoy 'messy' shots or 'dirtying the frame' as professionals call it. Shots that tell a whole story in a single frame are my favorite.",
+      "03": "I've been very picky about this—too picky, actually. I'm working on just taking more shots, trying different things. You never know which ones might inspire you later! ✨",
+      "04": "My main cameras are the Sony A7IV and the iPhone 15 Pro Max. 📷📱",
+      "05": "I have two lenses: an 85mm telephoto and a 20mm wide-angle lens. I've mostly used the 85mm-love the depth of field, but lately, I've realized some of my favorite shots are with the 20mm.",
+      "06": "I edit all my photos in Lightroom and finish in Photoshop, adding some blur and hallation. I focus on color and grading, keeping scenes as accurate as possible—no AI, and rarely any spot edits. 🎨",
+      "07": "I haven't added presets to my workflow yet, so editing a new batch of photos still takes quite some time."
+    },
     "Collection": {
       "chongqing": {
         "title": "重庆",
