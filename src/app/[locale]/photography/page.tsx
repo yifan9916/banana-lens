@@ -4,7 +4,6 @@ import {
   type Message,
   MessageThread,
 } from '@/components/messages/thread/message-thread';
-import { ChatWrapper } from '@/components/messages/chat-wrapper';
 
 export default function Page() {
   const dict = useTranslations('Photography.body');
@@ -23,11 +22,9 @@ export default function Page() {
   ];
 
   return (
-    <div id="description" className="px-10 max-w-2xl m-auto">
-      <ChatWrapper>
-        <MessageThread messages={motivation} />
-        <MessageThread messages={gear} />
-      </ChatWrapper>
+    <div id="description" className="px-4 sm:px-10 max-w-2xl m-auto">
+      <MessageThread messages={motivation} />
+      <MessageThread messages={gear} />
     </div>
   );
 }

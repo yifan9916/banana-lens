@@ -3,7 +3,6 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 import { Instagram, Tiktok } from '@/components/icons';
 import { Collections } from '@/components/collections/collections';
-import { ChatWrapper } from '@/components/messages/chat-wrapper';
 import {
   type Message,
   MessageThread,
@@ -48,10 +47,8 @@ export default function Layout(props: Props) {
         </Link>
       </p>
 
-      <div className="px-10 mb-20 max-w-2xl m-auto">
-        <ChatWrapper>
-          <MessageThread messages={messages} />
-        </ChatWrapper>
+      <div className="px-4 sm:px-10 mb-20 max-w-2xl m-auto">
+        <MessageThread messages={messages} />
       </div>
 
       <Collections />
