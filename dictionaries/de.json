@@ -1,43 +1,43 @@
 {
   "general": {
-    "view_messages": "view {count, plural, =1 {message} other {# messages}}",
-    "hide_messages": "hide {count, plural, =1 {message} other {messages}}"
+    "view_messages": "{count, plural, =1 {Nachricht anzeigen} other {# Nachrichten anzeigen}}",
+    "hide_messages": "{count, plural, =1 {Nachricht verbergen} other {Nachrichten verbergen}}"
   },
   "Home": {
     "introduction": {
-      "01": "Hey there! I'm Yi",
-      "02": "I'm a <nav>Software Engineer</nav>. I love building things for the web. 💻",
-      "03": "And I'm into <nav>photography</nav>. Currently working on my own style. 📸",
-      "04": "Curious?",
-      "05": "My site is a work in progress, still figuring out a direction.",
-      "06": "Click through to check out my photos and see what I'm up to!"
+      "01": "Hey! Ich bin Yi.",
+      "02": "Ich bin ein <nav>Software-Ingenieur</nav>. Ich liebe es, Dinge fürs Web zu bauen. 💻",
+      "03": "Und ich bin ein <nav>Fotografie</nav> Enthusiast. 📸 Arbeite gerade an meinem eigenen Stil.",
+      "04": "Neugierig?",
+      "05": "Meine Website ist noch in Arbeit, die Richtung ist noch nicht ganz klar.",
+      "06": "Klick dich durch, um meine Fotos anzuschauen und zu sehen, was ich mache!"
     }
   },
   "Photography": {
-    "title": "Photography",
+    "title": "Fotografie",
     "introduction": {
-      "01": "📸 Welcome to my photography space! I've prepared two collections for now: the stunning mountain city of Chongqing and a showcase of travel pictures from across Europe.",
-      "02": "I'm excited to share more soon, but take a look at these for now! I've been avidly taking pictures since 2022... <more>Read more</more>"
+      "01": "📸 Willkommen in meinem Fotobereich! Für den Anfang habe ich zwei Kollektionen vorbereitet: die beeindruckende Bergstadt Chongqing und eine Auswahl an Reisefotos aus ganz Europa.",
+      "02": "Ich freue mich darauf, bald mehr zu teilen, aber schau dir bis dahin diese an! Seit 2022 mache ich leidenschaftlich gerne Fotos... <more>Weiterlesen</more>"
     },
     "body": {
-      "01": "I love capturing people and how they interact with their surroundings. What's a place without its people, after all? 📸",
-      "02": "I enjoy 'messy' shots or 'dirtying the frame' as professionals call it. Shots that tell a whole story in a single frame are my favorite.",
-      "03": "I've been very picky about this—too picky, actually. I'm working on just taking more shots, trying different things. You never know which ones might inspire you later! ✨",
-      "04": "My main cameras are the Sony A7IV and the iPhone 15 Pro Max. 📷📱",
-      "05": "I have two lenses: an 85mm telephoto and a 20mm wide-angle lens. I've mostly used the 85mm-love the depth of field, but lately, I've realized some of my favorite shots are with the 20mm.",
-      "06": "I edit all my photos in Lightroom and finish in Photoshop, adding some blur and hallation. I focus on color and grading, keeping scenes as accurate as possible—no AI, and rarely any spot edits. 🎨",
-      "07": "I haven't added presets to my workflow yet, so editing a new batch of photos still takes quite some time."
+      "01": "Ich liebe es, Menschen und ihre Interaktionen mit ihrer Umgebung festzuhalten. Was ist ein Ort ohne seine Menschen? 📸",
+      "02": "Ich mag 'unordentliche' Aufnahmen oder wie Profis sagen 'das Bildfeld verschmutzen'. Aufnahmen, die eine ganze Geschichte in einem einzigen Bild erzählen, sind meine Favoriten.",
+      "03": "Ich war sehr wählerisch damit - zu wählerisch, eigentlich. Ich arbeite daran, einfach mehr Fotos zu machen und verschiedene Dinge auszuprobieren. Man weiß nie, welche einen später inspirieren! ✨",
+      "04": "Meine Hauptkameras sind die Sony A7IV und das iPhone 15 Pro Max. 📷📱",
+      "05": "Ich habe zwei Objektive: ein 85mm Teleobjektiv und ein 20mm Weitwinkelobjektiv. Meistens habe ich das 85mm benutzt - ich liebe die Tiefenschärfe, aber kürzlich habe ich festgestellt, dass einige meiner Lieblingsaufnahmen mit dem 20mm gemacht wurden.",
+      "06": "Ich bearbeite alle meine Fotos in Lightroom und mache den Feinschliff in Photoshop, indem ich etwas Unschärfe und Hallation hinzufüge. Ich konzentriere mich auf Farbe und Grading und halte die Szenen so genau wie möglich - kein AI und selten lokale Bearbeitungen. 🎨",
+      "07": "Ich habe noch keine Presets in meinen Workflow integriert, daher dauert die Bearbeitung eines neuen Fotosatzes immer noch ziemlich lange."
     },
     "Collection": {
       "chongqing": {
         "title": "Chong Qing",
         "description": {
-          "01": "Chong Qing, Mountain City, Cyberpunk Utopia, Wartime Capital, captured my curiosity for its blend of tradition and futuristic elements.",
-          "02": "In 2023, I finally ticked off Chongqing from my bucket list. As a lover of noodles and the numbing spices, it sounded like paradise to me.",
-          "03": "With the city's dramatic contrasts and layered mountainous landscape, it's also a photographer's dream.",
-          "04": "Its towering structures and waterfront views reminded me a lot of Hong Kong, but with everything way bigger and brighter, less cosmopolitan but with a bolder, more indigenous feel.",
-          "05": "I've often seen 'Chungking', the older romanization of Chong Qing, in relation to Hong Kong and it got me wondering about the connection between these two cities.",
-          "06": "It turns out that Chungking Mansions, a historic hub in Hong Kong, shares a connection with Chong Qing's history as a wartime capital. Its name apparently originated from the influx of people who converged in the area during and after the Japanese invasion. This iconic building would then be immortalized in Wong Kar Wai's famous 'Chungking Express'."
+          "01": "Chong Qing, Bergstadt, Cyberpunk-Utopie, Kriegszeit-Hauptstadt, hat meine Neugier geweckt durch seine Mischung aus Tradition und futuristischen Elementen.",
+          "02": "2023 habe ich Chongqing endlich von meiner Bucket-List gestrichen. Als Liebhaber von Nudeln und den betäubenden Gewürzen klang es wie ein Paradies für mich.",
+          "03": "Mit den dramatischen Kontrasten und der gestuften Berglandschaft der Stadt ist es auch ein Traum für Fotografen.",
+          "04": "Die hoch aufragenden Strukturen und Uferansichten erinnerten mich stark an Hongkong, aber alles war viel größer und heller, weniger kosmopolitisch, aber mit einem mutigeren, indigeneren Gefühl.",
+          "05": "Ich habe oft 'Chungking', die ältere Romanisierung von Chong Qing, im Zusammenhang mit Hongkong gesehen und mich gefragt, was die Verbindung zwischen diesen beiden Städten ist.",
+          "06": "Es stellt sich heraus, dass Chungking Mansions, ein historischer Knotenpunkt in Hongkong, eine Verbindung zu Chong Qings Geschichte als Kriegszeit-Hauptstadt hat. Der Name stammt anscheinend von dem Zustrom von Menschen, die sich während und nach der japanischen Invasion in diesem Gebiet sammelten. Dieses ikonische Gebäude wurde dann in Wong Kar Wais berühmtem 'Chungking Express' verewigt."
         },
         "Item": {
           "chongqing-01": {
@@ -93,8 +93,8 @@
       "europe": {
         "title": "Europa",
         "description": {
-          "01": "Traveling through Europe always feels familiar, yet fresh with so many new places to explore.",
-          "02": "Revisiting old spots or seeing new ones for the first time is even more exciting with a camera in hand, capturing scenes just as I envision them. Check out some of my favorite shots!"
+          "01": "Durch Europa zu reisen fühlt sich immer vertraut an, aber dennoch frisch mit so vielen neuen Orten, die es zu entdecken gilt.",
+          "02": "Alte Orte erneut zu besuchen oder neue zum ersten Mal zu sehen, ist noch spannender mit einer Kamera in der Hand, die die Szenen so festhält, wie ich sie mir vorstelle. Schau dir einige meiner Lieblingsfotos an!"
         },
         "Item": {
           "alberobello-01": {
@@ -172,45 +172,45 @@
   "Engineering": {
     "messages": {
       "intro": {
-        "01": "👋 Hey there! Welcome to my little space for all things web and engineering. 🏡",
-        "02": "It's a work in progress, but I'm handling everything from content to design and implementation. 💻",
-        "03": "Curious about what, why, and how I do things? Dive into the threads below and keep reading! 👇"
+        "01": "👋 Hey! Willkommen in meinem kleinen Raum für alles rund ums Web und Technik. 🏡",
+        "02": "Es ist noch in Arbeit, aber ich kümmere mich um alles von Inhalt bis Design und Implementierung. 💻",
+        "03": "Neugierig, was, warum und wie ich Dinge tue? Tauche in die Threads unten ein und lies weiter! 👇"
       },
       "current": {
-        "01": "Right now, I'm focusing on the Photography space, turning it into my personal social media app. 📷",
-        "02": "For the engineering section, I want to keep it simple as a blog. 📝",
-        "03": "But check back later - you might find this chat window turned into a fully functional one!",
-        "04": "🔍 Why I'm doing all of this?",
-        "05": "I love creating things and doing them myself, especially if it can bring value to others. 🌟",
-        "06": "I'm fascinated by how different cultures approach technology, so stay tuned for more on that! 🌍"
+        "01": "Im Moment konzentriere ich mich auf den Fotobereich und verwandle ihn in meine persönliche Social-Media-App. 📷",
+        "02": "Für den Technikbereich möchte ich es als Blog einfach halten. 📝",
+        "03": "Aber schau später wieder vorbei - vielleicht wird dieses Chatfenster zu einem voll funktionsfähigen!",
+        "04": "🔍 Warum ich das alles mache?",
+        "05": "Ich liebe es, Dinge zu erschaffen und sie selbst zu machen, besonders wenn sie anderen Nutzen bringen können. 🌟",
+        "06": "Ich bin fasziniert davon, wie verschiedene Kulturen Technologie angehen, also bleib dran für mehr darüber! 🌍"
       },
       "background": {
-        "01": "I studied Media Informatics - a computer science major focused on project work. 🎓",
-        "02": "We did everything from requirements gathering to prototyping, designing, development, research, and analysis.",
-        "03": "It was demanding, but I loved learning how to do it all.",
-        "04": "My focus areas were multimedia, human-computer interaction, and engineering.",
-        "05": "I particularly enjoy creating eye-catching, highly interactive and engaging user experiences that are fun to use.",
-        "06": "For my thesis, I developed a game using eye-tracking and gesture controls. 🎮",
-        "07": "That was almost ten years ago, and now we have tech like Meta Quest and Apple Vision Pro!"
+        "01": "Ich habe Medieninformatik studiert - ein Informatik-Studiengang mit Fokus auf Projektarbeit. 🎓",
+        "02": "Wir haben alles gemacht, von Anforderungsanalyse über Prototyping, Design, Entwicklung, Forschung und Analyse.",
+        "03": "Es war anspruchsvoll, aber ich habe es geliebt, alles zu lernen.",
+        "04": "Meine Schwerpunkte waren Multimedia, Mensch-Computer-Interaktion und Technik.",
+        "05": "Besonders gerne kreiere ich auffällige, sehr interaktive und ansprechende Benutzererfahrungen, die Spaß machen.",
+        "06": "Für meine Abschlussarbeit habe ich ein Spiel entwickelt, das Augen-Tracking und Gestensteuerung nutzt. 🎮",
+        "07": "Das war vor fast zehn Jahren, und jetzt haben wir Technologien wie Meta Quest und Apple Vision Pro!"
       },
       "professional": {
-        "01": "I've been a professional web software engineer since 2017. 💼",
-        "02": "I've gained experience developing high-performing, scalable solutions and most importantly, solutions that were easy to work with for me peers.",
-        "03": "The best times at work are when I'm involved in everything to implement impactful solutions.",
-        "04": "I've had great relationships with mentors and superiors, always picking their brains non-stop. 🧠",
-        "05": "I've delved into every step needed to deploy features, microservices, and apps from small to international scale.",
-        "06": "From implementation, testing, automation, and QA to monitoring and analytics. 🔄",
-        "07": "I've focused a lot on Frontend, Web Performance, tooling, SEO, CMS, and A/B testing.",
-        "08": "I'm also very interested in diving deeper into real-time systems, payments, AI, and user-related topics. All vital for creating more impactful and user-centric solutions. 🤖"
+        "01": "Seit 2017 bin ich professioneller Websoftware-Ingenieur. 💼",
+        "02": "Ich habe Erfahrung in der Entwicklung von leistungsstarken, skalierbaren Lösungen und vor allem Lösungen gesammelt, die für meine Kollegen einfach zu nutzen waren.",
+        "03": "Die besten Zeiten bei der Arbeit sind, wenn ich an allem beteiligt bin, um wirkungsvolle Lösungen zu implementieren.",
+        "04": "Ich hatte großartige Beziehungen zu Mentoren und Vorgesetzten und habe immer unaufhörlich deren Wissen angezapft. 🧠",
+        "05": "Ich habe mich in jeden Schritt vertieft, der notwendig ist, um Funktionen, Microservices und Apps von kleiner bis internationaler Skala zu implementieren.",
+        "06": "Von Implementierung, Testing, Automatisierung und QA bis hin zu Monitoring und Analytik. 🔄",
+        "07": "Ich habe mich viel auf Frontend, Web-Performance, Tools, SEO, CMS und A/B-Tests konzentriert.",
+        "08": "Ich bin auch sehr daran interessiert, tiefer in Echtzeitsysteme, Zahlungen, KI und nutzerbezogene Themen einzutauchen. Alles entscheidend für die Schaffung von wirkungsvolleren und nutzerzentrierten Lösungen. 🤖"
       },
       "tools": {
-        "01": "These days, most of my work is with JavaScript/TypeScript and NodeJS. 🛠️",
-        "02": "I primarily use frameworks like React and NextJS to build dynamic, high-performance web applications."
+        "01": "Heutzutage arbeite ich hauptsächlich mit JavaScript/TypeScript und NodeJS. 🛠️",
+        "02": "Ich verwende hauptsächlich Frameworks wie React und NextJS, um dynamische, leistungsstarke Webanwendungen zu entwickeln."
       },
       "outro": {
-        "01": "Alright, that's it for now! Hope this gives you a good overview.",
-        "02": "If you have exciting opportunities or challenges that resonate with my skill set and interests I'd love to hear from you. 📬",
-        "03": "🤝 Let's Connect!"
+        "01": "Gut, das war's vorerst! Ich hoffe, das gibt dir einen guten Überblick.",
+        "02": "Wenn du spannende Möglichkeiten oder Herausforderungen hast, die mit meinen Fähigkeiten und Interessen übereinstimmen, würde ich gerne von dir hören. 📬",
+        "03": "🤝 Lass uns vernetzen!"
       }
     }
   }

@@ -1,43 +1,43 @@
 {
   "general": {
-    "view_messages": "view {count, plural, =1 {message} other {# messages}}",
-    "hide_messages": "hide {count, plural, =1 {message} other {messages}}"
+    "view_messages": "查看 {count, plural, =1 {消息} other {# 条消息}}",
+    "hide_messages": "隐藏 {count, plural, =1 {消息} other {消息}}"
   },
   "Home": {
     "introduction": {
-      "01": "Hey there! I'm Yi",
-      "02": "I'm a <nav>Software Engineer</nav>. I love building things for the web. 💻",
-      "03": "And I'm into <nav>photography</nav>. Currently working on my own style. 📸",
-      "04": "Curious?",
-      "05": "My site is a work in progress, still figuring out a direction.",
-      "06": "Click through to check out my photos and see what I'm up to!"
+      "01": "嗨！我叫依凡",
+      "02": "我是个 <nav>软件工程师</nav>，喜欢为网络构建各种东西。💻",
+      "03": "我也是个 <nav>摄影</nav> 爱好者。📸 目前正在努力寻找自己的风格。",
+      "04": "好奇吗？",
+      "05": "我的网站还在建设中，方向还在摸索中。",
+      "06": "点击进去看看我的照片，了解我正在做什么吧！"
     }
   },
   "Photography": {
     "title": "摄影",
     "introduction": {
-      "01": "📸 Welcome to my photography space! I've prepared two collections for now: the stunning mountain city of Chongqing and a showcase of travel pictures from across Europe.",
-      "02": "I'm excited to share more soon, but take a look at these for now! I've been avidly taking pictures since 2022... <more>Read more</more>"
+      "01": "📸 欢迎来到我的摄影空间！目前我准备了两个系列：迷人的山城重庆和欧洲各地的旅行照片。",
+      "02": "我很快会分享更多内容, 但现在先看看这些吧! 自2022年以来, 我一直在热衷于摄影... <more>阅读更多</more>"
     },
     "body": {
-      "01": "I love capturing people and how they interact with their surroundings. What's a place without its people, after all? 📸",
-      "02": "I enjoy 'messy' shots or 'dirtying the frame' as professionals call it. Shots that tell a whole story in a single frame are my favorite.",
-      "03": "I've been very picky about this—too picky, actually. I'm working on just taking more shots, trying different things. You never know which ones might inspire you later! ✨",
-      "04": "My main cameras are the Sony A7IV and the iPhone 15 Pro Max. 📷📱",
-      "05": "I have two lenses: an 85mm telephoto and a 20mm wide-angle lens. I've mostly used the 85mm-love the depth of field, but lately, I've realized some of my favorite shots are with the 20mm.",
-      "06": "I edit all my photos in Lightroom and finish in Photoshop, adding some blur and hallation. I focus on color and grading, keeping scenes as accurate as possible—no AI, and rarely any spot edits. 🎨",
-      "07": "I haven't added presets to my workflow yet, so editing a new batch of photos still takes quite some time."
+      "01": "我喜欢捕捉人与他们周围环境的互动。毕竟，一个地方没有了它的人，就什么都不是了。📸",
+      "02": "我喜欢“杂乱”的镜头，或者像专业人士所说的“弄脏画面”。那些能够在一个镜头中讲述整个故事的照片是我的最爱。",
+      "03": "我对此非常挑剔——其实太挑剔了。我正在努力拍更多的照片，尝试不同的东西。你永远不知道哪些会在以后激发你的灵感！✨",
+      "04": "我的主要相机是 Sony A7IV 和 iPhone 15 Pro Max。📷📱",
+      "05": "我有两个镜头: 85mm 长焦和 20mm 广角镜头。我主要使用 85mm —— 喜欢它的景深，但最近我意识到我最喜欢的一些照片是用 20mm 拍的。",
+      "06": "我在 Lightroom 中编辑所有照片，并在 Photoshop 中完成，添加一些模糊和晕光。我专注于颜色和调色，尽量保持场景的准确性——没有 AI, 很少进行局部编辑。🎨",
+      "07": "我还没有将预设加入到我的工作流程中，所以编辑一批新照片仍然需要相当长的时间。"
     },
     "Collection": {
       "chongqing": {
         "title": "重庆",
         "description": {
-          "01": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!",
-          "02": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!",
-          "03": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!",
-          "04": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!",
-          "05": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!",
-          "06": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!"
+          "01": "重庆，山城，赛博朋克乌托邦，战时首都，以其传统与未来元素的融合引起了我的好奇。",
+          "02": "2023年, 我终于从我的愿望清单上勾掉了重庆。作为一个面食和麻辣爱好者，这地方听起来像天堂。",
+          "03": "这个城市的巨大对比和层叠的山地景观，对摄影师来说也是个梦幻之地。",
+          "04": "它的高耸建筑和滨水景色让我想起了香港，但一切都更大更亮，不那么国际化，但有着更大胆、更本土的感觉。",
+          "05": "我经常在与香港相关的地方看到“Chungking”这个重庆的旧拼音, 它让我很好奇这两个城市之间的联系。",
+          "06": "事实证明，香港的历史中心重慶大厦与重庆作为战时首都的历史有联系。它的名字似乎源于日本侵略期间和之后涌入该地区的人群。这座标志性建筑后来在王家卫的著名电影《重庆森林》中被永垂不朽。"
         },
         "Item": {
           "chongqing-01": {
@@ -93,8 +93,8 @@
       "europe": {
         "title": "欧洲",
         "description": {
-          "01": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買! 去乙豆: 拍節入合加忍下采戊合那巾抄牙穿奶士的頭對!",
-          "02": "結苦朱像每訴親只朱叫吃圓得反哭乞兄汁第年, 午邊六吃品聽後條小交, 免誰浪黑神蝶乙高而坐肖圓陽央, 杯好東田明雞買!"
+          "01": "在欧洲旅行总是既熟悉又新鲜，有那么多新地方可供探索。",
+          "02": "重访旧地或首次看到新地方时，手持相机捕捉到的场景让人更兴奋。看看我最喜欢的一些照片吧！"
         },
         "Item": {
           "alberobello-01": {
@@ -172,45 +172,45 @@
   "Engineering": {
     "messages": {
       "intro": {
-        "01": "👋 Hey there! Welcome to my little space for all things web and engineering. 🏡",
-        "02": "It's a work in progress, but I'm handling everything from content to design and implementation. 💻",
-        "03": "Curious about what, why, and how I do things? Dive into the threads below and keep reading! 👇"
+        "01": "👋 嗨！欢迎来到我关于网络和工程的小天地。🏡",
+        "02": "这是一个正在进行的项目，但我正在处理从内容到设计和实施的一切。💻",
+        "03": "好奇我在做什么、为什么做和怎么做？深入下面的线程继续阅读吧！👇"
       },
       "current": {
-        "01": "Right now, I'm focusing on the Photography space, turning it into my personal social media app. 📷",
-        "02": "For the engineering section, I want to keep it simple as a blog. 📝",
-        "03": "But check back later - you might find this chat window turned into a fully functional one!",
-        "04": "🔍 Why I'm doing all of this?",
-        "05": "I love creating things and doing them myself, especially if it can bring value to others. 🌟",
-        "06": "I'm fascinated by how different cultures approach technology, so stay tuned for more on that! 🌍"
+        "01": "现在，我正在专注于摄影空间，将其变成我的个人社交媒体应用。📷",
+        "02": "对于工程部分，我想把它简单化成一个博客。📝",
+        "03": "但稍后再回来看看——你可能会发现这个聊天窗口变成了一个完全功能的窗口！",
+        "04": "🔍 我为什么要做这些？",
+        "05": "我喜欢创造东西，并亲自完成它们，尤其是当它能为他人带来价值时。🌟",
+        "06": "我对不同文化如何接近技术很感兴趣，所以请继续关注更多内容！🌍"
       },
       "background": {
-        "01": "I studied Media Informatics - a computer science major focused on project work. 🎓",
-        "02": "We did everything from requirements gathering to prototyping, designing, development, research, and analysis.",
-        "03": "It was demanding, but I loved learning how to do it all.",
-        "04": "My focus areas were multimedia, human-computer interaction, and engineering.",
-        "05": "I particularly enjoy creating eye-catching, highly interactive and engaging user experiences that are fun to use.",
-        "06": "For my thesis, I developed a game using eye-tracking and gesture controls. 🎮",
-        "07": "That was almost ten years ago, and now we have tech like Meta Quest and Apple Vision Pro!"
+        "01": "我学习了媒体信息学——一个以项目工作为重点的计算机科学专业。🎓",
+        "02": "我们从需求收集到原型设计、设计、开发、研究和分析，无所不包。",
+        "03": "虽然要求很高，但我喜欢学习如何做这一切。",
+        "04": "我的重点领域是多媒体、人机交互和工程。",
+        "05": "我特别喜欢创造引人注目、高度互动和有趣的用户体验。",
+        "06": "为了我的论文，我开发了一个使用眼动追踪和手势控制的游戏。🎮",
+        "07": "那是将近十年前的事了，现在我们有了像 Meta Quest 和 Apple Vision Pro 这样的技术！"
       },
       "professional": {
-        "01": "I've been a professional web software engineer since 2017. 💼",
-        "02": "I've gained experience developing high-performing, scalable solutions and most importantly, solutions that were easy to work with for me peers.",
-        "03": "The best times at work are when I'm involved in everything to implement impactful solutions.",
-        "04": "I've had great relationships with mentors and superiors, always picking their brains non-stop. 🧠",
-        "05": "I've delved into every step needed to deploy features, microservices, and apps from small to international scale.",
-        "06": "From implementation, testing, automation, and QA to monitoring and analytics. 🔄",
-        "07": "I've focused a lot on Frontend, Web Performance, tooling, SEO, CMS, and A/B testing.",
-        "08": "I'm also very interested in diving deeper into real-time systems, payments, AI, and user-related topics. All vital for creating more impactful and user-centric solutions. 🤖"
+        "01": "自2017年以来, 我一直是一名专业的网络软件工程师。💼",
+        "02": "我积累了开发高性能、可扩展解决方案的经验，最重要的是，解决方案对我的同事们来说很容易使用。",
+        "03": "在工作中，最好的时光是当我参与一切来实施有影响力的解决方案时。",
+        "04": "我与导师和上司的关系很好，总是不停地向他们请教。🧠",
+        "05": "我深入了解了部署从小规模到国际规模的功能、微服务和应用所需的每一步。",
+        "06": "从实施、测试、自动化和质量保证到监控和分析。🔄",
+        "07": "我非常专注于前端、网络性能、工具、SEO、CMS 和 A/B 测试。",
+        "08": "我还非常有兴趣深入研究实时系统、支付、AI 和用户相关的话题。这些对于创建更有影响力和以用户为中心的解决方案至关重要。🤖"
       },
       "tools": {
-        "01": "These days, most of my work is with JavaScript/TypeScript and NodeJS. 🛠️",
-        "02": "I primarily use frameworks like React and NextJS to build dynamic, high-performance web applications."
+        "01": "这些天来，我的大部分工作都是使用 JavaScript/TypeScript 和 NodeJS 完成的。🛠️",
+        "02": "我主要使用像 React 和 NextJS 这样的框架来构建动态的、高性能的 web 应用程序。"
       },
       "outro": {
-        "01": "Alright, that's it for now! Hope this gives you a good overview.",
-        "02": "If you have exciting opportunities or challenges that resonate with my skill set and interests I'd love to hear from you. 📬",
-        "03": "🤝 Let's Connect!"
+        "01": "好了，现在就这些！希望这能给你一个好的概览。",
+        "02": "如果你有与我的技能和兴趣相吻合的令人兴奋的机会或挑战，请告诉我。📬",
+        "03": "🤝 让我们联系吧！"
       }
     }
   }
