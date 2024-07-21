@@ -18,7 +18,6 @@ export default function Page() {
     { body: dict('04') },
     { body: dict('05') },
     { body: dict('06') },
-    { body: dict('07') },
   ];
 
   return (
