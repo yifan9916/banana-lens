@@ -39,10 +39,10 @@ export default function Layout(props: Props) {
       </h1>
 
       <p className="flex justify-center max-w-2xl m-auto pt-4 pb-20 gap-4">
-        <Link href="https://www.instagram.com/fanguyyi/">
+        <Link href="https://www.instagram.com/bananalens88/">
           <Instagram className="h-8 w-8" />
         </Link>
-        <Link href="https://www.tiktok.com/@fanguyyi">
+        <Link href="https://www.tiktok.com/@bananalens">
           <Tiktok className="h-8 w-8" />
         </Link>
       </p>
