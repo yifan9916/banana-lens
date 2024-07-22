@@ -7,6 +7,7 @@ import {
 } from '@/components/messages/thread/message-thread';
 import { LiveMessageThread } from '@/components/messages/live/live-message-thread';
 import { Github } from '@/components/icons';
+import { Contact } from '@/components/contact/contact';
 
 export default function Page() {
   const dict = useTranslations('Engineering.messages');
@@ -88,6 +89,8 @@ export default function Page() {
       <MessageThread messages={tools} />
 
       <LiveMessageThread messages={outro} />
+
+      <Contact />
     </main>
   );
 }

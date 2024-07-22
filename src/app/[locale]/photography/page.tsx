@@ -4,6 +4,7 @@ import {
   type Message,
   MessageThread,
 } from '@/components/messages/thread/message-thread';
+import { Contact } from '@/components/contact/contact';
 
 export default function Page() {
   const dict = useTranslations('Photography.body');
@@ -24,6 +25,8 @@ export default function Page() {
     <div id="description" className="px-4 sm:px-10 max-w-2xl m-auto">
       <MessageThread messages={motivation} />
       <MessageThread messages={gear} />
+
+      <Contact />
     </div>
   );
 }

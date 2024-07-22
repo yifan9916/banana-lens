@@ -4,6 +4,7 @@ import { Link } from '@/navigation';
 import { MessageThread } from '@/components/messages/thread/message-thread';
 import { LiveMessageThread } from '@/components/messages/live/live-message-thread';
 import { Arrow } from '@/components/icons';
+import { Contact } from '@/components/contact/contact';
 
 export default function Index() {
   const dict = useTranslations('Home');
@@ -59,6 +60,8 @@ export default function Index() {
             { body: dict('introduction.06') },
           ]}
         />
+
+        <Contact />
       </div>
     </div>
   );
