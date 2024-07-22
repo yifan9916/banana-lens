@@ -30,11 +30,16 @@ export const MessageThreadList = (props: Props) => {
         {first.body}
       </MessageBubble>
 
-      {!isCollapsed &&
-        rest.map((m, i) => {
+      <div
+        className={`${
+          isCollapsed ? 'h-0 overflow-hidden' : 'flex flex-col gap-[2px]'
+        }`}
+      >
+        {rest.map((m, i) => {
           return (
             <MessageBubble
               key={i}
+              isThread={true}
               reactions={m.reactions}
               profile={i === messages.length - 2}
             >
@@ -42,6 +47,7 @@ export const MessageThreadList = (props: Props) => {
             </MessageBubble>
           );
         })}
+      </div>
 
       {collapse && (
         <button className="text-slate-500" onClick={handleClick}>

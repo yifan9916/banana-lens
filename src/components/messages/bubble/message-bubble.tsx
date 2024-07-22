@@ -8,13 +8,14 @@ import Profile from '@/public/photography/profile.jpg';
 
 type Props = {
   children: React.ReactNode;
+  isThread?: boolean;
   reactions?: Reaction[];
   profile?: boolean;
 };
 
 export const MessageBubble = forwardRef<HTMLDivElement, Props>(
   (props: Props, ref) => {
-    const { children, profile, reactions } = props;
+    const { children, isThread, profile, reactions } = props;
 
     return (
       <div
@@ -37,7 +38,14 @@ export const MessageBubble = forwardRef<HTMLDivElement, Props>(
         )}
 
         <div className="relative flex">
-          <p className="inline-block p-3 text-white bg-sky-600 rounded-e-3xl group-first-of-type:rounded-ss-3xl">
+          <p
+            className={[
+              'inline-block p-3 text-white bg-sky-600 rounded-e-3xl',
+              isThread
+                ? '' // left corners of thread messages should not be rounded
+                : 'group-first-of-type:rounded-ss-3xl', // can use pseudo class for live message threads which don't have a wrapper
+            ].join(' ')}
+          >
             {children}
           </p>
 
