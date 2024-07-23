@@ -9,7 +9,7 @@ import {
 
 export const createTable = pgTableCreator((name) => `bananalens_${name}`);
 
-export const photos = createTable('photos', {
+export const photosTable = createTable('photos', {
   id: serial('id').primaryKey(),
   title: varchar('title', { length: 255 }).notNull(),
   views: integer('views').notNull(),
@@ -21,3 +21,6 @@ export const photos = createTable('photos', {
     .$onUpdate(() => new Date())
     .notNull(),
 });
+
+export type InsertPhoto = typeof photosTable.$inferInsert;
+export type SelectPhoto = typeof photosTable.$inferSelect;
