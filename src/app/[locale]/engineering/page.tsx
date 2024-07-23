@@ -59,7 +59,7 @@ export default function Page() {
         'html',
         'css',
         'react',
-        'react',
+        'nextjs',
       ],
     },
   ];
