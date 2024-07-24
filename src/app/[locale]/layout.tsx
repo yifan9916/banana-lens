@@ -9,6 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { AppProvider } from '@/contexts/app-context';
 import { ThemeProvider } from '@/contexts/theme-context/theme-context';
+import { TRPCReactProvider } from '@/trpc/react';
 import { Header } from '@/components/header/header';
 import { Footer } from '@/components/footer/footer';
 
@@ -40,16 +41,18 @@ export default function LocaleLayout(props: Props) {
   return (
     <html lang={locale} suppressHydrationWarning={true}>
       <body className={`${GeistSans.variable} ${satisfy.variable}`}>
-        <AppProvider>
-          <ThemeProvider>
-            <Suspense>
-              <Header />
-            </Suspense>
+        <TRPCReactProvider>
+          <AppProvider>
+            <ThemeProvider>
+              <Suspense>
+                <Header />
+              </Suspense>
 
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </AppProvider>
+              {children}
+              <Footer />
+            </ThemeProvider>
+          </AppProvider>
+        </TRPCReactProvider>
 
         <Analytics />
         <SpeedInsights />
