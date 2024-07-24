@@ -7,7 +7,7 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 
-export const createTable = pgTableCreator((name) => `bananalens_${name}`);
+const createTable = pgTableCreator((name) => `bananalens_${name}`);
 
 export const photosTable = createTable('photos', {
   id: serial('id').primaryKey(),

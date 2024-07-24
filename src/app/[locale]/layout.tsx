@@ -9,7 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { AppProvider } from '@/contexts/app-context';
 import { ThemeProvider } from '@/contexts/theme-context/theme-context';
-import { TRPCReactProvider } from '@/trpc/react';
+import { TRPCReactProvider } from '@/libs/trpc/react';
 import { Header } from '@/components/header/header';
 import { Footer } from '@/components/footer/footer';
 
