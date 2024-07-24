@@ -3,11 +3,8 @@
 import { useState } from 'react';
 
 import { type QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import {
-  createTRPCReact,
-  loggerLink,
-  unstable_httpBatchStreamLink,
-} from '@trpc/react-query';
+import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client';
+import { createTRPCReact } from '@trpc/react-query';
 import superjson from 'superjson';
 
 import { type AppRouter } from '@/server/trpc';
