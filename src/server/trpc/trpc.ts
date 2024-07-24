@@ -1,9 +1,33 @@
+import { ZodError } from 'zod';
 import { initTRPC } from '@trpc/server';
-// Avoid exporting the entire t-object
-// since it's not very descriptive.
-// For instance, the use of a t variable
-// is common in i18n libraries.
-const t = initTRPC.create();
+import superjson from 'superjson';
+
+import { db } from '../db';
+
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  return {
+    db,
+    ...opts,
+  };
+};
+
+const t = initTRPC.context<typeof createTRPCContext>().create({
+  transformer: superjson,
+  errorFormatter: ({ shape, error }) => {
+    return {
+      ...shape,
+      data: {
+        ...shape,
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null,
+      },
+    };
+  },
+});
+
+export const createCallerFactory = t.createCallerFactory;
+
+export const createTRPCRouter = t.router;
+
 // Base router and procedure helpers
-export const router = t.router;
-export const procedure = t.procedure;
+export const publicProcedure = t.procedure;

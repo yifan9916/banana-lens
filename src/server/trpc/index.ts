@@ -1,17 +1,27 @@
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
 
-import { procedure, router } from './trpc';
+import { createCallerFactory, createTRPCRouter, publicProcedure } from './trpc';
 import { db } from '../db';
 import { photosTable } from '../db/schema';
 
-export const appRouter = router({
-  getPhotos: procedure.query(async (opts) => {
+export const appRouter = createTRPCRouter({
+  getPhoto: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async (opts) => {
+      const photo = await db
+        .select()
+        .from(photosTable)
+        .where(eq(photosTable.id, opts.input.id));
+
+      return { photo };
+    }),
+  getPhotos: publicProcedure.query(async (opts) => {
     const photos = await db.select().from(photosTable);
 
     return { photos };
   }),
-  updatePhoto: procedure
+  updatePhoto: publicProcedure
     .input(
       z.object({
         id: z.number(),
@@ -30,5 +40,8 @@ export const appRouter = router({
       return { photo };
     }),
 });
+
 // export type definition of API
 export type AppRouter = typeof appRouter;
+
+export const createServerCaller = createCallerFactory(appRouter);
