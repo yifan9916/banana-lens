@@ -34,9 +34,7 @@ export const ImageList = (props: Props) => {
                 placeholder="blur"
                 className="flex-1 object-cover"
               />
-              <div className="flex justify-between text-sm font-light p-2">
-                {title || img.key} <span>{img.views}</span>
-              </div>
+              <div className="text-sm font-light p-2">{title || img.key}</div>
             </Link>
           </li>
         );
