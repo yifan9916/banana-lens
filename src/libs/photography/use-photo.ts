@@ -1,22 +1,21 @@
-import { trpc } from '../trpc/server';
+import { trpc } from '../trpc/react';
+import type { Photograph } from './types';
 import { collectionPhotos } from './data/photos';
-import { Photograph } from './types';
 
-export const getPhoto = async (key: string) => {
-  const data = await trpc.photos.getPhoto({ key });
+export const usePhoto = (key: string) => {
+  const { data } = trpc.photos.getPhoto.useQuery({ key });
 
   // TODO
-  if (!data.photo) return;
+  if (!data?.photo) return;
 
   const collection = data.photo.photosToCollections[0].collection.key;
 
   const photo: Photograph = {
-    collection,
     createdAt: data.photo.createdAt,
+    updatedAt: data.photo.updatedAt,
+    src: collectionPhotos[collection][key],
     key: data.photo.key,
     metadata: data.photo.cameraMetadata,
-    src: collectionPhotos[collection][key],
-    updatedAt: data.photo.updatedAt,
     views: data.photo.views,
   };
 

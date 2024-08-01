@@ -1,21 +1,27 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 
 import { usePathname, useRouter } from '@/navigation';
 import { trpc } from '@/libs/trpc/react';
-import { Photograph } from '@/libs/photography/types';
+import { usePhoto } from '@/libs/photography/use-photo';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
 
 type Props = {
   children: React.ReactNode;
-  photo: Photograph;
 };
 
 export const Container = (props: Props) => {
   const FADE_IN_TIME_IN_MS = 1000; // don't forget to keep this in sync with the animation time
 
-  const { children, photo } = props;
+  const { children } = props;
+
+  const params = useParams<{ collection: string; item: string }>();
+  const photo = usePhoto(params.item);
+
+  if (!photo) return;
+
   const pathname = usePathname();
   const router = useRouter();
   const [isAnimating, setIsAnimating] = useState(false);

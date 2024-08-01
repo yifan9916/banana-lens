@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import { Link } from '@/navigation';
 import { ArrowDownDouble } from '@/components/icons';
@@ -11,36 +12,49 @@ type Props = {
 export const Content = (props: Props) => {
   const { photo } = props;
 
+  const dict = useTranslations(
+    `Photography.Collection.${photo.collection}.Item`
+  );
+
+  const title = dict(`${photo.key}.title`);
+  const description = dict(`${photo.key}.description`);
+  // no description has to be set to empty string in dictionary
+  const hasDescription = !!description;
+
   return (
     <>
       <div className="flex flex-col-reverse sm:flex-col">
-        <Photo photo={photo} hasDescription={!!photo.description} />
+        <Photo photo={photo} title={title} hasDescription={hasDescription} />
 
         <h1 className="font-[family-name:var(--font-satisfy)] text-center text-2xl sm:text-4xl p-8 opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1s]">
-          {photo.title || photo.key}
+          {title || photo.key}
         </h1>
       </div>
 
-      {photo.description && (
+      {hasDescription && (
         <p
           id="description"
           className="max-w-2xl p-6 m-auto opacity-0 animate-[fade-in_1s_ease-in-out_forwards_1s]"
         >
-          {photo.description}
+          {description}
         </p>
       )}
     </>
   );
 };
 
-const Photo = (props: { photo: Photograph; hasDescription: boolean }) => {
-  const { photo, hasDescription } = props;
+const Photo = (props: {
+  photo: Photograph;
+  title: string;
+  hasDescription: boolean;
+}) => {
+  const { photo, title, hasDescription } = props;
 
   return (
     <div className="relative w-fit sm:h-dvh m-auto px-2 sm:px-0 opacity-0 animate-slide-up animation-delay-[500ms]">
       <Image
         src={photo.src.hiRes}
-        alt={photo.title}
+        alt={title}
         priority={true}
         className="w-auto sm:h-full object-contain"
         placeholder="blur"

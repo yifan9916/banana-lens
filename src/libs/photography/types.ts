@@ -14,16 +14,11 @@ type PhotoData = {
   };
 };
 
-// translation properties
-type PhotoContent = {
-  title: string;
-  description?: string;
-};
-
 export type Photograph = PhotoData &
   Omit<SelectPhoto, 'id'> & {
+    collection?: string;
     metadata?: Omit<SelectCameraMetadata, 'id'>;
-  } & PhotoContent;
+  };
 
 // TODO image data still coming from app server clean up after images have been migrated
 export type CollectionData = {
