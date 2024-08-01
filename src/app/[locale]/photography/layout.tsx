@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { Link } from '@/navigation';
 import { Instagram, Tiktok } from '@/components/icons';
@@ -7,14 +7,17 @@ import {
   type Message,
   MessageThread,
 } from '@/components/messages/thread/message-thread';
+import { getCollections } from '@/libs/photography/get-collections';
 
 type Props = {
   children: React.ReactNode;
 };
 
-export default function Layout(props: Props) {
+export default async function Layout(props: Props) {
   const { children } = props;
-  const dict = useTranslations('Photography');
+
+  const dict = await getTranslations('Photography');
+  const collections = await getCollections();
 
   const messages: Message[] = [
     { body: dict('introduction.01') },
@@ -51,7 +54,7 @@ export default function Layout(props: Props) {
         <MessageThread messages={messages} />
       </div>
 
-      <Collections />
+      <Collections collections={collections} />
 
       {children}
     </main>

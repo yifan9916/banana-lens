@@ -6,15 +6,18 @@ import { useSelectedLayoutSegments } from 'next/navigation';
 
 import { Link } from '@/navigation';
 import { useIntersection } from '@/utils/use-intersection/use-intersection';
-import { useCollections } from '@/libs/photography/use-collections';
+import { CollectionData } from '@/libs/photography/types';
 
-export const Collections = () => {
+type Props = {
+  collections: CollectionData[];
+};
+
+export const Collections = (props: Props) => {
+  const { collections } = props;
   const segments = useSelectedLayoutSegments();
 
   const intersectionRef = useRef<HTMLElement>(null);
   const { isIntersecting } = useIntersection(intersectionRef);
-
-  const collections = useCollections();
 
   return (
     <section
@@ -30,12 +33,12 @@ export const Collections = () => {
 
         return (
           <Link
-            key={collection.id}
-            href={`/photography/${collection.id}`}
+            key={collection.key}
+            href={`/photography/${collection.key}`}
             className={[
               'relative flex-1 opacity-50 hover:opacity-100 transition-all duration-1000',
               'after:absolute after:h-full after:w-full after:top-0 after:bg-gradient-to-t after:from-black/50',
-              segments[0] === collection.id ? '!opacity-100 !flex-[1.5]' : '',
+              segments[0] === collection.key ? '!opacity-100 !flex-[1.5]' : '',
               shouldAnimate
                 ? 'group-[.intersect]:animate-attention-collection'
                 : '',
@@ -43,7 +46,7 @@ export const Collections = () => {
           >
             <Image
               src={collection.cover}
-              alt={collection.name}
+              alt={collection.key}
               placeholder="blur"
               className="object-cover h-full"
             />

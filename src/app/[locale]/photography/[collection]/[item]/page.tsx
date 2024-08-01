@@ -1,9 +1,6 @@
-import { useTranslations } from 'next-intl';
-
-import { useCollection } from '@/libs/photography/use-collection';
-import type { CollectionKey } from '@/libs/photography/types';
 import { Container } from './components/container';
 import { Content } from './components/content';
+import { getPhoto } from '@/libs/photography/get-photo';
 
 type Props = {
   params: {
@@ -12,24 +9,16 @@ type Props = {
   };
 };
 
-export default function Page(props: Props) {
+export default async function Page(props: Props) {
   const { params } = props;
-  const collectionKey = params.collection as CollectionKey;
 
-  const dict = useTranslations(`Photography.Collection.${collectionKey}.Item`);
-  const collection = useCollection(collectionKey);
+  const photo = await getPhoto(params.item);
 
-  const image = collection.items.filter((img) => {
-    return `${img.id}.jpg` === params.item;
-  })[0];
+  if (!photo) return <div>Photograph not found!</div>;
 
   return (
-    <Container>
-      <Content
-        image={image}
-        title={dict(`${image.id}.title`)}
-        description={dict(`${image.id}.description`)}
-      />
+    <Container photo={photo}>
+      <Content photo={photo} />
     </Container>
   );
 }

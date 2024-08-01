@@ -1,244 +1,73 @@
 import * as preview from './preview/images';
 import * as hiRes from './hi-res/images';
-import type { Photograph } from '../../types';
 
-export const data: Photograph[] = [
-  {
-    id: 'alberobello-01',
-    src: {
-      preview: preview['Alberobello01'],
-      hiRes: hiRes['Alberobello01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '30mm',
-      aperture: '1,8',
-      iso: '100',
-      shutterSpeed: '1/4000',
-    },
+export const europePhotos = {
+  'alberobello-01': {
+    preview: preview['Alberobello01'],
+    hiRes: hiRes['Alberobello01'],
   },
-  {
-    id: 'barcelona-01',
-    src: {
-      preview: preview['Barcelona01'],
-      hiRes: hiRes['Barcelona01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '800',
-      shutterSpeed: '1/8000',
-    },
+  'barcelona-01': {
+    preview: preview['Barcelona01'],
+    hiRes: hiRes['Barcelona01'],
   },
-  {
-    id: 'barcelona-02',
-    src: {
-      preview: preview['Barcelona02'],
-      hiRes: hiRes['Barcelona02'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '800',
-      shutterSpeed: '1/8000',
-    },
+  'barcelona-02': {
+    preview: preview['Barcelona02'],
+    hiRes: hiRes['Barcelona02'],
   },
-  {
-    id: 'barcelona-03',
-    src: {
-      preview: preview['Barcelona03'],
-      hiRes: hiRes['Barcelona03'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '800',
-      shutterSpeed: '1/1000',
-    },
+  'barcelona-03': {
+    preview: preview['Barcelona03'],
+    hiRes: hiRes['Barcelona03'],
   },
-  {
-    id: 'bari-01',
-    src: {
-      preview: preview['Bari01'],
-      hiRes: hiRes['Bari01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '8,0',
-      iso: '1000',
-      shutterSpeed: '1/4',
-    },
+  'bari-01': {
+    preview: preview['Bari01'],
+    hiRes: hiRes['Bari01'],
   },
-  {
-    id: 'chiemsee-01',
-    src: {
-      preview: preview['Chiemsee01'],
-      hiRes: hiRes['Chiemsee01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '800',
-      shutterSpeed: '1/25',
-    },
+  'chiemsee-01': {
+    preview: preview['Chiemsee01'],
+    hiRes: hiRes['Chiemsee01'],
   },
-  {
-    id: 'london-01',
-    src: {
-      preview: preview['London01'],
-      hiRes: hiRes['London01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '3200',
-      shutterSpeed: '1/400',
-    },
+  'london-01': {
+    preview: preview['London01'],
+    hiRes: hiRes['London01'],
   },
-  {
-    id: 'london-02',
-    src: {
-      preview: preview['London02'],
-      hiRes: hiRes['London02'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '800',
-      shutterSpeed: '1/2500',
-    },
+  'london-02': {
+    preview: preview['London02'],
+    hiRes: hiRes['London02'],
   },
-  {
-    id: 'munich-01',
-    src: {
-      preview: preview['Munich01'],
-      hiRes: hiRes['Munich01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '100',
-      shutterSpeed: '1/2500',
-    },
+  'munich-01': {
+    preview: preview['Munich01'],
+    hiRes: hiRes['Munich01'],
   },
-  {
-    id: 'munich-02',
-    src: {
-      preview: preview['Munich02'],
-      hiRes: hiRes['Munich02'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '20mm',
-      aperture: '1,8',
-      iso: '320',
-      shutterSpeed: '1/125',
-    },
+  'munich-02': {
+    preview: preview['Munich02'],
+    hiRes: hiRes['Munich02'],
   },
-  {
-    id: 'rome-01',
-    src: {
-      preview: preview['Rome01'],
-      hiRes: hiRes['Rome01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '8,0',
-      iso: '250',
-      shutterSpeed: '1/500',
-    },
+  'rome-01': {
+    preview: preview['Rome01'],
+    hiRes: hiRes['Rome01'],
   },
-  {
-    id: 'rome-02',
-    src: {
-      preview: preview['Rome02'],
-      hiRes: hiRes['Rome02'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '800',
-      shutterSpeed: '1/30',
-    },
+  'rome-02': {
+    preview: preview['Rome02'],
+    hiRes: hiRes['Rome02'],
   },
-  {
-    id: 'sevilla-01',
-    src: {
-      preview: preview['Sevilla01'],
-      hiRes: hiRes['Sevilla01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '100',
-      shutterSpeed: '1/8000',
-    },
+  'sevilla-01': {
+    preview: preview['Sevilla01'],
+    hiRes: hiRes['Sevilla01'],
   },
-  {
-    id: 'sevilla-02',
-    src: {
-      preview: preview['Sevilla02'],
-      hiRes: hiRes['Sevilla02'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '2,8',
-      iso: '100',
-      shutterSpeed: '1/250',
-    },
+  'sevilla-02': {
+    preview: preview['Sevilla02'],
+    hiRes: hiRes['Sevilla02'],
   },
-  {
-    id: 'toledo-01',
-    src: {
-      preview: preview['Toledo01'],
-      hiRes: hiRes['Toledo01'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '2,8',
-      iso: '3200',
-      shutterSpeed: '1/100',
-    },
+  'toledo-01': {
+    preview: preview['Toledo01'],
+    hiRes: hiRes['Toledo01'],
   },
-  {
-    id: 'toledo-02',
-    src: {
-      preview: preview['Toledo02'],
-      hiRes: hiRes['Toledo02'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '2,8',
-      iso: '800',
-      shutterSpeed: '1/100',
-    },
+  'toledo-02': {
+    preview: preview['Toledo02'],
+    hiRes: hiRes['Toledo02'],
   },
-  {
-    id: 'toledo-03',
-    src: {
-      preview: preview['Toledo03'],
-      hiRes: hiRes['Toledo03'],
-    },
-    camera: 'a7iv',
-    settings: {
-      focalLength: '85mm',
-      aperture: '1,8',
-      iso: '1600',
-      shutterSpeed: '1/60',
-    },
+  'toledo-03': {
+    preview: preview['Toledo03'],
+    hiRes: hiRes['Toledo03'],
   },
-];
+};

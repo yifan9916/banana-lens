@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "bananalens_collections" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"key" text NOT NULL,
 	"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	"updated_at" timestamp with time zone NOT NULL,
+	"updated_at" timestamp with time zone,
 	CONSTRAINT "bananalens_collections_key_unique" UNIQUE("key")
 );
 --> statement-breakpoint
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS "bananalens_photos" (
 	"key" text NOT NULL,
 	"views" integer DEFAULT 0 NOT NULL,
 	"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	"updated_at" timestamp with time zone NOT NULL,
+	"updated_at" timestamp with time zone,
 	CONSTRAINT "bananalens_photos_key_unique" UNIQUE("key")
 );
 --> statement-breakpoint

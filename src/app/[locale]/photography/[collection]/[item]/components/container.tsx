@@ -3,18 +3,49 @@
 import { useEffect, useState } from 'react';
 
 import { usePathname, useRouter } from '@/navigation';
+import { trpc } from '@/libs/trpc/react';
+import { Photograph } from '@/libs/photography/types';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
 
-export const Container = (props: { children: React.ReactNode }) => {
+type Props = {
+  children: React.ReactNode;
+  photo: Photograph;
+};
+
+export const Container = (props: Props) => {
   const FADE_IN_TIME_IN_MS = 1000; // don't forget to keep this in sync with the animation time
 
-  const { children } = props;
+  const { children, photo } = props;
   const pathname = usePathname();
   const router = useRouter();
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const utils = trpc.useUtils();
+  const mutation = trpc.photos.updatePhoto.useMutation({
+    onSuccess: () => {
+      utils.photos.getPhoto.invalidate({ key: photo.key });
+    },
+  });
+
   useEffect(() => {
     router.replace(`${pathname}?loupe=true`);
+
+    let timerId: ReturnType<typeof setTimeout>;
+
+    timerId = setTimeout(() => {
+      if (photo.views !== undefined) {
+        mutation.mutate({
+          key: photo.key,
+          data: { views: photo.views + 1 },
+        });
+      }
+    }, 1000);
+
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
   }, []);
 
   useTimeout(() => setIsAnimating(false), FADE_IN_TIME_IN_MS, isAnimating);

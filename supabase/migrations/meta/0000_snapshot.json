@@ -1,5 +1,5 @@
 {
-  "id": "d21ce78c-cbd5-4d78-bc05-4426ddbf7661",
+  "id": "d60e2c5c-8b2e-4221-92b8-f27700a77795",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -98,7 +98,7 @@
           "name": "updated_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},
@@ -148,7 +148,7 @@
           "name": "updated_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},

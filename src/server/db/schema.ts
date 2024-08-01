@@ -1,4 +1,4 @@
-import { InferSelectModel, relations, sql } from 'drizzle-orm';
+import { relations, sql } from 'drizzle-orm';
 import {
   integer,
   pgEnum,
@@ -7,37 +7,54 @@ import {
   serial,
   text,
   timestamp,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 export const Camera = pgEnum('camera', ['SonyA7M4', 'iPhone15ProMax']);
 
 const createTable = pgTableCreator((name) => `bananalens_${name}`);
 
-export const collectionsTable = createTable('collections', {
-  id: serial('id').primaryKey(),
-  key: text('key').unique().notNull(),
+export const collectionsTable = createTable(
+  'collections',
+  {
+    id: serial('id').primaryKey(),
+    key: text('key').unique().notNull(),
 
-  createdAt: timestamp('created_at', { withTimezone: true })
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  updatedAt: timestamp('updated_at', { withTimezone: true })
-    .$onUpdate(() => new Date())
-    .notNull(),
-});
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+      () => new Date()
+    ),
+  },
+  (table) => {
+    return {
+      keyIndex: uniqueIndex('keyIndex').on(table.key),
+    };
+  }
+);
 
-export const photosTable = createTable('photos', {
-  id: serial('id').primaryKey(),
-  key: text('key').unique().notNull(),
+export const photosTable = createTable(
+  'photos',
+  {
+    id: serial('id').primaryKey(),
+    key: text('key').unique().notNull(),
 
-  views: integer('views').notNull().default(0),
+    views: integer('views').notNull().default(0),
 
-  createdAt: timestamp('created_at', { withTimezone: true })
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  updatedAt: timestamp('updated_at', { withTimezone: true })
-    .$onUpdate(() => new Date())
-    .notNull(),
-});
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).$onUpdate(
+      () => new Date()
+    ),
+  },
+  (table) => {
+    return {
+      keyIndex: uniqueIndex('keyIndex').on(table.key),
+    };
+  }
+);
 
 export const cameraMetadataTable = createTable('camera_metadata', {
   id: serial('id').primaryKey(),
@@ -106,11 +123,11 @@ export const photosToCollectionsRelations = relations(
   photosToCollectionsTable,
   ({ one }) => {
     return {
-      collections: one(collectionsTable, {
+      collection: one(collectionsTable, {
         fields: [photosToCollectionsTable.collectionId],
         references: [collectionsTable.id],
       }),
-      photos: one(photosTable, {
+      photo: one(photosTable, {
         fields: [photosToCollectionsTable.photoId],
         references: [photosTable.id],
       }),

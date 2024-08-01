@@ -1,8 +1,7 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-import type { CollectionKey } from '@/libs/photography/types';
+import { getCollection } from '@/libs/photography/get-collection';
 import { ImageList } from '@/components/image-list/image-list';
-import { useCollection } from '@/libs/photography/use-collection';
 import { MessageThread } from '@/components/messages/thread/message-thread';
 
 type Props = {
@@ -12,17 +11,22 @@ type Props = {
   };
 };
 
-const descriptionMessages = {
+const descriptionMessages: Record<string, string[]> = {
   chongqing: ['01', '02', '03', '04', '05', '06'],
   europe: ['01', '02'],
 };
 
-export default function Layout(props: Props) {
+export default async function Layout(props: Props) {
   const { children, params } = props;
-  const collectionKey = params.collection as CollectionKey;
+  const collectionKey = params.collection;
 
-  const dict = useTranslations(`Photography.Collection.${collectionKey}`);
-  const collection = useCollection(collectionKey);
+  const collection = await getCollection(collectionKey);
+
+  if (!collection) {
+    return <div>Collection not found!</div>;
+  }
+
+  const dict = await getTranslations(`Photography.Collection.${collectionKey}`);
 
   const messages = descriptionMessages[collectionKey].map((m) => ({
     body: dict(`description.${m}`),
@@ -40,7 +44,7 @@ export default function Layout(props: Props) {
         </div>
 
         <div className="relative opacity-0 animate-slide-down animation-delay-500">
-          <ImageList collectionKey={collection.id} items={collection.items} />
+          <ImageList collectionKey={collection.key} items={collection.photos} />
         </div>
       </div>
 

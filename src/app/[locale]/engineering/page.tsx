@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import {
   type Message,
@@ -9,8 +9,8 @@ import { LiveMessageThread } from '@/components/messages/live/live-message-threa
 import { Github } from '@/components/icons';
 import { Contact } from '@/components/contact/contact';
 
-export default function Page() {
-  const dict = useTranslations('Engineering.messages');
+export default async function Page() {
+  const dict = await getTranslations('Engineering.messages');
 
   const intro: Message[] = [
     { body: dict('intro.01') },
