@@ -6,6 +6,7 @@ import { GeistSans } from 'geist/font/sans';
 import { Satisfy } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { AppProvider } from '@/contexts/app-context';
 import { ThemeProvider } from '@/contexts/theme-context/theme-context';
@@ -49,6 +50,9 @@ export default function LocaleLayout(props: Props) {
               </Suspense>
 
               {children}
+
+              <ReactQueryDevtools />
+
               <Footer />
             </ThemeProvider>
           </AppProvider>
