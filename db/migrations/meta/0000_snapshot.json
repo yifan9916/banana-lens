@@ -1,5 +1,5 @@
 {
-  "id": "d60e2c5c-8b2e-4221-92b8-f27700a77795",
+  "id": "57e43d36-5c58-45a1-88f2-c7cce73c5b32",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -101,7 +101,23 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "collectionKeyIndex": {
+          "name": "collectionKeyIndex",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
@@ -151,7 +167,23 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "photoKeyIndex": {
+          "name": "photoKeyIndex",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {

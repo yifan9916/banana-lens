@@ -54,3 +54,6 @@ DO $$ BEGIN
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
+--> statement-breakpoint
+CREATE UNIQUE INDEX IF NOT EXISTS "collectionKeyIndex" ON "bananalens_collections" USING btree ("key");--> statement-breakpoint
+CREATE UNIQUE INDEX IF NOT EXISTS "photoKeyIndex" ON "bananalens_photos" USING btree ("key");

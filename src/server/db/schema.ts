@@ -29,7 +29,7 @@ export const collectionsTable = createTable(
   },
   (table) => {
     return {
-      keyIndex: uniqueIndex('keyIndex').on(table.key),
+      collectionKeyIndex: uniqueIndex('collectionKeyIndex').on(table.key),
     };
   }
 );
@@ -51,7 +51,7 @@ export const photosTable = createTable(
   },
   (table) => {
     return {
-      keyIndex: uniqueIndex('keyIndex').on(table.key),
+      photoKeyIndex: uniqueIndex('photoKeyIndex').on(table.key),
     };
   }
 );
