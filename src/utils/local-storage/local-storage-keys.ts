@@ -1,1 +1,3 @@
-export type LocalStorageKeys = 'theme' | 'test';
+type Keys = 'theme' | 'views';
+
+export type LocalStorageKeys = `banana-lens-${Keys}`;

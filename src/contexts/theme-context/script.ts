@@ -1,7 +1,7 @@
 export const script = () => {
   const htmlTag = document.documentElement;
 
-  const item = localStorage.getItem('theme');
+  const item = localStorage.getItem('banana-lens-theme');
   const theme = item !== null ? JSON.parse(item) : 'system';
 
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches

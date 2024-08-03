@@ -34,7 +34,7 @@ export const useThemeContext = () => {
 export const ThemeProvider = (props: { children: React.ReactNode }) => {
   const { children } = props;
 
-  const [theme, setTheme] = useLocalStorage('theme', 'system');
+  const [theme, setTheme] = useLocalStorage('banana-lens-theme', 'system');
 
   useEffect(() => {
     if (!theme) return;
