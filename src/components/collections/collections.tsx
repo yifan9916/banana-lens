@@ -6,10 +6,10 @@ import { useSelectedLayoutSegments } from 'next/navigation';
 
 import { Link } from '@/navigation';
 import { useIntersection } from '@/utils/use-intersection/use-intersection';
-import { CollectionData } from '@/libs/photography/types';
+import type { Collection } from '@/libs/photography/types';
 
 type Props = {
-  collections: CollectionData[];
+  collections: Collection[];
 };
 
 export const Collections = (props: Props) => {

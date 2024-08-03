@@ -1,23 +1,28 @@
+'use client';
+
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/navigation';
-import { ArrowDownDouble } from '@/components/icons';
 import { Photograph } from '@/libs/photography/types';
+import { usePhoto } from '@/libs/photography/photos/use-photo';
+import { ArrowDownDouble } from '@/components/icons';
 
-type Props = {
-  photo: Photograph;
-};
+import type { DictionaryKeys } from '@/i18n';
+import type { RouteParams } from '@/app/[locale]/types';
 
-export const Content = (props: Props) => {
-  const { photo } = props;
+export const Content = () => {
+  const params = useParams<RouteParams>();
+  const photo = usePhoto(params.item);
 
-  const dict = useTranslations(
-    `Photography.Collection.${photo.collection}.Item`
-  );
+  const dict = useTranslations();
 
-  const title = dict(`${photo.key}.title`);
-  const description = dict(`${photo.key}.description`);
+  if (!photo) return;
+
+  const title = dict(`${photo.key}.title` as DictionaryKeys);
+  const description = dict(`${photo.key}.description` as DictionaryKeys);
+
   // no description has to be set to empty string in dictionary
   const hasDescription = !!description;
 

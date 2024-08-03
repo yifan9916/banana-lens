@@ -7,7 +7,7 @@ import {
   type Message,
   MessageThread,
 } from '@/components/messages/thread/message-thread';
-import { getCollections } from '@/libs/photography/get-collections';
+import { getCollections } from '@/libs/photography/collections/get-collections';
 
 type Props = {
   children: React.ReactNode;

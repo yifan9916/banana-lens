@@ -5,8 +5,10 @@ import { useParams } from 'next/navigation';
 
 import { usePathname, useRouter } from '@/navigation';
 import { trpc } from '@/libs/trpc/react';
-import { usePhoto } from '@/libs/photography/use-photo';
+import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
+
+import type { RouteParams } from '@/app/[locale]/types';
 
 type Props = {
   children: React.ReactNode;
@@ -17,7 +19,7 @@ export const Container = (props: Props) => {
 
   const { children } = props;
 
-  const params = useParams<{ collection: string; item: string }>();
+  const params = useParams<RouteParams>();
   const photo = usePhoto(params.item);
 
   if (!photo) return;
@@ -30,6 +32,29 @@ export const Container = (props: Props) => {
   const mutation = trpc.photos.updatePhoto.useMutation({
     onSuccess: () => {
       utils.photos.getPhoto.invalidate({ key: photo.key });
+
+      // update views in list
+      if (photo.collection) {
+        utils.collections.getCollection.setData(
+          { key: photo.collection },
+          (old) => {
+            if (!old?.collection) return;
+            const updated = old.collection.photosToCollections.map((p) => {
+              if (p.photoId !== photo.id) return p;
+
+              return {
+                photoId: p.photoId,
+                collectionId: p.collectionId,
+                photo: { ...p.photo, views: p.photo.views + 1 },
+              };
+            });
+
+            return {
+              collection: { ...old.collection, photosToCollections: updated },
+            };
+          }
+        );
+      }
     },
   });
 
