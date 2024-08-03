@@ -1,10 +1,13 @@
-import { forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const ChatWrapper = forwardRef<HTMLDivElement, Props>((props, ref) => {
+const ForwardChatWrapper = (
+  props: Props,
+  ref: ForwardedRef<HTMLDivElement>
+) => {
   const { children } = props;
 
   return (
@@ -12,4 +15,6 @@ export const ChatWrapper = forwardRef<HTMLDivElement, Props>((props, ref) => {
       {children}
     </div>
   );
-});
+};
+
+export const ChatWrapper = forwardRef(ForwardChatWrapper);

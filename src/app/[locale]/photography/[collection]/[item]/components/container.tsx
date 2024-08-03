@@ -19,14 +19,39 @@ export const Container = (props: Props) => {
 
   const { children } = props;
 
-  const params = useParams<RouteParams>();
-  const photo = usePhoto(params.item);
-
-  if (!photo) return;
-
+  const [isAnimating, setIsAnimating] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const [isAnimating, setIsAnimating] = useState(false);
+  const params = useParams<RouteParams>();
+
+  const photo = usePhoto(params.item);
+
+  useEffect(() => {
+    if (!photo) return;
+
+    router.replace(`${pathname}?loupe=true`);
+
+    let timerId: ReturnType<typeof setTimeout>;
+
+    timerId = setTimeout(() => {
+      if (photo.views !== undefined) {
+        mutation.mutate({
+          key: photo.key,
+          data: { views: photo.views + 1 },
+        });
+      }
+    }, 1000);
+
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
+  }, []);
+
+  useTimeout(() => setIsAnimating(false), FADE_IN_TIME_IN_MS, isAnimating);
+
+  if (!photo) return;
 
   const utils = trpc.useUtils();
   const mutation = trpc.photos.updatePhoto.useMutation({
@@ -57,29 +82,6 @@ export const Container = (props: Props) => {
       }
     },
   });
-
-  useEffect(() => {
-    router.replace(`${pathname}?loupe=true`);
-
-    let timerId: ReturnType<typeof setTimeout>;
-
-    timerId = setTimeout(() => {
-      if (photo.views !== undefined) {
-        mutation.mutate({
-          key: photo.key,
-          data: { views: photo.views + 1 },
-        });
-      }
-    }, 1000);
-
-    return () => {
-      if (timerId) {
-        clearTimeout(timerId);
-      }
-    };
-  }, []);
-
-  useTimeout(() => setIsAnimating(false), FADE_IN_TIME_IN_MS, isAnimating);
 
   const handleClick: React.ComponentProps<'div'>['onClick'] = (e) => {
     setIsAnimating(true);
