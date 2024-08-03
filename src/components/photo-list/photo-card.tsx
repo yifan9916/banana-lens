@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/navigation';
 import { Photograph } from '@/libs/photography/types';
-// import { Eyes } from '../icons';
+import { Eyes } from '../icons';
 
 import type { DictionaryKeys } from '@/i18n';
 
@@ -32,9 +32,9 @@ export const PhotoCard = (props: { photo: Photograph }) => {
         />
         <div className="flex justify-between items-center text-sm font-light p-2">
           {title || photo.key}{' '}
-          {/* <span className="flex text-xs">
+          <span className="flex text-xs">
             <Eyes className="h-4 w-4 mr-1" /> {photo.views}
-          </span> */}
+          </span>
         </div>
       </Link>
     </li>

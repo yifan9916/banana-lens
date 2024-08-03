@@ -9,6 +9,7 @@ import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
 
 import type { RouteParams } from '@/app/[locale]/types';
+import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
 
 type Props = {
   children: React.ReactNode;
@@ -26,6 +27,8 @@ export const Container = (props: Props) => {
 
   const photo = usePhoto(params.item);
 
+  const [views, setViews] = useLocalStorage('banana-lens-views', {});
+
   useEffect(() => {
     if (!photo) return;
 
@@ -34,13 +37,13 @@ export const Container = (props: Props) => {
     let timerId: ReturnType<typeof setTimeout>;
 
     timerId = setTimeout(() => {
-      if (photo.views !== undefined) {
+      if (!views[photo.key] && photo.views !== undefined) {
         mutation.mutate({
           key: photo.key,
           data: { views: photo.views + 1 },
         });
       }
-    }, 1000);
+    }, 1500);
 
     return () => {
       if (timerId) {
@@ -56,6 +59,10 @@ export const Container = (props: Props) => {
   const utils = trpc.useUtils();
   const mutation = trpc.photos.updatePhoto.useMutation({
     onSuccess: () => {
+      if (views[photo.key]) return;
+
+      setViews({ ...views, [photo.key]: 'seen' });
+
       utils.photos.getPhoto.invalidate({ key: photo.key });
 
       // update views in list
