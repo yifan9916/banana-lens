@@ -50,7 +50,7 @@ export const photosRouter = createTRPCRouter({
       z.object({
         key: z.string(),
         data: z.object({
-          views: z.number().optional(),
+          views: z.number(),
         }),
       })
     )

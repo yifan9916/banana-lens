@@ -7,9 +7,10 @@ import { usePathname, useRouter } from '@/navigation';
 import { trpc } from '@/libs/trpc/react';
 import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
+import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
 
 import type { RouteParams } from '@/app/[locale]/types';
-import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
+import type { PhotoOutput } from '@/libs/photography/types';
 
 type Props = {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ export const Container = (props: Props) => {
 
   const photo = usePhoto(params.item);
 
-  const [views, setViews] = useLocalStorage('banana-lens-views', {});
+  const [localViews, saveLocalViews] = useLocalStorage('banana-lens-views', {});
 
   useEffect(() => {
     if (!photo) return;
@@ -37,7 +38,7 @@ export const Container = (props: Props) => {
     let timerId: ReturnType<typeof setTimeout>;
 
     timerId = setTimeout(() => {
-      if (!views[photo.key] && photo.views !== undefined) {
+      if (!localViews[photo.key]) {
         mutation.mutate({
           key: photo.key,
           data: { views: photo.views + 1 },
@@ -58,37 +59,71 @@ export const Container = (props: Props) => {
 
   const utils = trpc.useUtils();
   const mutation = trpc.photos.updatePhoto.useMutation({
-    onSuccess: () => {
-      if (views[photo.key]) return;
+    onMutate: async (newData) => {
+      await utils.photos.getPhoto.cancel({ key: photo.key });
 
-      setViews({ ...views, [photo.key]: 'seen' });
+      const prevData = utils.photos.getPhoto.getData({ key: photo.key });
+
+      if (!prevData?.photo) return;
+
+      utils.photos.getPhoto.setData(
+        { key: newData.key },
+        {
+          photo: {
+            ...prevData.photo,
+            key: newData.key,
+            views: newData.data.views,
+          },
+        }
+      );
+
+      updateCollectionPhotoViews(prevData.photo, newData.data.views);
+
+      return { prevData };
+    },
+    onError: (error, newData, ctx) => {
+      if (!ctx?.prevData) return;
+
+      utils.photos.getPhoto.setData({ key: photo.key }, ctx.prevData);
+
+      if (!ctx.prevData.photo) return;
+
+      updateCollectionPhotoViews(ctx.prevData.photo, ctx.prevData.photo.views);
+    },
+    onSuccess: () => {
+      saveLocalViews({ ...localViews, [photo.key]: 'seen' });
 
       utils.photos.getPhoto.invalidate({ key: photo.key });
-
-      // update views in list
-      if (photo.collection) {
-        utils.collections.getCollection.setData(
-          { key: photo.collection },
-          (old) => {
-            if (!old?.collection) return;
-            const updated = old.collection.photosToCollections.map((p) => {
-              if (p.photoId !== photo.id) return p;
-
-              return {
-                photoId: p.photoId,
-                collectionId: p.collectionId,
-                photo: { ...p.photo, views: p.photo.views + 1 },
-              };
-            });
-
-            return {
-              collection: { ...old.collection, photosToCollections: updated },
-            };
-          }
-        );
-      }
+      utils.collections.getCollection.invalidate({ key: photo.collection });
     },
   });
+
+  // helper function for updating view count for a photo in a collection
+  const updateCollectionPhotoViews = (photo: PhotoOutput, views: number) => {
+    const collectionKey = photo?.photosToCollections[0].collection.key;
+
+    if (collectionKey) {
+      utils.collections.getCollection.setData({ key: collectionKey }, (old) => {
+        if (!old?.collection) return;
+
+        const updatedPhoto = old.collection.photosToCollections.map((p) => {
+          if (p.photoId !== photo.id) return p;
+
+          return {
+            photoId: p.photoId,
+            collectionId: p.collectionId,
+            photo: { ...p.photo, views },
+          };
+        });
+
+        const updatedCollection = {
+          collection: { ...old.collection, photosToCollections: updatedPhoto },
+        };
+
+        return updatedCollection;
+      });
+    }
+  };
 
   const handleClick: React.ComponentProps<'div'>['onClick'] = (e) => {
     setIsAnimating(true);
