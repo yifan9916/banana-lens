@@ -46,7 +46,7 @@ export const Container = (props: Props) => {
           },
         });
       }
-    }, 1500);
+    }, FADE_IN_TIME_IN_MS + 500);
 
     return () => {
       if (timerId) {
