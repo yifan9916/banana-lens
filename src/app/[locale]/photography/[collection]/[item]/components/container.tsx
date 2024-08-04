@@ -41,7 +41,9 @@ export const Container = (props: Props) => {
       if (!localViews[photo.key]) {
         mutation.mutate({
           key: photo.key,
-          data: { views: photo.views + 1 },
+          data: {
+            views: photo.views + 1,
+          },
         });
       }
     }, 1500);
@@ -67,7 +69,9 @@ export const Container = (props: Props) => {
       if (!prevData?.photo) return;
 
       utils.photos.getPhoto.setData(
-        { key: newData.key },
+        {
+          key: newData.key,
+        },
         {
           photo: {
             ...prevData.photo,
@@ -84,7 +88,12 @@ export const Container = (props: Props) => {
     onError: (error, newData, ctx) => {
       if (!ctx?.prevData) return;
 
-      utils.photos.getPhoto.setData({ key: photo.key }, ctx.prevData);
+      utils.photos.getPhoto.setData(
+        {
+          key: photo.key,
+        },
+        ctx.prevData
+      );
 
       if (!ctx.prevData.photo) return;
 
@@ -93,8 +102,12 @@ export const Container = (props: Props) => {
     onSuccess: () => {
       saveLocalViews({ ...localViews, [photo.key]: 'seen' });
 
-      utils.photos.getPhoto.invalidate({ key: photo.key });
-      utils.collections.getCollection.invalidate({ key: photo.collection });
+      utils.photos.getPhoto.invalidate({
+        key: photo.key,
+      });
+      utils.collections.getCollection.invalidate({
+        key: photo.collection,
+      });
     },
   });
 
@@ -103,25 +116,36 @@ export const Container = (props: Props) => {
     const collectionKey = photo?.photosToCollections[0].collection.key;
 
     if (collectionKey) {
-      utils.collections.getCollection.setData({ key: collectionKey }, (old) => {
-        if (!old?.collection) return;
+      utils.collections.getCollection.setData(
+        {
+          key: collectionKey,
+        },
+        (old) => {
+          if (!old?.collection) return;
 
-        const updatedPhoto = old.collection.photosToCollections.map((p) => {
-          if (p.photoId !== photo.id) return p;
+          const updatedPhoto = old.collection.photosToCollections.map((p) => {
+            if (p.photoId !== photo.id) return p;
 
-          return {
-            photoId: p.photoId,
-            collectionId: p.collectionId,
-            photo: { ...p.photo, views },
+            return {
+              photoId: p.photoId,
+              collectionId: p.collectionId,
+              photo: {
+                ...p.photo,
+                views,
+              },
+            };
+          });
+
+          const updatedCollection = {
+            collection: {
+              ...old.collection,
+              photosToCollections: updatedPhoto,
+            },
           };
-        });
 
-        const updatedCollection = {
-          collection: { ...old.collection, photosToCollections: updatedPhoto },
-        };
-
-        return updatedCollection;
-      });
+          return updatedCollection;
+        }
+      );
     }
   };
 
