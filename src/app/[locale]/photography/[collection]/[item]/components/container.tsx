@@ -18,6 +18,7 @@ type Props = {
 
 export const Container = (props: Props) => {
   const FADE_IN_TIME_IN_MS = 1000; // don't forget to keep this in sync with the animation time
+  const SET_VIEW_TIME_IN_MS = FADE_IN_TIME_IN_MS + 500;
 
   const { children } = props;
 
@@ -46,7 +47,7 @@ export const Container = (props: Props) => {
           },
         });
       }
-    }, FADE_IN_TIME_IN_MS + 500);
+    }, SET_VIEW_TIME_IN_MS);
 
     return () => {
       if (timerId) {
