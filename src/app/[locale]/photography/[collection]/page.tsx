@@ -10,7 +10,6 @@ import { LightBox } from '@/components/lightbox/lightbox';
 import type { Dictionary, DictionaryKeys } from '@/i18n';
 
 type Props = {
-  children: React.ReactNode;
   params: {
     collection: string;
   };
@@ -22,7 +21,7 @@ const descriptionMessages: Record<string, string[]> = {
 };
 
 export default async function Page(props: Props) {
-  const { children, params } = props;
+  const { params } = props;
   type CollectionKeys = keyof Dictionary['Photography']['Collection'];
   const collectionKey = params.collection as CollectionKeys;
 
@@ -63,8 +62,6 @@ export default async function Page(props: Props) {
             <LightBox />
           </Suspense>
         </div>
-
-        {children}
       </NextIntlClientProvider>
     </HydrateClient>
   );
