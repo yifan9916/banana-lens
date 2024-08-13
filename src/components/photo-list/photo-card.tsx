@@ -19,9 +19,9 @@ export const PhotoCard = (props: { photo: Photograph }) => {
       <Link
         key={photo.key}
         href={{
-          pathname: `/photography/${photo.collection}/${photo.key}`,
-          query: { loupe: true },
+          query: { lightbox: photo.key },
         }}
+        scroll={false}
         className="flex h-full flex-col"
       >
         <Image

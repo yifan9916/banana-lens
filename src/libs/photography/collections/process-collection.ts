@@ -20,6 +20,7 @@ export const processCollection = (
         views: p.photo.views,
         createdAt: p.photo.createdAt,
         updatedAt: p.photo.updatedAt,
+        metadata: p.photo.cameraMetadata,
       };
     }),
     createdAt: collection.createdAt,

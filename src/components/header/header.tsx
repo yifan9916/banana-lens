@@ -9,6 +9,8 @@ import { SmartNav } from './smart-nav';
 export const Header = () => {
   const observerRef = useRef<IntersectionObserver>();
   const intersectionRef = useRef<HTMLElement | null>(null);
+  // https://nextjs.org/docs/app/api-reference/functions/use-router#router-events
+  // wrap in <Suspense /> useSearchParams() causes client-side rendering up to the closest Suspense boundary
   const searchParams = useSearchParams();
   const [isSmartNav, setIsSmartNav] = useState(false);
 

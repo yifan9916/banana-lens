@@ -56,7 +56,7 @@ const Photo = (props: {
   const { photo, title, hasDescription } = props;
 
   return (
-    <div className="relative w-fit sm:h-dvh m-auto px-2 sm:px-0 opacity-0 animate-slide-up animation-delay-[500ms]">
+    <div className="relative w-fit sm:h-dvh m-auto opacity-0 animate-slide-up animation-delay-[500ms]">
       <Image
         src={photo.src.hiRes}
         alt={title}

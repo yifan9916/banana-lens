@@ -7,6 +7,7 @@ export { CameraLens } from './camera-lens';
 export { Typing } from './typing';
 export { PaperPlane } from './paper-plane';
 export { Eyes } from './eyes';
+export { Cross } from './cross';
 
 export { FlagUs } from './flags/flag-us';
 export { FlagCn } from './flags/flag-cn';
