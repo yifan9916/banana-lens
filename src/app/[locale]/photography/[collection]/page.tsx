@@ -21,7 +21,7 @@ const descriptionMessages: Record<string, string[]> = {
   europe: ['01', '02'],
 };
 
-export default async function Layout(props: Props) {
+export default async function Page(props: Props) {
   const { children, params } = props;
   type CollectionKeys = keyof Dictionary['Photography']['Collection'];
   const collectionKey = params.collection as CollectionKeys;
