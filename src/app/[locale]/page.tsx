@@ -20,10 +20,11 @@ export default function Index() {
       <div className="px-4 sm:px-10 max-w-2xl m-auto">
         <MessageThread
           messages={[
+            { body: dict('introduction.02') },
             {
               body: (
                 <Link href={'/engineering'} scroll={false}>
-                  {dict.rich('introduction.02', {
+                  {dict.rich('introduction.03', {
                     nav: (chunks) => (
                       <span className="font-semibold text-nowrap text-sky-950 underline">
                         {chunks}
@@ -38,7 +39,7 @@ export default function Index() {
             {
               body: (
                 <Link href={'/photography'} scroll={false}>
-                  {dict.rich('introduction.03', {
+                  {dict.rich('introduction.04', {
                     nav: (chunks) => (
                       <span className="font-semibold text-nowrap text-sky-950 underline">
                         {chunks}
@@ -55,9 +56,10 @@ export default function Index() {
 
         <LiveMessageThread
           messages={[
-            { body: dict('introduction.04') },
             { body: dict('introduction.05') },
             { body: dict('introduction.06') },
+            { body: dict('introduction.07') },
+            { body: dict('introduction.08') },
           ]}
         />
 

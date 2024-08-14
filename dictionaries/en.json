@@ -6,11 +6,13 @@
   "Home": {
     "introduction": {
       "01": "Hey there! I'm Yi",
-      "02": "I'm a <nav>Software Engineer</nav>. I love building things for the web. 💻",
-      "03": "And I'm into <nav>photography</nav>. Currently working on my own style. 📸",
-      "04": "Curious?",
-      "05": "My site is a work in progress, still figuring out a direction.",
-      "06": "Click through to check out my photos and see what I'm up to!"
+      "02": "I'm based in Amsterdam. 🇳🇱",
+      "03": "I'm a <nav>Software Engineer</nav>. I love building things for the web. 💻",
+      "04": "And I'm into <nav>photography</nav>. Currently working on my own style. 📸",
+      "05": "Curious?",
+      "06": "My site is a work in progress, still figuring out a direction.",
+      "07": "I mainly speak English, 但我的中文也还可以. Try to toggle languages! 🌐",
+      "08": "Click through to check out my photos and see what I'm up to!"
     }
   },
   "Photography": {
