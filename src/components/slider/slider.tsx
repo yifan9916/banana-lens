@@ -8,6 +8,7 @@ import Image from 'next/image';
 
 import { Link, usePathname, useRouter } from '@/navigation';
 import { Photograph } from '@/libs/photography/types';
+import { useIncrementViews } from '@/utils/use-increment-views/use-increment-views';
 import { useSlider } from './use-slider';
 import { Arrow } from '../icons';
 
@@ -40,6 +41,8 @@ export const Slider = (props: Props) => {
       }
     );
   }, [state.currentSlideIndex]);
+
+  useIncrementViews(items[state.currentSlideIndex]);
 
   return (
     <div

@@ -18,7 +18,7 @@ export const LightBox = () => {
 
   const data = useCollection(params.collection);
 
-  if (!selectedItem || !data?.photos.length) return;
+  if (!selectedItem || !data?.photos.length) return null;
 
   const initialSlide = data?.photos.findIndex((p) => p.key === selectedItem);
 

@@ -1,24 +1,16 @@
-'use client';
-
 import { useEffect } from 'react';
 
 import { trpc } from '@/libs/trpc/react';
-import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
+import { processPhoto } from '@/libs/photography/photos/process-photo';
+import { processCollection } from '@/libs/photography/collections/process-collection';
 
-import type { PhotoOutput } from '@/libs/photography/types';
+import type { Photograph } from '@/libs/photography/types';
 
-type Props = {
-  children: React.ReactNode;
-  photoKey: string;
-  viewTimeout?: number;
-};
-
-export const ViewCountWrapper = (props: Props) => {
-  const { children, photoKey, viewTimeout } = props;
-
-  const photo = usePhoto(photoKey);
-
+export const useIncrementViews = (
+  photo: Photograph | undefined,
+  viewTimeout?: number
+) => {
   const [localViews, saveLocalViews] = useLocalStorage('banana-lens-views', {});
 
   useEffect(() => {
@@ -30,6 +22,7 @@ export const ViewCountWrapper = (props: Props) => {
       if (!localViews[photo.key]) {
         mutation.mutate({
           key: photo.key,
+          collection: photo.collection,
           data: {
             views: photo.views + 1,
           },
@@ -42,69 +35,87 @@ export const ViewCountWrapper = (props: Props) => {
         clearTimeout(timerId);
       }
     };
-  }, []);
-
-  if (!photo) return;
+  }, [photo?.key]);
 
   const utils = trpc.useUtils();
 
   const mutation = trpc.photos.updatePhoto.useMutation({
-    onMutate: async (newData) => {
-      await utils.photos.getPhoto.cancel({ key: photo.key });
+    onMutate: async (input) => {
+      await utils.photos.getPhoto.cancel({ key: input.key });
 
-      const prevData = utils.photos.getPhoto.getData({ key: photo.key });
+      if (input.collection) {
+        // update views count in getCollection cache
+        const prevCollectionData = utils.collections.getCollection.getData({
+          key: input.collection,
+        });
+
+        if (!prevCollectionData?.collection) return;
+
+        const collectionPhoto = processCollection(
+          prevCollectionData.collection
+        );
+
+        const photo = collectionPhoto.photos.find((p) => p.key === input.key);
+
+        if (!photo) return;
+
+        updateCollectionPhotoViews(photo, input.data.views);
+      }
+
+      // update views count in getPhoto cache
+      const prevData = utils.photos.getPhoto.getData({ key: input.key });
 
       if (!prevData?.photo) return;
 
       utils.photos.getPhoto.setData(
         {
-          key: newData.key,
+          key: input.key,
         },
         {
           photo: {
             ...prevData.photo,
-            key: newData.key,
-            views: newData.data.views,
+            key: input.key,
+            views: input.data.views,
           },
         }
       );
 
-      updateCollectionPhotoViews(prevData.photo, newData.data.views);
-
       return { prevData };
     },
-    onError: (error, newData, ctx) => {
+    onError: (error, input, ctx) => {
       if (!ctx?.prevData) return;
 
       utils.photos.getPhoto.setData(
         {
-          key: photo.key,
+          key: input.key,
         },
         ctx.prevData
       );
 
       if (!ctx.prevData.photo) return;
 
-      updateCollectionPhotoViews(ctx.prevData.photo, ctx.prevData.photo.views);
+      const prevPhoto = processPhoto(ctx.prevData.photo);
+
+      updateCollectionPhotoViews(prevPhoto, ctx.prevData.photo.views);
     },
-    onSuccess: () => {
+    onSuccess: (res, input, ctx) => {
       saveLocalViews({
         ...localViews,
-        [photo.key]: 'seen',
+        [input.key]: 'seen',
       });
 
       utils.photos.getPhoto.invalidate({
-        key: photo.key,
+        key: input.key,
       });
       utils.collections.getCollection.invalidate({
-        key: photo.collection,
+        key: ctx.prevData.photo?.photosToCollections[0].collection.key,
       });
     },
   });
 
   // helper function for updating view count for a photo in a collection
-  const updateCollectionPhotoViews = (photo: PhotoOutput, views: number) => {
-    const collectionKey = photo?.photosToCollections[0].collection.key;
+  const updateCollectionPhotoViews = (photo: Photograph, views: number) => {
+    const collectionKey = photo.collection;
 
     if (collectionKey) {
       utils.collections.getCollection.setData(
@@ -114,7 +125,7 @@ export const ViewCountWrapper = (props: Props) => {
         (old) => {
           if (!old?.collection) return;
 
-          const updatedPhoto = old.collection.photosToCollections.map((p) => {
+          const updatedPhotos = old.collection.photosToCollections.map((p) => {
             if (p.photoId !== photo.id) return p;
 
             return {
@@ -130,7 +141,7 @@ export const ViewCountWrapper = (props: Props) => {
           const updatedCollection = {
             collection: {
               ...old.collection,
-              photosToCollections: updatedPhoto,
+              photosToCollections: updatedPhotos,
             },
           };
 
@@ -139,6 +150,4 @@ export const ViewCountWrapper = (props: Props) => {
       );
     }
   };
-
-  return <>{children}</>;
 };

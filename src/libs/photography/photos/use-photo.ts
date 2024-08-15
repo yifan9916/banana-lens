@@ -2,7 +2,7 @@ import { trpc } from '../../trpc/react';
 import { processPhoto } from './process-photo';
 
 export const usePhoto = (key: string) => {
-  const { data } = trpc.photos.getPhoto.useQuery({ key });
+  const { data, error } = trpc.photos.getPhoto.useQuery({ key });
 
   // TODO
   if (!data?.photo) return;

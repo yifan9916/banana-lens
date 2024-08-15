@@ -49,13 +49,14 @@ export const photosRouter = createTRPCRouter({
     .input(
       z.object({
         key: z.string(),
+        collection: z.string().optional(),
         data: z.object({
           views: z.number(),
         }),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const photo = await ctx.db
+      const [photo] = await ctx.db
         .update(photosTable)
         .set(input.data)
         .where(eq(photosTable.key, input.key))

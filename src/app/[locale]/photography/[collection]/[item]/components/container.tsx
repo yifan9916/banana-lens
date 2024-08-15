@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
 import { usePathname, useRouter } from '@/navigation';
+import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
-import { ViewCountWrapper } from '@/components/view-count-wrapper/view-count-wrapper';
+import { useIncrementViews } from '@/utils/use-increment-views/use-increment-views';
 
 import type { RouteParams } from '@/app/[locale]/types';
 
@@ -30,6 +31,11 @@ export const Container = (props: Props) => {
 
   useTimeout(() => setIsAnimating(false), FADE_IN_TIME_IN_MS, isAnimating);
 
+  const photo = usePhoto(params.item);
+  useIncrementViews(photo, SET_VIEW_TIME_IN_MS);
+
+  if (!photo) return null;
+
   const handleClick: React.ComponentProps<'div'>['onClick'] = (e) => {
     setIsAnimating(true);
   };
@@ -39,17 +45,15 @@ export const Container = (props: Props) => {
   };
 
   return (
-    <ViewCountWrapper photoKey={params.item} viewTimeout={SET_VIEW_TIME_IN_MS}>
-      <div
-        className={[
-          'group z-40 fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in pb-28',
-          isAnimating ? 'animating' : '',
-        ].join(' ')}
-        onClick={handleClick}
-        onScroll={handleScroll}
-      >
-        {children}
-      </div>
-    </ViewCountWrapper>
+    <div
+      className={[
+        'group z-40 fixed bottom-0 left-0 h-dvh w-dvw overflow-scroll text-white animate-blur-in pb-28',
+        isAnimating ? 'animating' : '',
+      ].join(' ')}
+      onClick={handleClick}
+      onScroll={handleScroll}
+    >
+      {children}
+    </div>
   );
 };
