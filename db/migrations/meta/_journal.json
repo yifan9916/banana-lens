@@ -8,6 +8,27 @@
       "when": 1722506448383,
       "tag": "0000_warm_swordsman",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1723995277389,
+      "tag": "0001_simple_shocker",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1723995486444,
+      "tag": "0002_wild_carmella_unuscione",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1723996579930,
+      "tag": "0003_glamorous_vapor",
+      "breakpoints": true
     }
   ]
 }

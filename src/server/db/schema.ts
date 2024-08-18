@@ -29,7 +29,7 @@ export const collectionsTable = createTable(
   },
   (table) => {
     return {
-      collectionKeyIndex: uniqueIndex('collectionKeyIndex').on(table.key),
+      collectionKeyIndex: uniqueIndex('collection_key_index').on(table.key),
     };
   }
 );
@@ -51,7 +51,7 @@ export const photosTable = createTable(
   },
   (table) => {
     return {
-      photoKeyIndex: uniqueIndex('photoKeyIndex').on(table.key),
+      photoKeyIndex: uniqueIndex('photo_key_index').on(table.key),
     };
   }
 );
@@ -61,11 +61,11 @@ export const cameraMetadataTable = createTable('camera_metadata', {
 
   camera: Camera('camera').notNull(),
   aperture: text('aperture').notNull(),
-  focalLength: text('focalLength').notNull(),
+  focalLength: text('focal_length').notNull(),
   iso: text('iso').notNull(),
-  shutterSpeed: text('shutterSpeed').notNull(),
+  shutterSpeed: text('shutter_speed').notNull(),
 
-  photoId: integer('photoId')
+  photoId: integer('photo_id')
     .references(() => photosTable.id)
     .notNull(),
 });
@@ -92,7 +92,7 @@ export const photosTableRelations = relations(photosTable, ({ one, many }) => {
   return {
     cameraMetadata: one(cameraMetadataTable, {
       fields: [photosTable.id],
-      references: [cameraMetadataTable.id],
+      references: [cameraMetadataTable.photoId],
     }),
     photosToCollections: many(photosToCollectionsTable),
   };
@@ -112,7 +112,7 @@ export const cameraMetadataTableRelations = relations(
   ({ one }) => {
     return {
       photo: one(photosTable, {
-        fields: [cameraMetadataTable.id],
+        fields: [cameraMetadataTable.photoId],
         references: [photosTable.id],
       }),
     };
