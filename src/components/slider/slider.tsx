@@ -5,12 +5,15 @@ import styles from './slider.module.css';
 
 import { CSSProperties, ElementRef, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useFormatter, useTranslations } from 'next-intl';
 
 import { Link, usePathname, useRouter } from '@/navigation';
-import { Photograph } from '@/libs/photography/types';
 import { useIncrementViews } from '@/utils/use-increment-views/use-increment-views';
 import { useSlider } from './use-slider';
 import { Arrow } from '../icons';
+
+import type { DictionaryKeys } from '@/i18n';
+import type { Photograph } from '@/libs/photography/types';
 
 type Props = {
   items: Photograph[];
@@ -22,6 +25,7 @@ export const Slider = (props: Props) => {
 
   const router = useRouter();
   const pathname = usePathname();
+
   const sliderRef = useRef<ElementRef<'div'>>(null);
   const { state, dispatch } = useSlider(sliderRef, items, initialSlide);
 
@@ -46,12 +50,12 @@ export const Slider = (props: Props) => {
 
   return (
     <div
-      className={`${styles.slider} relative flex h-5/6 flex-col`}
+      className={`${styles.slider} relative h-full w-full flex flex-col justify-center`}
       style={{ '--item-index': state.currentSlideIndex } as CSSProperties}
       ref={sliderRef}
     >
       <div
-        className={`${styles.slides} flex h-full text-white transition-transform`}
+        className={`${styles.slides} max-h-full flex text-white transition-transform`}
       >
         {items.map((item, index) => (
           <Slide
@@ -62,26 +66,25 @@ export const Slider = (props: Props) => {
         ))}
       </div>
 
-      <div className="text-black">
-        {!state.isAtBeginning && (
-          <button
-            aria-label="Slide Left"
-            onClick={handleSlideLeft}
-            className="absolute top-1/2 translate-y-1/2 bg-white/50 rounded-full sm:p-1 left-0 ml-2 sm:ml-5"
-          >
-            <Arrow className="h-8 w-8 -rotate-90" />
-          </button>
-        )}
-        {!state.isAtEnd && (
-          <button
-            aria-label="Slide Right"
-            onClick={handleSlideRight}
-            className="absolute top-1/2 translate-y-1/2 bg-white/50 rounded-full sm:p-1 right-0 mr-2 sm:mr-5 "
-          >
-            <Arrow className="h-8 w-8 rotate-90" />
-          </button>
-        )}
-      </div>
+      {!state.isAtBeginning && (
+        <button
+          aria-label="Slide Left"
+          onClick={handleSlideLeft}
+          className="text-black absolute top-1/2 -translate-y-1/2 bg-white/50 rounded-full sm:p-1 left-0 ml-5"
+        >
+          <Arrow className="h-8 w-8 -rotate-90" />
+        </button>
+      )}
+
+      {!state.isAtEnd && (
+        <button
+          aria-label="Slide Right"
+          onClick={handleSlideRight}
+          className="text-black absolute top-1/2 -translate-y-1/2 bg-white/50 rounded-full sm:p-1 right-0 mr-5"
+        >
+          <Arrow className="h-8 w-8 rotate-90" />
+        </button>
+      )}
     </div>
   );
 };
@@ -94,23 +97,58 @@ type SlideProps = {
 const Slide = (props: SlideProps) => {
   const { item, isPriority } = props;
 
+  const format = useFormatter();
+  const dict = useTranslations();
+
+  const title = dict(`${item.key}.title` as DictionaryKeys);
+  const date = format.dateTime(item.createdAt, {
+    year: 'numeric',
+    day: '2-digit',
+    month: 'short',
+  });
+
   return (
-    <Link
-      key={item.key}
-      href={{
-        pathname: `/photography/${item.collection}/${item.key}`,
-        query: { loupe: true },
-      }}
-      scroll={false}
-      className={`${styles.slide} shrink-0 grow-0 cursor-zoom-in px-2`}
+    <div
+      className={`${styles.slide} shrink-0 grow-0 p-4 flex justify-center items-center`}
     >
-      <Image
-        src={item.src.preview}
-        alt={item.key}
-        quality={75}
-        priority={isPriority}
-        className="h-full w-full object-contain"
-      />
-    </Link>
+      <div className="rounded-xl shadow-2xl dark:shadow-white/50 bg-white dark:bg-black flex flex-col sm:flex-row max-h-full overflow-scroll">
+        <Link
+          href={{
+            pathname: `/photography/${item.collection}/${item.key}`,
+            query: { loupe: true },
+          }}
+          scroll={false}
+          className="cursor-zoom-in"
+        >
+          <Image
+            src={item.src.preview}
+            alt={item.key}
+            quality={75}
+            priority={isPriority}
+            className="h-full w-full object-contain"
+          />
+        </Link>
+
+        <div className="text-black dark:text-white basis-1/3 flex flex-col-reverse sm:flex-col justify-between">
+          <div className="mb-2 p-6">
+            <h3 className="font-bold">{title}</h3>
+            <p className="inline-block py-[2px] px-2 text-sm capitalize rounded-md bg-black/80 dark:bg-white/80 text-white dark:text-black mb-2">
+              {item.collection}
+            </p>
+            <p className="text-sm">{date}</p>
+            <p className="text-sm">Views: {item.views}</p>
+          </div>
+
+          <div className="flex flex-row text-sm gap-1 bg-black/80 dark:bg-white/80 text-white dark:text-black p-2">
+            <p>{item.metadata?.focalLength}</p>
+            <p>ƒ/{item.metadata?.aperture}</p>
+            <p>
+              <span className="italic">{item.metadata?.shutterSpeed}</span> sec
+            </p>
+            <p>ISO {item.metadata?.iso}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

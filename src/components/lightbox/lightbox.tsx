@@ -27,14 +27,14 @@ export const LightBox = () => {
   };
 
   return (
-    <div className="flex items-center fixed top-0 left-0 h-svh w-svw bg-black/50">
+    <div className="flex items-center fixed top-0 left-0 h-svh w-svw bg-white/50 dark:bg-black/50 backdrop-blur-md">
       <Slider items={data.photos} initialSlide={initialSlide} />
 
       <button
-        className="absolute top-0 right-0 p-1 m-4 bg-white/70 text-black rounded-full"
+        className="absolute top-0 right-0 p-1 m-6 bg-white/70 text-black rounded-full"
         onClick={handleClose}
       >
-        <Cross className="h-8 w-8" />
+        <Cross className="h-5 sm:h-8 w-5 sm:w-8" />
       </button>
     </div>
   );

@@ -88,7 +88,7 @@ const Settings = (props: { settings: NonNullable<Photograph['metadata']> }) => {
         <i>{settings.focalLength}</i>
       </p>
       <p>
-        <i>f / {settings.aperture}</i>
+        <i>ƒ / {settings.aperture}</i>
       </p>
       <p>
         <i>{settings.shutterSpeed}</i>

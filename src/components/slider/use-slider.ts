@@ -112,7 +112,7 @@ export const useSlider = (
 
   useEffect(() => {
     dispatch({ type: 'update_slider', payload: items.length });
-  }, [items]);
+  }, [items.length]);
 
   return {
     state,
