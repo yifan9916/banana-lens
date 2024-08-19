@@ -136,7 +136,9 @@ const Slide = (props: SlideProps) => {
               {item.collection}
             </p>
             <p className="text-sm">{date}</p>
-            <p className="text-sm">Views: {item.views}</p>
+            <p className="text-sm capitalize">
+              {dict('general.views' as DictionaryKeys)}: {item.views}
+            </p>
           </div>
 
           <div className="flex flex-row flex-wrap text-sm gap-1 bg-black/80 dark:bg-white/80 text-white dark:text-black p-2">
