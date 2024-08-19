@@ -29,6 +29,9 @@
       "05": "I have two lenses: an 85mm telephoto and a 20mm wide-angle lens.",
       "06": "I edit all my photos in Lightroom and finish in Photoshop, adding some blur and hallation. I focus on color and grading, keeping scenes as accurate as possible—no AI, and rarely any spot edits. 🎨"
     },
+    "general": {
+      "views": "views"
+    },
     "Collection": {
       "chongqing": {
         "title": "Chong Qing",

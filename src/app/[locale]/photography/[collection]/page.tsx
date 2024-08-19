@@ -40,7 +40,10 @@ export default async function Page(props: Props) {
   return (
     <HydrateClient>
       <NextIntlClientProvider
-        messages={messages.Photography.Collection[collectionKey].Item}
+        messages={{
+          ...messages.Photography.Collection[collectionKey].Item,
+          general: messages.Photography.general,
+        }}
       >
         <div className="max-w-4xl m-auto">
           <h2 className="font-[family-name:var(--font-satisfy)] text-4xl sm:text-6xl text-center p-5 mb-8 sm:mb-14">
