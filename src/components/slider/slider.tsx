@@ -139,13 +139,14 @@ const Slide = (props: SlideProps) => {
             <p className="text-sm">Views: {item.views}</p>
           </div>
 
-          <div className="flex flex-row text-sm gap-1 bg-black/80 dark:bg-white/80 text-white dark:text-black p-2">
-            <p>{item.metadata?.focalLength}</p>
-            <p>ƒ/{item.metadata?.aperture}</p>
-            <p>
+          <div className="flex flex-row flex-wrap text-sm gap-1 bg-black/80 dark:bg-white/80 text-white dark:text-black p-2">
+            <span>{item.metadata?.focalLength} ·</span>
+            <span>ƒ/{item.metadata?.aperture} ·</span>
+            <span>
               <span className="italic">{item.metadata?.shutterSpeed}</span> sec
-            </p>
-            <p>ISO {item.metadata?.iso}</p>
+              ·
+            </span>
+            <span>ISO {item.metadata?.iso}</span>
           </div>
         </div>
       </div>
