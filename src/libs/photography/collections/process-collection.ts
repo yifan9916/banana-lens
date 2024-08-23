@@ -17,6 +17,7 @@ export const processCollection = (
         collection: collection.key,
         key: p.photo.key,
         src: collectionPhotos[collection.key][p.photo.key],
+        status: p.photo.status,
         views: p.photo.views,
         createdAt: p.photo.createdAt,
         updatedAt: p.photo.updatedAt,

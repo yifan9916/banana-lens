@@ -12,6 +12,7 @@ export const processPhoto = (photo: NonNullable<PhotoOutput>) => {
     metadata: photo.cameraMetadata,
     src: collectionPhotos[collection][photo.key],
     updatedAt: photo.updatedAt,
+    status: photo.status,
     views: photo.views,
   };
 

@@ -7,8 +7,8 @@ import { collectionsTable } from '@/server/db/schema';
 export const collectionsRouter = createTRPCRouter({
   createCollection: publicProcedure
     .input(z.object({ key: z.string() }))
-    .query(async ({ ctx, input }) => {
-      const collection = await ctx.db
+    .mutation(async ({ ctx, input }) => {
+      const [collection] = await ctx.db
         .insert(collectionsTable)
         .values({
           key: input.key,
@@ -30,7 +30,6 @@ export const collectionsRouter = createTRPCRouter({
           photosToCollections: {
             with: {
               photo: {
-                columns: { id: false },
                 with: { cameraMetadata: true },
               },
             },
@@ -39,6 +38,15 @@ export const collectionsRouter = createTRPCRouter({
         },
         orderBy: (table, funcs) => funcs.asc(table.id),
       });
+
+      if (collection) {
+        // https://github.com/drizzle-team/drizzle-orm/discussions/1152
+        const photos = collection?.photosToCollections.filter(
+          (p) => p.photo.status === 'published'
+        );
+
+        collection.photosToCollections = photos;
+      }
 
       return { collection };
     }),
