@@ -11,6 +11,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export const Camera = pgEnum('camera', ['SonyA7M4', 'iPhone15ProMax']);
+export const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
 
 const createTable = pgTableCreator((name) => `bananalens_${name}`);
 
@@ -40,6 +41,7 @@ export const photosTable = createTable(
     id: serial('id').primaryKey(),
     key: text('key').unique().notNull(),
 
+    status: PhotoStatus('status').notNull().default('draft'),
     views: integer('views').notNull().default(0),
 
     createdAt: timestamp('created_at', { withTimezone: true })
