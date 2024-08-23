@@ -10,6 +10,7 @@ export const processCollection = (
   const processed: CollectionWithPhotos = {
     id: collection.id,
     key: collection.key,
+    status: collection.status,
     cover: collectionCovers[collection.key],
     photos: photos.map((p) => {
       return {

@@ -1,0 +1,1 @@
+ALTER TABLE "bananalens_collections" ADD COLUMN "status" "photo_status" DEFAULT 'draft' NOT NULL;

@@ -3,6 +3,7 @@ import { eq } from 'drizzle-orm';
 
 import { createTRPCRouter, publicProcedure } from '../trpc';
 import { collectionsTable } from '@/server/db/schema';
+import { env } from '@/env';
 
 export const collectionsRouter = createTRPCRouter({
   createCollection: publicProcedure
@@ -39,7 +40,7 @@ export const collectionsRouter = createTRPCRouter({
         orderBy: (table, funcs) => funcs.asc(table.id),
       });
 
-      if (collection) {
+      if (env.NODE_ENV === 'production' && collection) {
         // https://github.com/drizzle-team/drizzle-orm/discussions/1152
         const photos = collection?.photosToCollections.filter(
           (p) => p.photo.status === 'published'
@@ -51,9 +52,19 @@ export const collectionsRouter = createTRPCRouter({
       return { collection };
     }),
   getCollections: publicProcedure.query(async ({ ctx }) => {
-    const collections = await ctx.db.select().from(collectionsTable);
+    const collections = await ctx.db
+      .select()
+      .from(collectionsTable)
+      .orderBy(collectionsTable.id);
 
-    return { collections };
+    const publishedCollections = collections.filter(
+      (c) => c.status === 'published'
+    );
+
+    return {
+      collections:
+        env.NODE_ENV === 'production' ? publishedCollections : collections,
+    };
   }),
   updateCollection: publicProcedure
     .input(

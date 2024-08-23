@@ -10,8 +10,9 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-export const Camera = pgEnum('camera', ['SonyA7M4', 'iPhone15ProMax']);
-export const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
+const Camera = pgEnum('camera', ['SonyA7M4', 'iPhone15ProMax']);
+const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
+const CollectionStatus = pgEnum('photo_status', ['draft', 'published']);
 
 const createTable = pgTableCreator((name) => `bananalens_${name}`);
 
@@ -20,6 +21,8 @@ export const collectionsTable = createTable(
   {
     id: serial('id').primaryKey(),
     key: text('key').unique().notNull(),
+
+    status: CollectionStatus('status').notNull().default('draft'),
 
     createdAt: timestamp('created_at', { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
