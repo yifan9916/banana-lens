@@ -7,8 +7,8 @@ import { photosTable } from '@/server/db/schema';
 export const photosRouter = createTRPCRouter({
   createPhoto: publicProcedure
     .input(z.object({ key: z.string() }))
-    .query(async ({ ctx, input }) => {
-      const photo = await ctx.db
+    .mutation(async ({ ctx, input }) => {
+      const [photo] = await ctx.db
         .insert(photosTable)
         .values({
           key: input.key,
@@ -27,12 +27,10 @@ export const photosRouter = createTRPCRouter({
       const photo = await ctx.db.query.photosTable.findFirst({
         where: (table, funcs) => funcs.eq(table.key, input.key),
         with: {
-          cameraMetadata: { columns: { id: false } },
+          cameraMetadata: true,
           photosToCollections: {
             with: {
-              collection: {
-                columns: { id: false },
-              },
+              collection: true,
             },
           },
         },
