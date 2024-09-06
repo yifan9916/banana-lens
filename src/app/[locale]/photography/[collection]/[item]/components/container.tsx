@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-import { usePathname, useRouter } from '@/navigation';
+import { usePathname, useRouter } from '@/i18n/routing';
 import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { useTimeout } from '@/utils/use-timeout/use-timeout';
 import { useIncrementViews } from '@/utils/use-increment-views/use-increment-views';

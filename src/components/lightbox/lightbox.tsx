@@ -3,7 +3,7 @@
 import { useParams, useSearchParams } from 'next/navigation';
 
 import { RouteParams } from '@/app/[locale]/types';
-import { useRouter } from '@/navigation';
+import { useRouter } from '@/i18n/routing';
 import { Slider } from '@/components/slider/slider';
 import { useCollection } from '@/libs/photography/collections/use-collection';
 import { Cross } from '../icons';

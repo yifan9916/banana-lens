@@ -4,8 +4,9 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
-import { Link } from '@/navigation';
+import { Link } from '@/i18n/routing';
 import { useIntersection } from '@/utils/use-intersection/use-intersection';
+
 import type { Collection } from '@/libs/photography/types';
 
 type Props = {

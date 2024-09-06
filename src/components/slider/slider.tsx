@@ -7,12 +7,12 @@ import { CSSProperties, ElementRef, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 
-import { Link, usePathname, useRouter } from '@/navigation';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { useIncrementViews } from '@/utils/use-increment-views/use-increment-views';
 import { useSlider } from './use-slider';
 import { Arrow } from '../icons';
 
-import type { DictionaryKeys } from '@/i18n';
+import type { DictionaryKeys } from '@/i18n/types';
 import type { Photograph } from '@/libs/photography/types';
 
 type Props = {

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import { Link } from '@/navigation';
+import { Link } from '@/i18n/routing';
 import { SmartNav } from './smart-nav';
 
 export const Header = () => {

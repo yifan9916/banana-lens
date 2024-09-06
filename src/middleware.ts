@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 
 import { env } from './env';
-import { type Locale, locales } from './i18n';
+import { routing } from './i18n/routing';
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -15,13 +15,7 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const handleI18nRouting = createMiddleware({
-    // A list of all locales that are supported
-    locales,
-
-    // Used when no locale matches
-    defaultLocale: 'en' as Locale,
-  });
+  const handleI18nRouting = createMiddleware(routing);
 
   const response = handleI18nRouting(request);
 

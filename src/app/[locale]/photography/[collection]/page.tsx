@@ -7,7 +7,7 @@ import { PhotoList } from '@/components/photo-list/photo-list';
 import { MessageThread } from '@/components/messages/thread/message-thread';
 import { LightBox } from '@/components/lightbox/lightbox';
 
-import type { Dictionary, DictionaryKeys } from '@/i18n';
+import type { Dictionary, DictionaryKeys } from '@/i18n/types';
 
 type Props = {
   params: {

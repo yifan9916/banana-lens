@@ -5,7 +5,7 @@ import { HydrateClient, trpc } from '@/libs/trpc/server';
 import { Container } from './components/container';
 import { Content } from './components/content';
 
-import type { Dictionary } from '@/i18n';
+import type { Dictionary } from '@/i18n/types';
 import type { RouteParams } from '@/app/[locale]/types';
 
 type Props = {

@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import { Link } from '@/navigation';
+import { Link } from '@/i18n/routing';
 import { Instagram, Tiktok } from '@/components/icons';
 import { Collections } from '@/components/collections/collections';
 import {

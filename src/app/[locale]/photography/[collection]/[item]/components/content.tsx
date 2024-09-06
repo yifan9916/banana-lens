@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import { Link } from '@/navigation';
+import { Link } from '@/i18n/routing';
 import { Photograph } from '@/libs/photography/types';
 import { usePhoto } from '@/libs/photography/photos/use-photo';
 import { ArrowDownDouble } from '@/components/icons';
 
-import type { DictionaryKeys } from '@/i18n';
+import type { DictionaryKeys } from '@/i18n/types';
 import type { RouteParams } from '@/app/[locale]/types';
 
 export const Content = () => {

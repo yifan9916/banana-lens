@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import { Link } from '@/navigation';
+import { Link } from '@/i18n/routing';
 import { MessageThread } from '@/components/messages/thread/message-thread';
 import { LiveMessageThread } from '@/components/messages/live/live-message-thread';
 import { Arrow } from '@/components/icons';

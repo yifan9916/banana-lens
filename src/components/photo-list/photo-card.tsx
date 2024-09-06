@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { Link } from '@/navigation';
+import { Link } from '@/i18n/routing';
 import { Photograph } from '@/libs/photography/types';
 import { Eyes } from '../icons';
 
-import type { DictionaryKeys } from '@/i18n';
+import type { DictionaryKeys } from '@/i18n/types';
 
 export const PhotoCard = (props: { photo: Photograph }) => {
   const { photo } = props;
