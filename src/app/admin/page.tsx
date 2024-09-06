@@ -3,6 +3,7 @@
 import { FormProvider } from './form/form-context';
 import { CreatePhotoForm } from './form/create-photo-form';
 import { MultiStepProvider } from './multi-step-context';
+import { Suspense } from 'react';
 
 export default function Page() {
   return (
@@ -11,11 +12,13 @@ export default function Page() {
         <h1 className="text-4xl">Banana Lens</h1>
       </div>
 
-      <MultiStepProvider>
-        <FormProvider>
-          <CreatePhotoForm />
-        </FormProvider>
-      </MultiStepProvider>
+      <Suspense>
+        <MultiStepProvider>
+          <FormProvider>
+            <CreatePhotoForm />
+          </FormProvider>
+        </MultiStepProvider>
+      </Suspense>
     </div>
   );
 }
