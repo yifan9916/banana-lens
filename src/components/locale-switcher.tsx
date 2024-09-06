@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 
-import { locales, type Locale } from '@/i18n';
 import { FlagUs, FlagCn, FlagNl, FlagDe } from '@/components/icons/';
-import { Link, usePathname } from '@/navigation';
+import { Link, type Locale, locales, usePathname } from '@/i18n/routing';
 
 const flags = {
   en: FlagUs,
@@ -54,6 +53,7 @@ export const LocaleSwitcher = () => {
             <li
               key={locale}
               className={['h-8 w-8', handleStyles(locale)].join(' ')}
+              aria-label={`Language: ${locale}`}
             >
               <Link
                 locale={locale}
