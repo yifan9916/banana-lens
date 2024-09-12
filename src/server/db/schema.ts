@@ -10,7 +10,6 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-const Camera = pgEnum('camera', ['SonyA7M4', 'iPhone15ProMax']);
 const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
 const CollectionStatus = pgEnum('photo_status', ['draft', 'published']);
 
@@ -61,10 +60,11 @@ export const photosTable = createTable(
   }
 );
 
+// TODO change text to int for aperture, focal, iso
 export const cameraMetadataTable = createTable('camera_metadata', {
   id: serial('id').primaryKey(),
 
-  camera: Camera('camera').notNull(),
+  camera: text('camera').notNull(),
   aperture: text('aperture').notNull(),
   focalLength: text('focal_length').notNull(),
   iso: text('iso').notNull(),

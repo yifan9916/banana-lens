@@ -9,7 +9,7 @@ export const metadataRouter = createTRPCRouter({
     .input(
       z.object({
         photoId: z.number(),
-        camera: z.enum(['SonyA7M4', 'iPhone15ProMax']),
+        camera: z.string(),
         aperture: z.string(),
         focalLength: z.string(),
         shutterSpeed: z.string(),
@@ -53,5 +53,19 @@ export const metadataRouter = createTRPCRouter({
         .returning();
 
       return { metadata };
+    }),
+  deleteMetadata: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const data = ctx.db
+        .delete(cameraMetadataTable)
+        .where(eq(cameraMetadataTable.id, input.id))
+        .returning();
+
+      return { data };
     }),
 });

@@ -39,7 +39,16 @@ export const photosRouter = createTRPCRouter({
       return { photo };
     }),
   getPhotos: publicProcedure.query(async ({ ctx }) => {
-    const photos = await ctx.db.select().from(photosTable);
+    const photos = await ctx.db.query.photosTable.findMany({
+      with: {
+        cameraMetadata: true,
+        photosToCollections: {
+          with: {
+            collection: true,
+          },
+        },
+      },
+    });
 
     return { photos };
   }),

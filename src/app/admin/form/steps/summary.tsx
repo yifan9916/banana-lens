@@ -52,6 +52,7 @@ export const Summary = () => {
               <div>{data.metadata.shutterSpeed} sec</div>
             </div>
           </div>
+
           <button
             type="button"
             className="p-3 border rounded-xl"
@@ -70,6 +71,7 @@ export const Summary = () => {
         >
           Previous
         </button>
+
         <button type="submit" className="p-3 border rounded-xl">
           Submit
         </button>

@@ -1,9 +1,10 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import { FormProvider } from './form/form-context';
 import { CreatePhotoForm } from './form/create-photo-form';
 import { MultiStepProvider } from './multi-step-context';
-import { Suspense } from 'react';
 
 export default function Page() {
   return (

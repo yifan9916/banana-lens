@@ -1,0 +1,1 @@
+ALTER TABLE "bananalens_camera_metadata" ALTER COLUMN "camera" SET DATA TYPE text;

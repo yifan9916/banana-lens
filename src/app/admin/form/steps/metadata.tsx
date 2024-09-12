@@ -6,6 +6,8 @@ import { useFormContext } from '../form-context';
 import { useMultiStepContext } from '../../multi-step-context';
 import { InputErrors } from '../input-errors';
 
+const cameras = ['SonyA7M4', 'iPhone15ProMax'];
+
 const fStops = [
   1.8, 2.0, 2.2, 2.5, 2.8, 3.2, 3.5, 4.0, 4.5, 5.0, 5.6, 6.3, 7.1, 8.0, 9.0, 10,
   11, 13, 14, 16, 18, 20, 22,
@@ -19,15 +21,21 @@ const isoValues = [
 ];
 
 const MetadataSchema = z.object({
-  camera: z.string().min(1, { message: 'Camera system is missing a value' }),
-  aperture: z.string().min(1, { message: 'Aperture is missing a value' }),
-  focalLength: z
-    .string()
-    .min(1, { message: 'Focal Length is missing a value' }),
-  iso: z.string().min(1, { message: 'ISO field is missing a value' }),
-  shutterSpeed: z
-    .string()
-    .min(1, { message: 'Shutter Speed is missing a value' }),
+  camera: z.string().min(1, {
+    message: 'Camera system is missing a value',
+  }),
+  aperture: z.string().min(1, {
+    message: 'Aperture is missing a value',
+  }),
+  focalLength: z.string().min(1, {
+    message: 'Focal Length is missing a value',
+  }),
+  iso: z.string().min(1, {
+    message: 'ISO field is missing a value',
+  }),
+  shutterSpeed: z.string().min(1, {
+    message: 'Shutter Speed is missing a value',
+  }),
 });
 type FlattenedErrors = z.inferFlattenedErrors<typeof MetadataSchema>;
 
@@ -35,7 +43,8 @@ export const MetadataFields = () => {
   const { data, saveData } = useFormContext();
   const { previous, next, isReview } = useMultiStepContext();
 
-  const [cameraInput, setCamera] = useState('sony');
+  const [cameraInput, setCamera] =
+    useState<(typeof cameras)[number]>('SonyA7M4');
   const [apertureInput, setAperture] = useState(data.metadata.aperture);
   const [focalLengthInput, setFocalLength] = useState(
     data.metadata.focalLength
@@ -68,15 +77,10 @@ export const MetadataFields = () => {
     previous();
   };
 
-  const cam = {
-    sony: 'SonyA7M4',
-    iphone: 'iPhone15ProMax',
-  } as const;
-
   const handleNext = () => {
     const parsedData = MetadataSchema.safeParse({
       aperture: apertureInput,
-      camera: cam[cameraInput as keyof typeof cam],
+      camera: cameraInput,
       focalLength: focalLengthInput,
       iso: isoInput,
       shutterSpeed: shutterSpeedInput,
@@ -94,7 +98,7 @@ export const MetadataFields = () => {
       payload: {
         metadata: {
           aperture: apertureInput,
-          camera: cam[cameraInput as keyof typeof cam],
+          camera: cameraInput,
           focalLength: focalLengthInput,
           iso: isoInput,
           shutterSpeed: shutterSpeedInput,
@@ -115,7 +119,7 @@ export const MetadataFields = () => {
             name="camera"
             placeholder="Camera..."
             initialValue={cameraInput}
-            list={[{ value: 'sony' }, { value: 'iphone' }]}
+            list={cameras.map((c) => ({ value: c }))}
             onInputChange={(value) => setCamera(value)}
           />
 

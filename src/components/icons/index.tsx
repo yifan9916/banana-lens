@@ -9,6 +9,7 @@ export { PaperPlane } from './paper-plane';
 export { Eyes } from './eyes';
 export { Cross } from './cross';
 export { Pencil } from './pencil';
+export { Trash } from './trash';
 
 export { FlagUs } from './flags/flag-us';
 export { FlagCn } from './flags/flag-cn';
