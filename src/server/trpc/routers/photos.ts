@@ -48,6 +48,7 @@ export const photosRouter = createTRPCRouter({
           },
         },
       },
+      orderBy: (table, funcs) => funcs.desc(table.updatedAt),
     });
 
     return { photos };
@@ -58,6 +59,7 @@ export const photosRouter = createTRPCRouter({
         key: z.string(),
         collection: z.string().optional(),
         data: z.object({
+          status: z.enum(['published', 'draft']),
           views: z.number(),
         }),
       })
@@ -78,7 +80,7 @@ export const photosRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const photo = ctx.db
+      const photo = await ctx.db
         .delete(photosTable)
         .where(eq(photosTable.id, input.id))
         .returning();

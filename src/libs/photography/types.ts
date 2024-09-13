@@ -17,8 +17,8 @@ type PhotoImageSrc = {
 
 export type Photograph = PhotoImageSrc &
   SelectPhoto & {
-    collection?: Pick<SelectCollection, 'key'>['key'];
-    metadata?: Omit<SelectCameraMetadata, 'id'>;
+    collection?: Pick<SelectCollection, 'id' | 'key'>;
+    metadata: SelectCameraMetadata;
   };
 
 export type PhotoOutput = RouterOutputs['photos']['getPhoto']['photo'];

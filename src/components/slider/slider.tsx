@@ -114,7 +114,9 @@ const Slide = (props: SlideProps) => {
       <div className="rounded-xl shadow-2xl dark:shadow-white/50 bg-white dark:bg-black flex flex-col sm:flex-row max-h-full overflow-scroll">
         <Link
           href={{
-            pathname: `/photography/${item.collection}/${item.key}`,
+            pathname: [item.collection?.key, item.key]
+              .filter(Boolean)
+              .join('/'),
             query: { loupe: true },
           }}
           scroll={false}
@@ -132,9 +134,11 @@ const Slide = (props: SlideProps) => {
         <div className="text-black dark:text-white basis-1/3 flex flex-col-reverse sm:flex-col justify-between">
           <div className="mb-2 p-6">
             <h3 className="font-bold">{title}</h3>
-            <p className="inline-block py-[2px] px-2 text-sm capitalize rounded-md bg-black/80 dark:bg-white/80 text-white dark:text-black mb-2">
-              {item.collection}
-            </p>
+            {item.collection && (
+              <p className="inline-block py-[2px] px-2 text-sm capitalize rounded-md bg-black/80 dark:bg-white/80 text-white dark:text-black mb-2">
+                {item.collection?.key}
+              </p>
+            )}
             <p className="text-sm">{date}</p>
             <p className="text-sm capitalize">
               {dict('general.views' as DictionaryKeys)}: {item.views}

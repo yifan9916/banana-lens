@@ -11,6 +11,7 @@ import { ArrowDownDouble } from '@/components/icons';
 
 import type { DictionaryKeys } from '@/i18n/types';
 import type { RouteParams } from '@/app/[locale]/types';
+import type { CameraMetadata } from '@/app/admin/utils/metadata';
 
 export const Content = () => {
   const params = useParams<RouteParams>();
@@ -79,7 +80,7 @@ const Photo = (props: {
   );
 };
 
-const Settings = (props: { settings: NonNullable<Photograph['metadata']> }) => {
+const Settings = (props: { settings: CameraMetadata }) => {
   const { settings } = props;
 
   return (

@@ -1,7 +1,7 @@
 import { Pencil } from '@/components/icons';
 
-import { useFormContext } from '../form-context';
-import { useMultiStepContext } from '../../multi-step-context';
+import { useFormContext } from '../../create/form-context';
+import { useMultiStepContext } from '../multi-step-context';
 
 export const Summary = () => {
   const { data } = useFormContext();

@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { useCollections } from '@/libs/photography/collections/use-collections';
 import { Combobox } from '@/components/combobox/combobox';
-import { useFormContext } from '../form-context';
-import { useMultiStepContext } from '../../multi-step-context';
+import { useFormContext } from '../../create/form-context';
+import { useMultiStepContext } from '../multi-step-context';
 
 export const CollectionFields = () => {
   const { data, saveData } = useFormContext();

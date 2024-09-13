@@ -2,9 +2,11 @@ import { useState } from 'react';
 
 import { Arrow, Cross } from '../icons';
 
+export type ComboboxListItem = { label?: string; value: string };
+
 type Props = {
   name: string;
-  list: { label?: string; value: string }[] | undefined;
+  list: ComboboxListItem[] | undefined;
   initialValue?: string; // TODO generic
   placeholder?: string;
   onInputChange: (value: string) => void;

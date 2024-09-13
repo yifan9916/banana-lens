@@ -36,8 +36,7 @@ export const metadataRouter = createTRPCRouter({
       z.object({
         id: z.number(),
         data: z.object({
-          photoId: z.number(),
-          camera: z.enum(['SonyA7M4', 'iPhone15ProMax']),
+          camera: z.string(),
           aperture: z.string(),
           focalLength: z.string(),
           shutterSpeed: z.string(),

@@ -1,6 +1,7 @@
 import { collectionCovers } from '../data/collections';
 import { collectionPhotos } from '../data/photos';
-import { CollectionWithPhotos, CollectionOutput } from '../types';
+
+import type { CollectionWithPhotos, CollectionOutput } from '../types';
 
 export const processCollection = (
   collection: NonNullable<CollectionOutput>
@@ -15,7 +16,10 @@ export const processCollection = (
     photos: photos.map((p) => {
       return {
         id: p.photoId,
-        collection: collection.key,
+        collection: {
+          id: collection.id,
+          key: collection.key,
+        },
         key: p.photo.key,
         src: collectionPhotos[collection.key][p.photo.key],
         status: p.photo.status,

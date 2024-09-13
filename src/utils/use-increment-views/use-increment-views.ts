@@ -22,8 +22,9 @@ export const useIncrementViews = (
       if (!localViews[photo.key]) {
         mutation.mutate({
           key: photo.key,
-          collection: photo.collection,
+          collection: photo.collection?.key,
           data: {
+            status: photo.status,
             views: photo.views + 1,
           },
         });
@@ -115,7 +116,7 @@ export const useIncrementViews = (
 
   // helper function for updating view count for a photo in a collection
   const updateCollectionPhotoViews = (photo: Photograph, views: number) => {
-    const collectionKey = photo.collection;
+    const collectionKey = photo.collection?.key;
 
     if (collectionKey) {
       utils.collections.getCollection.setData(

@@ -2,9 +2,8 @@
 
 import { Suspense } from 'react';
 
-import { FormProvider } from './form/form-context';
-import { CreatePhotoForm } from './form/create-photo-form';
-import { MultiStepProvider } from './multi-step-context';
+import { PhotoList } from './photo-list/photo-list';
+import { CreatePhoto } from './create/create-photo';
 
 export default function Page() {
   return (
@@ -14,12 +13,10 @@ export default function Page() {
       </div>
 
       <Suspense>
-        <MultiStepProvider>
-          <FormProvider>
-            <CreatePhotoForm />
-          </FormProvider>
-        </MultiStepProvider>
+        <CreatePhoto />
       </Suspense>
+
+      <PhotoList />
     </div>
   );
 }

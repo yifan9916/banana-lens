@@ -7,7 +7,11 @@ import { Eyes } from '../icons';
 
 import type { DictionaryKeys } from '@/i18n/types';
 
-export const PhotoCard = (props: { photo: Photograph }) => {
+type Props = {
+  photo: Photograph;
+};
+
+export const PhotoCard = (props: Props) => {
   const { photo } = props;
 
   const dict = useTranslations();
@@ -15,9 +19,8 @@ export const PhotoCard = (props: { photo: Photograph }) => {
   const title = dict(`${photo.key}.title` as DictionaryKeys);
 
   return (
-    <li key={photo.key} className="rounded-2xl overflow-hidden">
+    <li className="rounded-2xl overflow-hidden">
       <Link
-        key={photo.key}
         href={{
           query: { lightbox: photo.key },
         }}

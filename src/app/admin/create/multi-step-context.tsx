@@ -3,7 +3,10 @@
 import { createContext, useContext } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import { MultiStepFlow, useMultistep } from './use-multi-step';
+import {
+  MultiStepFlow,
+  useMultistep,
+} from '@/utils/use-multi-step/use-multi-step';
 
 export type Step = 'collection' | 'photo' | 'metadata' | 'summary';
 
@@ -58,18 +61,20 @@ export const useMultiStepContext = () => {
 
 type Props = {
   children: React.ReactNode;
+  queryKey: string;
 };
 
 export const MultiStepProvider = (props: Props) => {
-  const { children } = props;
+  const { children, queryKey } = props;
 
-  const stepQuery = 'step';
+  const stepQuery = queryKey;
   const searchParams = useSearchParams();
-  const initialStep = searchParams.get(stepQuery);
+  const queryValue = searchParams.get(stepQuery);
+  const initialStep = queryValue?.length ? queryValue : 'collection';
 
   const { review, goTo, isReview, next, previous, step } = useMultistep(
     createPhotoFlow,
-    initialStep ?? 'collection',
+    initialStep,
     'summary',
     stepQuery
   );

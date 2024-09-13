@@ -8,8 +8,8 @@ import {
   useState,
 } from 'react';
 
-import type { Photograph } from '@/libs/photography/types';
 import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
+import type { CameraMetadata } from '../utils/metadata';
 
 export type FormState = {
   data: {
@@ -20,7 +20,7 @@ export type FormState = {
     photo: {
       key: string;
     };
-    metadata: Omit<NonNullable<Photograph['metadata']>, 'photoId'>;
+    metadata: CameraMetadata;
   };
   saveData: (action: FormAction) => void;
 };

@@ -1,16 +1,29 @@
 'use client';
 
 import { trpc } from '@/libs/trpc/react';
+import { sanitizeMetadata } from '@/libs/photography/metadata/metadata';
+import { Cross } from '@/components/icons';
 import { useFormContext } from './form-context';
+import { useMultiStepContext } from './multi-step-context';
 import { CollectionFields } from './steps/collection';
 import { PhotoFields } from './steps/photo';
 import { MetadataFields } from './steps/metadata';
 import { Summary } from './steps/summary';
-import { useMultiStepContext } from '../multi-step-context';
 
-export const CreatePhotoForm = () => {
+type Props = {
+  onCancel: () => void;
+};
+
+export const CreatePhotoForm = (props: Props) => {
+  const { onCancel } = props;
   const { data, saveData } = useFormContext();
   const { step } = useMultiStepContext();
+
+  const handleCancel = () => {
+    onCancel();
+  };
+
+  const utils = trpc.useUtils();
 
   const createCollection = trpc.collections.createCollection.useMutation({
     onSuccess: (newData) => {
@@ -25,11 +38,7 @@ export const CreatePhotoForm = () => {
     onSuccess: (newData) => {
       createMetadata.mutate({
         photoId: newData.photo.id,
-        camera: data.metadata.camera,
-        aperture: data.metadata.aperture.replace('.', ','),
-        focalLength: `${data.metadata.focalLength}mm`,
-        iso: data.metadata.iso,
-        shutterSpeed: data.metadata.shutterSpeed,
+        ...sanitizeMetadata(data.metadata),
       });
 
       if (data.collection?.id) {
@@ -38,6 +47,8 @@ export const CreatePhotoForm = () => {
           collectionId: data.collection.id,
         });
       }
+
+      utils.photos.getPhotos.invalidate();
     },
   });
 
@@ -56,7 +67,9 @@ export const CreatePhotoForm = () => {
       });
     }
 
-    createPhoto.mutate({ key: data.photo.key });
+    createPhoto.mutateAsync({ key: data.photo.key });
+
+    onCancel();
   };
 
   return (
@@ -64,6 +77,14 @@ export const CreatePhotoForm = () => {
       onSubmit={handleSubmit}
       className="border flex justify-center flex-col p-10 rounded-xl shadow-2xl"
     >
+      <button
+        type="button"
+        onClick={handleCancel}
+        className="border rounded-xl p-2 mb-2 ml-auto"
+      >
+        <Cross className="h-5 w-5" />
+      </button>
+
       {step === 'collection' && <CollectionFields />}
       {step === 'photo' && <PhotoFields />}
       {step === 'metadata' && <MetadataFields />}

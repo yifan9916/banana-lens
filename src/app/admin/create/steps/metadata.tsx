@@ -1,50 +1,25 @@
 import { z } from 'zod';
 import { useState } from 'react';
 
+import {
+  cameras,
+  getApertureDataList,
+  getFocalLengthDataList,
+  getIsoDataList,
+  MetadataSchema,
+} from '@/libs/photography/metadata/metadata';
 import { Combobox } from '@/components/combobox/combobox';
-import { useFormContext } from '../form-context';
-import { useMultiStepContext } from '../../multi-step-context';
-import { InputErrors } from '../input-errors';
+import { useFormContext } from '../../create/form-context';
+import { useMultiStepContext } from '../multi-step-context';
+import { InputErrors } from '../../components/input-errors';
 
-const cameras = ['SonyA7M4', 'iPhone15ProMax'];
-
-const fStops = [
-  1.8, 2.0, 2.2, 2.5, 2.8, 3.2, 3.5, 4.0, 4.5, 5.0, 5.6, 6.3, 7.1, 8.0, 9.0, 10,
-  11, 13, 14, 16, 18, 20, 22,
-];
-
-const focalLengths = [13, 20, 24, 28, 30, 35, 50, 85, 120];
-
-const isoValues = [
-  100, 125, 160, 200, 250, 320, 400, 500, 640, 800, 1000, 1250, 1600, 2000,
-  2500, 3200, 4000, 5000, 6400, 8000, 10000, 12800,
-];
-
-const MetadataSchema = z.object({
-  camera: z.string().min(1, {
-    message: 'Camera system is missing a value',
-  }),
-  aperture: z.string().min(1, {
-    message: 'Aperture is missing a value',
-  }),
-  focalLength: z.string().min(1, {
-    message: 'Focal Length is missing a value',
-  }),
-  iso: z.string().min(1, {
-    message: 'ISO field is missing a value',
-  }),
-  shutterSpeed: z.string().min(1, {
-    message: 'Shutter Speed is missing a value',
-  }),
-});
 type FlattenedErrors = z.inferFlattenedErrors<typeof MetadataSchema>;
 
 export const MetadataFields = () => {
   const { data, saveData } = useFormContext();
   const { previous, next, isReview } = useMultiStepContext();
 
-  const [cameraInput, setCamera] =
-    useState<(typeof cameras)[number]>('SonyA7M4');
+  const [cameraInput, setCamera] = useState(data.metadata.camera);
   const [apertureInput, setAperture] = useState(data.metadata.aperture);
   const [focalLengthInput, setFocalLength] = useState(
     data.metadata.focalLength
@@ -128,9 +103,7 @@ export const MetadataFields = () => {
               name="aperture"
               placeholder="Aperture..."
               initialValue={apertureInput ? `ƒ/ ${apertureInput}` : ''}
-              list={fStops.map((v) => ({
-                value: `ƒ/ ${v.toFixed(1).replace('.', ',')}`,
-              }))}
+              list={getApertureDataList()}
               onInputChange={handleApertureChange}
             />
 
@@ -138,7 +111,7 @@ export const MetadataFields = () => {
               name="focalLength"
               placeholder="Focal length..."
               initialValue={focalLengthInput ? `${focalLengthInput}mm` : ''}
-              list={focalLengths.map((v) => ({ value: `${v}mm` }))}
+              list={getFocalLengthDataList()}
               onInputChange={handleFocalLengthChange}
             />
 
@@ -146,7 +119,7 @@ export const MetadataFields = () => {
               name="iso"
               placeholder="ISO..."
               initialValue={isoInput ? `ISO ${isoInput}` : ''}
-              list={isoValues.map((v) => ({ value: `ISO ${v}` }))}
+              list={getIsoDataList()}
               onInputChange={handleIsoChange}
             />
 

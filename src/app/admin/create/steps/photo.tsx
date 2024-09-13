@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import { useState } from 'react';
 
-import { useFormContext } from '../form-context';
-import { useMultiStepContext } from '../../multi-step-context';
-import { InputErrors } from '../input-errors';
+import { useFormContext } from '../../create/form-context';
+import { useMultiStepContext } from '../multi-step-context';
+import { InputErrors } from '../../components/input-errors';
 
 const PhotoSchema = z.object({
   key: z
