@@ -11,7 +11,7 @@ import { ArrowDownDouble } from '@/components/icons';
 
 import type { DictionaryKeys } from '@/i18n/types';
 import type { RouteParams } from '@/app/[locale]/types';
-import type { CameraMetadata } from '@/app/admin/utils/metadata';
+import type { CameraMetadata } from '@/libs/photography/metadata/metadata';
 
 export const Content = () => {
   const params = useParams<RouteParams>();

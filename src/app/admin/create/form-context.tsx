@@ -9,7 +9,7 @@ import {
 } from 'react';
 
 import { useLocalStorage } from '@/utils/local-storage/use-local-storage';
-import type { CameraMetadata } from '../utils/metadata';
+import type { CameraMetadata } from '@/libs/photography/metadata/metadata';
 
 export type FormState = {
   data: {
