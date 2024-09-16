@@ -50,6 +50,20 @@
       "when": 1726134162617,
       "tag": "0006_chunky_ben_parker",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1726496760965,
+      "tag": "0007_slimy_stranger",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1726496827080,
+      "tag": "0008_nasty_sebastian_shaw",
+      "breakpoints": true
     }
   ]
 }
