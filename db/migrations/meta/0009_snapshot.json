@@ -1,0 +1,354 @@
+{
+  "id": "0f357f25-8a90-424e-b2e9-b95361c42372",
+  "prevId": "8d8204e4-17bf-43cd-89f2-e1a214bd35a9",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.bananalens_camera_metadata": {
+      "name": "bananalens_camera_metadata",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "camera": {
+          "name": "camera",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "aperture": {
+          "name": "aperture",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "focal_length": {
+          "name": "focal_length",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "iso": {
+          "name": "iso",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "shutter_speed": {
+          "name": "shutter_speed",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "photo_id": {
+          "name": "photo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "bananalens_camera_metadata_photo_id_bananalens_photos_id_fk": {
+          "name": "bananalens_camera_metadata_photo_id_bananalens_photos_id_fk",
+          "tableFrom": "bananalens_camera_metadata",
+          "tableTo": "bananalens_photos",
+          "columnsFrom": [
+            "photo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.bananalens_collections": {
+      "name": "bananalens_collections",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "collection_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "collection_key_index": {
+          "name": "collection_key_index",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "bananalens_collections_key_unique": {
+          "name": "bananalens_collections_key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "key"
+          ]
+        }
+      }
+    },
+    "public.bananalens_files": {
+      "name": "bananalens_files",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "resolution": {
+          "name": "resolution",
+          "type": "media_resolution",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "photoId": {
+          "name": "photoId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "bananalens_files_photoId_bananalens_photos_id_fk": {
+          "name": "bananalens_files_photoId_bananalens_photos_id_fk",
+          "tableFrom": "bananalens_files",
+          "tableTo": "bananalens_photos",
+          "columnsFrom": [
+            "photoId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.bananalens_photos": {
+      "name": "bananalens_photos",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "photo_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "views": {
+          "name": "views",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "photo_key_index": {
+          "name": "photo_key_index",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "bananalens_photos_key_unique": {
+          "name": "bananalens_photos_key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "key"
+          ]
+        }
+      }
+    },
+    "public.bananalens_photos_to_collections": {
+      "name": "bananalens_photos_to_collections",
+      "schema": "",
+      "columns": {
+        "photo_id": {
+          "name": "photo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "collection_id": {
+          "name": "collection_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "bananalens_photos_to_collections_photo_id_bananalens_photos_id_fk": {
+          "name": "bananalens_photos_to_collections_photo_id_bananalens_photos_id_fk",
+          "tableFrom": "bananalens_photos_to_collections",
+          "tableTo": "bananalens_photos",
+          "columnsFrom": [
+            "photo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "bananalens_photos_to_collections_collection_id_bananalens_collections_id_fk": {
+          "name": "bananalens_photos_to_collections_collection_id_bananalens_collections_id_fk",
+          "tableFrom": "bananalens_photos_to_collections",
+          "tableTo": "bananalens_collections",
+          "columnsFrom": [
+            "collection_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "bananalens_photos_to_collections_photo_id_collection_id_pk": {
+          "name": "bananalens_photos_to_collections_photo_id_collection_id_pk",
+          "columns": [
+            "photo_id",
+            "collection_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.collection_status": {
+      "name": "collection_status",
+      "schema": "public",
+      "values": [
+        "draft",
+        "published"
+      ]
+    },
+    "public.media_resolution": {
+      "name": "media_resolution",
+      "schema": "public",
+      "values": [
+        "low",
+        "high"
+      ]
+    },
+    "public.photo_status": {
+      "name": "photo_status",
+      "schema": "public",
+      "values": [
+        "draft",
+        "published"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

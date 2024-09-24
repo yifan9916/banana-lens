@@ -1,0 +1,1 @@
+ALTER TABLE "bananalens_files" ADD CONSTRAINT "photo_resolution_index" UNIQUE("photo_id","resolution");

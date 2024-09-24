@@ -28,7 +28,7 @@ export const DeleteButton = (props: Props) => {
     <div className="flex gap-2">
       <button
         onClick={handleDelete}
-        className="border rounded-xl p-2 bg-red-500 text-white"
+        className="rounded-xl p-2 bg-red-500 text-white"
       >
         <Trash className="h-5 w-5" />
       </button>

@@ -46,7 +46,7 @@ export const CreatePhoto = () => {
       {isCreate && (
         <MultiStepProvider queryKey={urlParam}>
           <FormProvider>
-            <div className="fixed w-full max-w-4xl bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="fixed w-full max-w-4xl bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               <CreatePhotoForm onCancel={handleCancel} />
             </div>
           </FormProvider>

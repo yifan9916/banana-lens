@@ -7,11 +7,16 @@ import {
   serial,
   text,
   timestamp,
+  unique,
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
-const CollectionStatus = pgEnum('photo_status', ['draft', 'published']);
+export const MediaResolution = pgEnum('media_resolution', ['low', 'high']);
+export const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
+export const CollectionStatus = pgEnum('collection_status', [
+  'draft',
+  'published',
+]);
 
 const createTable = pgTableCreator((name) => `bananalens_${name}`);
 
@@ -75,6 +80,28 @@ export const cameraMetadataTable = createTable('camera_metadata', {
     .notNull(),
 });
 
+export const filesTable = createTable(
+  'files',
+  {
+    id: serial('id').primaryKey(),
+
+    url: text('url').notNull(),
+    resolution: MediaResolution('resolution').notNull(),
+
+    photoId: integer('photo_id')
+      .references(() => photosTable.id)
+      .notNull(),
+  },
+  (table) => {
+    return {
+      photoResolutionIndex: unique('photo_resolution_index').on(
+        table.photoId,
+        table.resolution
+      ),
+    };
+  }
+);
+
 export const photosToCollectionsTable = createTable(
   'photos_to_collections',
   {
@@ -99,6 +126,7 @@ export const photosTableRelations = relations(photosTable, ({ one, many }) => {
       fields: [photosTable.id],
       references: [cameraMetadataTable.photoId],
     }),
+    files: many(filesTable),
     photosToCollections: many(photosToCollectionsTable),
   };
 });
@@ -124,6 +152,15 @@ export const cameraMetadataTableRelations = relations(
   }
 );
 
+export const filesTableRelations = relations(filesTable, ({ one }) => {
+  return {
+    photo: one(photosTable, {
+      fields: [filesTable.photoId],
+      references: [photosTable.id],
+    }),
+  };
+});
+
 export const photosToCollectionsRelations = relations(
   photosToCollectionsTable,
   ({ one }) => {
@@ -144,5 +181,7 @@ export type InsertPhoto = typeof photosTable.$inferInsert;
 export type SelectPhoto = typeof photosTable.$inferSelect;
 export type InsertCameraMetadata = typeof cameraMetadataTable.$inferInsert;
 export type SelectCameraMetadata = typeof cameraMetadataTable.$inferSelect;
+export type InsertFiles = typeof filesTable.$inferInsert;
+export type SelectFiles = typeof filesTable.$inferSelect;
 export type InsertCollection = typeof collectionsTable.$inferInsert;
 export type SelectCollection = typeof collectionsTable.$inferSelect;

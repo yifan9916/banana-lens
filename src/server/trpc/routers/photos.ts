@@ -33,6 +33,7 @@ export const photosRouter = createTRPCRouter({
               collection: true,
             },
           },
+          files: true,
         },
       });
 
@@ -42,6 +43,7 @@ export const photosRouter = createTRPCRouter({
     const photos = await ctx.db.query.photosTable.findMany({
       with: {
         cameraMetadata: true,
+        files: true,
         photosToCollections: {
           with: {
             collection: true,

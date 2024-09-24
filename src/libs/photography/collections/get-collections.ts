@@ -1,5 +1,6 @@
 import { trpc } from '../../trpc/server';
 import { collectionCovers } from '../data/collections';
+
 import type { Collection } from '../types';
 
 export const getCollections = async () => {

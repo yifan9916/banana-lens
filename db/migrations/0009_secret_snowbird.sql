@@ -1,0 +1,1 @@
+ALTER TABLE "bananalens_files" ALTER COLUMN "resolution" DROP DEFAULT;

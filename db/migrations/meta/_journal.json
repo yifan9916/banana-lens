@@ -64,6 +64,27 @@
       "when": 1726496827080,
       "tag": "0008_nasty_sebastian_shaw",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1726498255120,
+      "tag": "0009_secret_snowbird",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1726498940621,
+      "tag": "0010_natural_shiver_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1726591060368,
+      "tag": "0011_breezy_apocalypse",
+      "breakpoints": true
     }
   ]
 }
