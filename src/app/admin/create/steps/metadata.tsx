@@ -7,6 +7,9 @@ import {
   getFocalLengthDataList,
   getIsoDataList,
   MetadataSchema,
+  sanitizeApertureInput,
+  sanitizeFocalLengthInput,
+  sanitizeIsoInput,
 } from '@/libs/photography/metadata/metadata';
 import { Combobox } from '@/components/combobox/combobox';
 import { useFormContext } from '../../create/form-context';
@@ -31,21 +34,15 @@ export const MetadataFields = () => {
   const [errors, setErrors] = useState<FlattenedErrors['fieldErrors']>();
 
   const handleApertureChange = (value: string) => {
-    const rawValue = value.replace('ƒ/', '').trim();
-
-    setAperture(rawValue);
+    setAperture(sanitizeApertureInput(value));
   };
 
   const handleFocalLengthChange = (value: string) => {
-    const rawValue = value.replace('mm', '').trim();
-
-    setFocalLength(rawValue);
+    setFocalLength(sanitizeFocalLengthInput(value));
   };
 
   const handleIsoChange = (value: string) => {
-    const rawValue = value.replace('ISO', '').trim();
-
-    setIso(rawValue);
+    setIso(sanitizeIsoInput(value));
   };
 
   const handlePrevious = () => {

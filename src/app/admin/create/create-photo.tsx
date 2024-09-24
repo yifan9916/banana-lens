@@ -1,10 +1,10 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { Cross } from '@/components/icons';
-import { deleteUrlParam } from '@/utils/delete-url-param/delete-url-param';
+import { deleteUrlParams } from '@/utils/url-state/delete-url-params';
 import { MultiStepProvider } from './multi-step-context';
 import { FormProvider } from './form-context';
 import { CreatePhotoForm } from './create-photo-form';
+import { Cross } from '@/components/icons';
 
 export const CreatePhoto = () => {
   const urlParam = 'create-photo-step';
@@ -25,7 +25,7 @@ export const CreatePhoto = () => {
   };
 
   const handleCancel = () => {
-    const updatedParams = deleteUrlParam(searchParams.toString(), urlParam);
+    const updatedParams = deleteUrlParams(searchParams, [urlParam]);
 
     router.push(`${pathname}?${updatedParams}`);
   };

@@ -3,15 +3,21 @@ import type { StaticImageData } from 'next/image';
 import type {
   SelectCameraMetadata,
   SelectCollection,
+  SelectFiles,
   SelectPhoto,
 } from '@/server/db/schema';
 import type { RouterOutputs } from '@/server/trpc';
 
-// TODO image data still coming from app server clean up after images have been migrated
+// TODO image data still coming from app server
+// clean up 'src' prop after images have been migrated
 type PhotoImageSrc = {
   src: {
     preview: StaticImageData;
     hiRes: StaticImageData;
+  };
+  media: {
+    lowResolution?: Omit<SelectFiles, 'resolution'>;
+    highResolution?: Omit<SelectFiles, 'resolution'>;
   };
 };
 

@@ -59,10 +59,10 @@ export const photosRouter = createTRPCRouter({
     .input(
       z.object({
         key: z.string(),
-        collection: z.string().optional(),
+        collection: z.string().optional(), // TODO used in use-increment-view check if this can be removed
         data: z.object({
-          status: z.enum(['published', 'draft']),
-          views: z.number(),
+          status: z.enum(['published', 'draft']).optional(),
+          views: z.number().optional(),
         }),
       })
     )

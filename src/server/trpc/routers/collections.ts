@@ -31,7 +31,10 @@ export const collectionsRouter = createTRPCRouter({
           photosToCollections: {
             with: {
               photo: {
-                with: { cameraMetadata: true },
+                with: {
+                  cameraMetadata: true,
+                  files: true,
+                },
               },
             },
             orderBy: (table, funcs) => funcs.asc(table.photoId),

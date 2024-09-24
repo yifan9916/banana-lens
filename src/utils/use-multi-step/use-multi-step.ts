@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { updateUrlParams } from '../url-state/update-url-params';
 
 export type MultiStepFlow<T extends PropertyKey> = Record<
   T,
@@ -16,6 +17,8 @@ export const useMultistep = <T extends string>(
   const [isReview, setIsReview] = useState(false);
 
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const next = () => {
     if (isReview) {
@@ -25,8 +28,15 @@ export const useMultistep = <T extends string>(
 
     const nextStep = flow[step].next ?? step;
 
+    const paramList = updateUrlParams(searchParams, [
+      {
+        key: query,
+        value: typeof nextStep === 'string' ? nextStep : nextStep(),
+      },
+    ]);
+
     setStep(nextStep);
-    router.push(`?${query}=${nextStep}`);
+    router.push(`${pathname}?${paramList.toString()}`);
   };
 
   const previous = () => {
@@ -37,8 +47,15 @@ export const useMultistep = <T extends string>(
 
     const previousStep = flow[step].previous ?? step;
 
+    const paramList = updateUrlParams(searchParams, [
+      {
+        key: query,
+        value: typeof previousStep === 'string' ? previousStep : previousStep(),
+      },
+    ]);
+
     setStep(previousStep);
-    router.push(`?${query}=${previousStep}`);
+    router.push(`${pathname}?${paramList.toString()}`);
   };
 
   const goTo = (nextStep: T) => {

@@ -1,5 +1,6 @@
 import { collectionCovers } from '../data/collections';
 import { collectionPhotos } from '../data/photos';
+import { processFiles } from '../photos/process-photo';
 
 import type { CollectionWithPhotos, CollectionOutput } from '../types';
 
@@ -27,6 +28,7 @@ export const processCollection = (
         createdAt: p.photo.createdAt,
         updatedAt: p.photo.updatedAt,
         metadata: p.photo.cameraMetadata,
+        media: processFiles(p.photo.files),
       };
     }),
     createdAt: collection.createdAt,

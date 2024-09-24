@@ -17,6 +17,8 @@ export const DeletePhoto = (props: Props) => {
     onSuccess: () => {},
   });
 
+  const deleteFile = trpc.files.deleteFile.useMutation();
+
   const deleteMetadata = trpc.metadata.deleteMetadata.useMutation();
 
   const deletePhotosToCollections =
@@ -31,6 +33,20 @@ export const DeletePhoto = (props: Props) => {
     }
 
     await deleteMetadata.mutateAsync({ id: photo.metadata.id });
+
+    if (photo.media.lowResolution) {
+      await deleteFile.mutateAsync({
+        id: photo.media.lowResolution.id,
+        url: photo.media.lowResolution.url,
+      });
+    }
+
+    if (photo.media.highResolution) {
+      await deleteFile.mutateAsync({
+        id: photo.media.highResolution.id,
+        url: photo.media.highResolution.url,
+      });
+    }
 
     deletePhoto.mutate({ id: photo.id });
 

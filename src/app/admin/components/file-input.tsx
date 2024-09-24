@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const MB_IN_BYTES = 1_048_576;
+import { convertByteToMb } from '@/utils/convert-byte-to-mb/convert-byte-to-mb';
+
 const ACCEPT_FILE_TYPES = [
   'image/jpeg',
   'image/png',
@@ -49,7 +50,7 @@ export const FileInput = (props: {
         </label>
 
         <p className="text-sm text-slate-500 ml-2 h-4">
-          {file && <>Size: {(file.size / MB_IN_BYTES).toFixed(2)} MB</>}
+          {file && <>Size: {convertByteToMb(file.size)} MB</>}
         </p>
       </div>
 
