@@ -42,7 +42,8 @@ export const UpdatePhotoForm = (props: Props) => {
       type: file.type,
     });
 
-    const fileUrl = url + fields.key;
+    const cdnUrl = 'https://dfx6ax10jig7t.cloudfront.net/';
+    const fileUrl = cdnUrl + fields.key;
 
     const data = {
       ...fields,
