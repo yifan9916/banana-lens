@@ -60,7 +60,7 @@ export const useIncrementViews = (
 
         if (!photo) return;
 
-        updateCollectionPhotoViews(photo, input.data.views);
+        updateCollectionPhotoViews(photo, input.data.views || photo.views);
       }
 
       // update views count in getPhoto cache
@@ -76,7 +76,7 @@ export const useIncrementViews = (
           photo: {
             ...prevData.photo,
             key: input.key,
-            views: input.data.views,
+            views: input.data.views || prevData.photo.views,
           },
         }
       );
