@@ -11,7 +11,6 @@ export const PhotoList = () => {
   const params = useParams<RouteParams>();
   const data = useCollection(params.collection);
 
-  console.log('data.photos?', data?.photos);
   if (!data?.photos) return null;
 
   return (

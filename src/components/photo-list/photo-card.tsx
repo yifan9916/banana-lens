@@ -28,13 +28,14 @@ export const PhotoCard = (props: Props) => {
         className="flex h-full flex-col"
       >
         <Image
-          src={photo.media.lowResolution!.url}
-          alt={title}
-          width={220}
-          height={360}
-          quality={50}
           // TODO
-          // placeholder="blur"
+          alt={title}
+          src={photo.src.preview}
+          // src={photo.media.lowResolution!.url}
+          // width={220}
+          // height={360}
+          placeholder="blur"
+          quality={50}
           className="flex-1 object-cover"
         />
         <div className="flex justify-between items-center text-sm font-light p-2">

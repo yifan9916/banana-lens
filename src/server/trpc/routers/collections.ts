@@ -70,8 +70,6 @@ export const collectionsRouter = createTRPCRouter({
         );
       }
 
-      console.log('==========COLLECTION==========', collection);
-
       return { collection };
     }),
   getCollections: publicProcedure.query(async ({ ctx }) => {
