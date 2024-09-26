@@ -54,7 +54,7 @@ export const collectionsRouter = createTRPCRouter({
           collection.photosToCollections = photos;
         }
 
-        collection.photosToCollections = collection?.photosToCollections.map(
+        collection.photosToCollections = collection.photosToCollections.map(
           (p) => {
             return {
               ...p,
@@ -69,6 +69,8 @@ export const collectionsRouter = createTRPCRouter({
           }
         );
       }
+
+      console.log('==========COLLECTION==========', collection);
 
       return { collection };
     }),
