@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
 
-import { createTRPCRouter, publicProcedure } from '../trpc';
-import { collectionsTable } from '@/server/db/schema';
 import { env } from '@/env';
+import { createTRPCRouter, publicProcedure } from '../trpc';
+import { generateSignedUrl } from '@/libs/aws/cloudfront';
+import { collectionsTable } from '@/server/db/schema';
 
 export const collectionsRouter = createTRPCRouter({
   createCollection: publicProcedure
@@ -43,13 +44,30 @@ export const collectionsRouter = createTRPCRouter({
         orderBy: (table, funcs) => funcs.asc(table.id),
       });
 
-      if (env.NODE_ENV === 'production' && collection) {
+      if (collection) {
         // https://github.com/drizzle-team/drizzle-orm/discussions/1152
-        const photos = collection?.photosToCollections.filter(
-          (p) => p.photo.status === 'published'
-        );
+        if (env.NODE_ENV === 'production') {
+          const photos = collection?.photosToCollections.filter(
+            (p) => p.photo.status === 'published'
+          );
 
-        collection.photosToCollections = photos;
+          collection.photosToCollections = photos;
+        }
+
+        collection.photosToCollections = collection?.photosToCollections.map(
+          (p) => {
+            return {
+              ...p,
+              photo: {
+                ...p.photo,
+                files: p.photo.files.map((f) => ({
+                  ...f,
+                  url: generateSignedUrl(f.url),
+                })),
+              },
+            };
+          }
+        );
       }
 
       return { collection };

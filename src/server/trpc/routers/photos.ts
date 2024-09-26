@@ -38,6 +38,13 @@ export const photosRouter = createTRPCRouter({
         },
       });
 
+      if (photo) {
+        photo.files = photo.files.map((f) => ({
+          ...f,
+          url: generateSignedUrl(f.url),
+        }));
+      }
+
       return { photo };
     }),
   getPhotos: publicProcedure.query(async ({ ctx }) => {

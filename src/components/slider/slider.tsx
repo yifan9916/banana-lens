@@ -123,8 +123,10 @@ const Slide = (props: SlideProps) => {
           className="cursor-zoom-in"
         >
           <Image
-            src={item.src.preview}
+            src={item.media.lowResolution!.url}
             alt={item.key}
+            width={520}
+            height={780}
             quality={75}
             priority={isPriority}
             className="h-full w-full object-contain"

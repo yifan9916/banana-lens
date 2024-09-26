@@ -9,7 +9,7 @@ import { DataStep } from './steps/data';
 import { Summary } from './steps/summary';
 
 import {
-  CameraMetadata,
+  type CameraMetadata,
   sanitizeMetadata,
 } from '@/libs/photography/metadata/metadata';
 import type { Photograph } from '@/libs/photography/types';
@@ -141,17 +141,19 @@ export const UpdatePhotoForm = (props: Props) => {
           <p className="text-lg font-bold">{photo.key}</p>
         </div>
 
-        <div className="flex flex-col">
-          <div className="basis-0 flex-grow overflow-auto flex">
-            <Image
-              src={photo.media.lowResolution?.url || ''}
-              alt={photo.key}
-              width="1024"
-              height="768"
-              className="object-contain w-auto rounded-lg"
-            />
+        {photo.media.lowResolution?.url && (
+          <div className="flex flex-col">
+            <div className="basis-0 flex-grow overflow-auto flex">
+              <Image
+                src={photo.media.lowResolution.url}
+                alt={photo.key}
+                width="1024"
+                height="768"
+                className="object-contain w-auto rounded-lg"
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {step === 'files' && <FilesStep />}
