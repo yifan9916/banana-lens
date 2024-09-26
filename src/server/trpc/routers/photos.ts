@@ -3,6 +3,7 @@ import { eq } from 'drizzle-orm';
 
 import { createTRPCRouter, publicProcedure } from '../trpc';
 import { photosTable } from '@/server/db/schema';
+import { generateSignedUrl } from '@/libs/aws/cloudfront';
 
 export const photosRouter = createTRPCRouter({
   createPhoto: publicProcedure
@@ -53,7 +54,17 @@ export const photosRouter = createTRPCRouter({
       orderBy: (table, funcs) => funcs.desc(table.updatedAt),
     });
 
-    return { photos };
+    const signedPhotos = photos.map((p) => {
+      return {
+        ...p,
+        files: p.files.map((f) => ({
+          ...f,
+          url: generateSignedUrl(f.url),
+        })),
+      };
+    });
+
+    return { photos: signedPhotos };
   }),
   updatePhoto: publicProcedure
     .input(

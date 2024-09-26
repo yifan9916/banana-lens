@@ -3,10 +3,11 @@ import { eq } from 'drizzle-orm';
 
 import { createTRPCRouter, publicProcedure } from '../trpc';
 import { deleteFileFromS3, generatePresignedPost } from '@/libs/aws/s3';
+import { generateSignedUrl } from '@/libs/aws/cloudfront';
 import { filesTable } from '@/server/db/schema';
 
 export const filesRouter = createTRPCRouter({
-  createPresignedUrl: publicProcedure
+  createPresignedPost: publicProcedure
     .input(
       z.object({
         key: z.string(),
@@ -17,6 +18,17 @@ export const filesRouter = createTRPCRouter({
       const presignedPost = await generatePresignedPost(input.key, input.type);
 
       return { ...presignedPost };
+    }),
+  createSignedUrl: publicProcedure
+    .input(
+      z.object({
+        url: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const signedUrl = generateSignedUrl(input.url);
+
+      return { signedUrl };
     }),
   createFile: publicProcedure
     .input(
@@ -49,7 +61,6 @@ export const filesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      // delete old file from s3
       const oldFile = await ctx.db.query.filesTable.findFirst({
         where: (table, funcs) => funcs.eq(table.id, input.id),
       });

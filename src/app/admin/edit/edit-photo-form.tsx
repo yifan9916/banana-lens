@@ -25,7 +25,7 @@ export const UpdatePhotoForm = (props: Props) => {
   const { data } = useFormContext();
   const { step } = useMultiStepContext();
 
-  const createPresignedUrl = trpc.files.createPresignedUrl.useMutation({});
+  const createPresignedPost = trpc.files.createPresignedPost.useMutation({});
   const createFile = trpc.files.createFile.useMutation({});
   const updateFile = trpc.files.updateFile.useMutation({});
   const updatePhoto = trpc.photos.updatePhoto.useMutation({});
@@ -37,13 +37,14 @@ export const UpdatePhotoForm = (props: Props) => {
     file: File,
     quality: keyof (typeof photo)['media']
   ) => {
-    const { url, fields } = await createPresignedUrl.mutateAsync({
+    const { url, fields } = await createPresignedPost.mutateAsync({
       key: file.name,
       type: file.type,
     });
 
-    const cdnUrl = 'https://dfx6ax10jig7t.cloudfront.net/';
-    const fileUrl = cdnUrl + fields.key;
+    // TODO find a different place to stare this
+    const cdnUrl = 'https://dfx6ax10jig7t.cloudfront.net';
+    const fileUrl = `${cdnUrl}/${fields.key}`;
 
     const data = {
       ...fields,
@@ -73,7 +74,10 @@ export const UpdatePhotoForm = (props: Props) => {
     } else {
       updateFile.mutate({
         id: photo.media[quality].id,
-        data: { url: fileUrl, resolution },
+        data: {
+          url: fileUrl,
+          resolution,
+        },
       });
     }
   };
