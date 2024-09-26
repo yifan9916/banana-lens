@@ -54,20 +54,20 @@ export const collectionsRouter = createTRPCRouter({
           collection.photosToCollections = photos;
         }
 
-        collection.photosToCollections = collection.photosToCollections.map(
-          (p) => {
-            return {
-              ...p,
-              photo: {
-                ...p.photo,
-                files: p.photo.files.map((f) => ({
-                  ...f,
-                  url: generateSignedUrl(f.url),
-                })),
-              },
-            };
-          }
-        );
+        // collection.photosToCollections = collection.photosToCollections.map(
+        //   (p) => {
+        //     return {
+        //       ...p,
+        //       photo: {
+        //         ...p.photo,
+        //         files: p.photo.files.map((f) => ({
+        //           ...f,
+        //           url: generateSignedUrl(f.url),
+        //         })),
+        //       },
+        //     };
+        //   }
+        // );
       }
 
       console.log('==========COLLECTION==========', collection);
