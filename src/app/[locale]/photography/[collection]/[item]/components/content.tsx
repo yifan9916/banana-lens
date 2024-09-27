@@ -58,16 +58,18 @@ const Photo = (props: {
 
   return (
     <div className="relative w-fit sm:h-dvh m-auto opacity-0 animate-slide-up animation-delay-[500ms]">
-      <Image
-        alt={title}
-        // TODO
-        // placeholder="blur"
-        src={photo.media.highResolution!.url}
-        width={1080}
-        height={1920}
-        priority={true}
-        className="w-auto sm:h-full object-contain"
-      />
+      {photo.media.highResolution?.url && (
+        <Image
+          alt={title}
+          // TODO
+          // placeholder="blur"
+          src={photo.media.highResolution.url}
+          width={1080}
+          height={1920}
+          priority={true}
+          className="w-auto sm:h-full object-contain"
+        />
+      )}
 
       {photo.metadata && <Settings settings={photo.metadata} />}
 

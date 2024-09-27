@@ -110,27 +110,29 @@ const Slide = (props: SlideProps) => {
       className={`${styles.slide} shrink-0 grow-0 p-4 flex justify-center items-center`}
     >
       <div className="rounded-xl shadow-2xl dark:shadow-white/50 bg-white dark:bg-black flex flex-col sm:flex-row max-h-full overflow-scroll">
-        <Link
-          href={{
-            pathname: [item.collection?.key, item.key]
-              .filter(Boolean)
-              .join('/'),
-            query: { loupe: true },
-          }}
-          scroll={false}
-          className="cursor-zoom-in"
-        >
-          <Image
-            alt={item.key}
-            // TODO
-            src={item.media.lowResolution!.url}
-            width={520}
-            height={780}
-            quality={75}
-            priority={isPriority}
-            className="object-contain"
-          />
-        </Link>
+        {item.media.lowResolution?.url && (
+          <Link
+            href={{
+              pathname: [item.collection?.key, item.key]
+                .filter(Boolean)
+                .join('/'),
+              query: { loupe: true },
+            }}
+            scroll={false}
+            className="cursor-zoom-in"
+          >
+            <Image
+              alt={item.key}
+              // TODO
+              src={item.media.lowResolution?.url}
+              width={520}
+              height={780}
+              quality={75}
+              priority={isPriority}
+              className="object-contain"
+            />
+          </Link>
+        )}
 
         <div className="text-black dark:text-white basis-1/3 flex flex-col-reverse sm:flex-col justify-between">
           <div className="mb-2 p-6">

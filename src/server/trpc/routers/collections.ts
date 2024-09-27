@@ -26,7 +26,7 @@ export const collectionsRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const collection = await ctx.db.query.collectionsTable.findFirst({
+      let collection = await ctx.db.query.collectionsTable.findFirst({
         where: (table, funcs) => funcs.eq(table.key, input.key),
         with: {
           photosToCollections: {
@@ -47,9 +47,18 @@ export const collectionsRouter = createTRPCRouter({
       if (collection) {
         // https://github.com/drizzle-team/drizzle-orm/discussions/1152
         if (env.NODE_ENV === 'production') {
-          const photos = collection?.photosToCollections.filter(
-            (p) => p.photo.status === 'published'
-          );
+          const photos = collection?.photosToCollections.filter((p) => {
+            // return published photos with low and high res image files only
+            const isPublished = p.photo.status === 'published';
+            const lowResolution = p.photo.files.find(
+              (f) => f.resolution === 'low'
+            );
+            const highResolution = p.photo.files.find(
+              (f) => f.resolution === 'high'
+            );
+
+            return isPublished && lowResolution && highResolution;
+          });
 
           collection.photosToCollections = photos;
         }
@@ -73,19 +82,16 @@ export const collectionsRouter = createTRPCRouter({
       return { collection };
     }),
   getCollections: publicProcedure.query(async ({ ctx }) => {
-    const collections = await ctx.db
+    let collections = await ctx.db
       .select()
       .from(collectionsTable)
       .orderBy(collectionsTable.id);
 
-    const publishedCollections = collections.filter(
-      (c) => c.status === 'published'
-    );
+    if (env.NODE_ENV === 'development') {
+      collections = collections.filter((c) => c.status === 'published');
+    }
 
-    return {
-      collections:
-        env.NODE_ENV === 'production' ? publishedCollections : collections,
-    };
+    return { collections };
   }),
   updateCollection: publicProcedure
     .input(

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { eq } from 'drizzle-orm';
 
+import { env } from '@/env';
 import { createTRPCRouter, publicProcedure } from '../trpc';
 import { photosTable } from '@/server/db/schema';
 import { generateSignedUrl } from '@/libs/aws/cloudfront';
@@ -25,7 +26,7 @@ export const photosRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const photo = await ctx.db.query.photosTable.findFirst({
+      let photo = await ctx.db.query.photosTable.findFirst({
         where: (table, funcs) => funcs.eq(table.key, input.key),
         with: {
           cameraMetadata: true,
@@ -39,6 +40,14 @@ export const photosRouter = createTRPCRouter({
       });
 
       if (photo) {
+        if (env.NODE_ENV === 'production') {
+          const hasFiles =
+            photo.files.find((f) => f.resolution === 'low') &&
+            photo.files.find((f) => f.resolution === 'high');
+
+          if (!hasFiles) return { photo: undefined };
+        }
+
         photo.files = photo.files.map((f) => ({
           ...f,
           url: generateSignedUrl(f.url),
@@ -48,7 +57,7 @@ export const photosRouter = createTRPCRouter({
       return { photo };
     }),
   getPhotos: publicProcedure.query(async ({ ctx }) => {
-    const photos = await ctx.db.query.photosTable.findMany({
+    let photos = await ctx.db.query.photosTable.findMany({
       with: {
         cameraMetadata: true,
         files: true,
@@ -60,6 +69,16 @@ export const photosRouter = createTRPCRouter({
       },
       orderBy: (table, funcs) => funcs.desc(table.updatedAt),
     });
+
+    if (env.NODE_ENV === 'production') {
+      photos = photos.filter((p) => {
+        const hasFiles =
+          p.files.find((f) => f.resolution === 'low') &&
+          p.files.find((f) => f.resolution === 'high');
+
+        return hasFiles;
+      });
+    }
 
     const signedPhotos = photos.map((p) => {
       return {
