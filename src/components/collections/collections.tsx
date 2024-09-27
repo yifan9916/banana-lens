@@ -49,6 +49,7 @@ export const Collections = (props: Props) => {
               src={collection.cover}
               alt={collection.key}
               placeholder="blur"
+              priority={true}
               className="object-cover h-full"
             />
 

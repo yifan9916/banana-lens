@@ -7,7 +7,7 @@ import { CSSProperties, ElementRef, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import { Link } from '@/i18n/routing';
 import { useIncrementViews } from '@/utils/use-increment-views/use-increment-views';
 import { useSlider } from './use-slider';
 import { Arrow } from '../icons';
@@ -18,13 +18,11 @@ import type { Photograph } from '@/libs/photography/types';
 type Props = {
   items: Photograph[];
   initialSlide?: number;
+  urlParam?: string;
 };
 
 export const Slider = (props: Props) => {
-  const { items, initialSlide } = props;
-
-  const router = useRouter();
-  const pathname = usePathname();
+  const { items, initialSlide, urlParam = 'slider' } = props;
 
   const sliderRef = useRef<ElementRef<'div'>>(null);
   const { state, dispatch } = useSlider(sliderRef, items, initialSlide);
@@ -38,11 +36,11 @@ export const Slider = (props: Props) => {
   };
 
   useEffect(() => {
-    router.replace(
-      `${pathname}/?lightbox=${items[state.currentSlideIndex].key}`,
-      {
-        scroll: false,
-      }
+    // https://github.com/vercel/next.js/discussions/48110
+    window.history.replaceState(
+      null,
+      '',
+      `?${urlParam}=${items[state.currentSlideIndex].key}`
     );
   }, [state.currentSlideIndex]);
 
@@ -123,13 +121,14 @@ const Slide = (props: SlideProps) => {
           className="cursor-zoom-in"
         >
           <Image
-            src={item.media.lowResolution!.url}
             alt={item.key}
+            // TODO
+            src={item.media.lowResolution!.url}
             width={520}
             height={780}
             quality={75}
             priority={isPriority}
-            className="h-full w-full object-contain"
+            className="object-contain"
           />
         </Link>
 

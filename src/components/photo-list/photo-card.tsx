@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { Link } from '@/i18n/routing';
 import { Photograph } from '@/libs/photography/types';
 import { Eyes } from '../icons';
 
@@ -18,25 +17,22 @@ export const PhotoCard = (props: Props) => {
 
   const title = dict(`${photo.key}.title` as DictionaryKeys);
 
+  const handleClick = () => {
+    window.history.pushState(null, '', `?lightbox=${photo.key}`);
+  };
+
   return (
     <li className="rounded-2xl overflow-hidden">
-      <Link
-        href={{
-          query: { lightbox: photo.key },
-        }}
-        scroll={false}
-        className="flex h-full flex-col"
-      >
+      <div onClick={handleClick} className="flex h-full flex-col">
         <Image
-          // TODO
           alt={title}
-          src={photo.src.preview}
-          // src={photo.media.lowResolution!.url}
-          // width={220}
-          // height={360}
-          placeholder="blur"
+          // TODO
+          // placeholder="blur"
+          src={photo.media.lowResolution!.url}
+          width={214}
+          height={321}
           quality={50}
-          className="flex-1 object-cover"
+          className="object-cover aspect-[6/9]"
         />
         <div className="flex justify-between items-center text-sm font-light p-2">
           {title || photo.key}{' '}
@@ -44,7 +40,7 @@ export const PhotoCard = (props: Props) => {
             <Eyes className="h-4 w-4 mr-1" /> {photo.views}
           </span>
         </div>
-      </Link>
+      </div>
     </li>
   );
 };
