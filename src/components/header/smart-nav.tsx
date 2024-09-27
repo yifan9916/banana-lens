@@ -8,10 +8,10 @@ export const SmartNav = () => {
   const router = useRouter();
 
   const { hasInteracted } = useInteractionEvent();
-  const { hasNavigated } = useNavigationEvent();
+  const { hasNavigated, hasRecentNavigation } = useNavigationEvent();
 
   const handleClick = () => {
-    if (window.history.length > 1) {
+    if (window.history.length > 1 && hasNavigated) {
       router.back();
     } else {
       router.push('/');
@@ -35,7 +35,7 @@ export const SmartNav = () => {
       <div
         className={[
           'font-[family-name:var(--font-satisfy)] text-nowrap text-xs text-black group-hover:opacity-0 transition-opacity',
-          hasNavigated ? 'opacity-0' : 'opacity-100',
+          hasRecentNavigation ? 'opacity-0' : 'opacity-100',
           'min-w-16 text-center', // text-nowrap is unsupported in safari???
         ].join(' ')}
       >
@@ -45,7 +45,7 @@ export const SmartNav = () => {
       <div
         className={[
           'absolute h-full w-full flex justify-center items-center group-hover:opacity-100 transition-opacity',
-          hasNavigated ? 'opacity-100' : 'opacity-0',
+          hasRecentNavigation ? 'opacity-100' : 'opacity-0',
         ].join(' ')}
       >
         <Arrow className="-rotate-90 h-7 w-7" />
@@ -103,6 +103,7 @@ const useNavigationEvent = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isMounted, setIsMounted] = useState(false);
+  const [hasRecentNavigation, setRecentNavigation] = useState(false);
   const [hasNavigated, setHasNavigated] = useState(false);
 
   let navigationTimerId: ReturnType<typeof setTimeout>;
@@ -115,10 +116,11 @@ const useNavigationEvent = () => {
     if (!isMounted) return;
 
     setHasNavigated(true);
+    setRecentNavigation(true);
 
     clearTimeout(navigationTimerId);
     navigationTimerId = setTimeout(() => {
-      setHasNavigated(false);
+      setRecentNavigation(false);
     }, RECENT_NAVIGATION_TIMER_IN_MS);
 
     return () => {
@@ -126,5 +128,5 @@ const useNavigationEvent = () => {
     };
   }, [pathname, searchParams]);
 
-  return { hasNavigated };
+  return { hasNavigated, hasRecentNavigation };
 };
