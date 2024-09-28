@@ -12,6 +12,8 @@ import { cloudfrontDistributionDomain } from './cloudfront';
 
 const MAX_FILE_SIZE_IN_MB = 1024 * 1024 * 50; // ~50MB
 
+export type S3BucketFolder = 'public' | 'high-resolution';
+
 const s3 = new S3Client({
   region: process.env.S3_BUCKET_REGION!,
   credentials: {
@@ -22,11 +24,12 @@ const s3 = new S3Client({
 
 export const generatePresignedPost = async (
   key: string,
+  folder: string,
   contentType: string
 ) => {
   const { url, fields } = await createPresignedPost(s3, {
     Bucket: process.env.S3_BUCKET_NAME!,
-    Key: `${uuidv4()}-${key}`,
+    Key: `${folder}/${uuidv4()}-${key}`,
     Conditions: [
       ['content-length-range', 0, MAX_FILE_SIZE_IN_MB],
       ['starts-with', '$Content-Type', contentType],

@@ -11,11 +11,16 @@ export const filesRouter = createTRPCRouter({
     .input(
       z.object({
         key: z.string(),
+        folder: z.string(),
         type: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const presignedPost = await generatePresignedPost(input.key, input.type);
+      const presignedPost = await generatePresignedPost(
+        input.key,
+        input.folder,
+        input.type
+      );
 
       return { ...presignedPost };
     }),

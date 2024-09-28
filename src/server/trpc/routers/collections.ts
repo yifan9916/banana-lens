@@ -3,7 +3,6 @@ import { eq } from 'drizzle-orm';
 
 import { env } from '@/env';
 import { createTRPCRouter, publicProcedure } from '../trpc';
-import { generateSignedUrl } from '@/libs/aws/cloudfront';
 import { collectionsTable } from '@/server/db/schema';
 
 export const collectionsRouter = createTRPCRouter({
@@ -62,21 +61,6 @@ export const collectionsRouter = createTRPCRouter({
 
           collection.photosToCollections = photos;
         }
-
-        collection.photosToCollections = collection.photosToCollections.map(
-          (p) => {
-            return {
-              ...p,
-              photo: {
-                ...p.photo,
-                files: p.photo.files.map((f) => ({
-                  ...f,
-                  url: generateSignedUrl(f.url),
-                })),
-              },
-            };
-          }
-        );
       }
 
       return { collection };

@@ -13,6 +13,7 @@ import {
   sanitizeMetadata,
 } from '@/libs/photography/metadata/metadata';
 import type { Photograph } from '@/libs/photography/types';
+import type { S3BucketFolder } from '@/libs/aws/s3';
 
 type Props = {
   photo: Photograph;
@@ -35,10 +36,12 @@ export const UpdatePhotoForm = (props: Props) => {
 
   const uploadFile = async (
     file: File,
+    folder: S3BucketFolder,
     quality: keyof (typeof photo)['media']
   ) => {
     const { url, fields } = await createPresignedPost.mutateAsync({
       key: file.name,
+      folder,
       type: file.type,
     });
 
@@ -94,11 +97,15 @@ export const UpdatePhotoForm = (props: Props) => {
     };
 
     if (data.files.lowResolution instanceof File) {
-      await uploadFile(data.files.lowResolution, 'lowResolution');
+      await uploadFile(data.files.lowResolution, 'public', 'lowResolution');
     }
 
     if (data.files.highResolution instanceof File) {
-      await uploadFile(data.files.highResolution, 'highResolution');
+      await uploadFile(
+        data.files.highResolution,
+        'high-resolution',
+        'highResolution'
+      );
     }
 
     updatePhoto.mutate({

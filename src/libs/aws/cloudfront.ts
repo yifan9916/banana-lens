@@ -8,6 +8,10 @@ export const cloudfrontDistributionDomain =
 const HOUR_IN_MS = 1000 * 60 * 60;
 
 export const generateSignedUrl = (url: string) => {
+  const isPublicFile = url.indexOf('/public/') !== -1;
+
+  if (isPublicFile) return url;
+
   const signedUrl = getSignedUrl({
     url,
     dateLessThan: new Date(Date.now() + HOUR_IN_MS).toString(),

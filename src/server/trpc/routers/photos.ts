@@ -48,10 +48,12 @@ export const photosRouter = createTRPCRouter({
           if (!hasFiles) return { photo: undefined };
         }
 
-        photo.files = photo.files.map((f) => ({
-          ...f,
-          url: generateSignedUrl(f.url),
-        }));
+        photo.files = photo.files.map((f) => {
+          return {
+            ...f,
+            url: generateSignedUrl(f.url),
+          };
+        });
       }
 
       return { photo };
