@@ -26,6 +26,7 @@ export const PhotoCard = (props: Props) => {
       <div onClick={handleClick} className="flex h-full flex-col">
         {photo.media.lowResolution?.url && (
           <Image
+            unoptimized
             alt={title}
             // TODO
             // placeholder="blur"

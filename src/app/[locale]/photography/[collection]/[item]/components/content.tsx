@@ -60,6 +60,7 @@ const Photo = (props: {
     <div className="relative w-fit sm:h-dvh m-auto opacity-0 animate-slide-up animation-delay-[500ms]">
       {photo.media.highResolution?.url && (
         <Image
+          unoptimized
           alt={title}
           // TODO
           // placeholder="blur"

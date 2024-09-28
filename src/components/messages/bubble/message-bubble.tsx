@@ -31,6 +31,7 @@ const ForwardMessageBubble = (
       {profile && (
         <div className="absolute -left-9 h-8 w-8 rounded-full overflow-hidden shrink-0 mr-2">
           <Image
+            unoptimized
             src={Profile}
             alt={'Profile'}
             placeholder="blur"

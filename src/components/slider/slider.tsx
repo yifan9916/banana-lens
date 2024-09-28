@@ -122,6 +122,7 @@ const Slide = (props: SlideProps) => {
             className="cursor-zoom-in"
           >
             <Image
+              unoptimized
               alt={item.key}
               // TODO
               src={item.media.lowResolution?.url}

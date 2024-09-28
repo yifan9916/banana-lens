@@ -46,6 +46,7 @@ export const Collections = (props: Props) => {
             ].join(' ')}
           >
             <Image
+              unoptimized
               src={collection.cover}
               alt={collection.key}
               placeholder="blur"
