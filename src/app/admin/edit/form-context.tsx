@@ -10,6 +10,7 @@ export type FormState = {
     files: {
       lowResolution?: File | string;
       highResolution?: File | string;
+      thumbnail?: File | string;
     };
     status: Photograph['status'];
     metadata: CameraMetadata;
@@ -111,6 +112,7 @@ export const FormProvider = (props: {
     ...initialContext,
     data: {
       files: {
+        thumbnail: photo.media.thumbnail?.url,
         lowResolution: photo.media.lowResolution?.url,
         highResolution: photo.media.highResolution?.url,
       },

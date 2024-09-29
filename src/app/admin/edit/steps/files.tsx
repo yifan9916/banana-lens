@@ -10,6 +10,7 @@ export const FilesStep = () => {
 
   const [highQualityFile, setHighQualityFile] = useState<File>();
   const [lowQualityFile, setLowQualityFile] = useState<File>();
+  const [thumbnailFile, setThumbnailFile] = useState<File>();
 
   const handlePrevious = () => {
     previous();
@@ -20,8 +21,9 @@ export const FilesStep = () => {
       type: 'update_files',
       payload: {
         files: {
-          ...(highQualityFile && { highResolution: highQualityFile }),
+          ...(thumbnailFile && { thumbnail: thumbnailFile }),
           ...(lowQualityFile && { lowResolution: lowQualityFile }),
+          ...(highQualityFile && { highResolution: highQualityFile }),
         },
       },
     });
@@ -54,6 +56,18 @@ export const FilesStep = () => {
           media={
             typeof data.files.lowResolution === 'string'
               ? data.files.lowResolution
+              : undefined
+          }
+        />
+
+        <FileManagement
+          label="Thumbnail"
+          onChange={(file) => {
+            setThumbnailFile(file);
+          }}
+          media={
+            typeof data.files.thumbnail === 'string'
+              ? data.files.thumbnail
               : undefined
           }
         />

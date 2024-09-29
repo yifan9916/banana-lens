@@ -11,7 +11,11 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-export const MediaResolution = pgEnum('media_resolution', ['low', 'high']);
+export const MediaResolution = pgEnum('media_resolution', [
+  'thumbnail',
+  'low',
+  'high',
+]);
 export const PhotoStatus = pgEnum('photo_status', ['draft', 'published']);
 export const CollectionStatus = pgEnum('collection_status', [
   'draft',

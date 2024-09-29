@@ -12,12 +12,18 @@ import {
   type CameraMetadata,
   sanitizeMetadata,
 } from '@/libs/photography/metadata/metadata';
-import type { Photograph } from '@/libs/photography/types';
+import type { FileResolution, Photograph } from '@/libs/photography/types';
 import type { S3BucketFolder } from '@/libs/aws/s3';
 
 type Props = {
   photo: Photograph;
   onCancel: () => void;
+};
+
+const resolutionMap: Record<keyof Photograph['media'], FileResolution> = {
+  thumbnail: 'thumbnail',
+  lowResolution: 'low',
+  highResolution: 'high',
 };
 
 export const UpdatePhotoForm = (props: Props) => {
@@ -66,20 +72,17 @@ export const UpdatePhotoForm = (props: Props) => {
       body: formData,
     });
 
-    const resolution = quality === 'lowResolution' ? 'low' : 'high';
-
     if (!photo.media[quality]) {
       createFile.mutate({
         photoId: photo.id,
         url: fileUrl,
-        resolution,
+        resolution: resolutionMap[quality],
       });
     } else {
       updateFile.mutate({
         id: photo.media[quality].id,
         data: {
           url: fileUrl,
-          resolution,
         },
       });
     }
@@ -95,6 +98,10 @@ export const UpdatePhotoForm = (props: Props) => {
       iso: data.metadata.iso,
       shutterSpeed: data.metadata.shutterSpeed,
     };
+
+    if (data.files.thumbnail instanceof File) {
+      await uploadFile(data.files.thumbnail, 'public', 'thumbnail');
+    }
 
     if (data.files.lowResolution instanceof File) {
       await uploadFile(data.files.lowResolution, 'public', 'lowResolution');

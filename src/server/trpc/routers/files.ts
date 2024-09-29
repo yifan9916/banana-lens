@@ -40,7 +40,7 @@ export const filesRouter = createTRPCRouter({
       z.object({
         url: z.string(),
         photoId: z.number(),
-        resolution: z.enum(['low', 'high']),
+        resolution: z.enum(['thumbnail', 'low', 'high']),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -61,7 +61,6 @@ export const filesRouter = createTRPCRouter({
         id: z.number(),
         data: z.object({
           url: z.string(),
-          resolution: z.enum(['low', 'high']),
         }),
       })
     )

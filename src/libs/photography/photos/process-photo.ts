@@ -1,4 +1,10 @@
-import type { Photograph, PhotoOutput } from '../types';
+import type { FileResolution, Photograph, PhotoOutput } from '../types';
+
+const resolutionMap: Record<FileResolution, keyof Photograph['media']> = {
+  thumbnail: 'thumbnail',
+  low: 'lowResolution',
+  high: 'highResolution',
+};
 
 export const processPhoto = (photo: NonNullable<PhotoOutput>): Photograph => {
   // TODO handle photos without collections later
@@ -28,8 +34,7 @@ export const processFiles = (
   files: NonNullable<PhotoOutput>['files']
 ): Photograph['media'] => {
   const processedFiles = files.reduce((acc, file) => {
-    const key: keyof Photograph['media'] =
-      file.resolution === 'low' ? 'lowResolution' : 'highResolution';
+    const key: keyof Photograph['media'] = resolutionMap[file.resolution];
 
     acc[key] = file;
 

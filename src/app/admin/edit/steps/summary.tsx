@@ -1,7 +1,7 @@
 import { Pencil } from '@/components/icons';
 
 import { convertByteToMb } from '@/utils/convert-byte-to-mb/convert-byte-to-mb';
-import { useFormContext } from '../form-context';
+import { FormState, useFormContext } from '../form-context';
 import { useMultiStepContext } from '../multi-step-context';
 
 export const Summary = () => {
@@ -17,38 +17,9 @@ export const Summary = () => {
       <div className="flex flex-col gap-2 mb-16">
         <div className="py-2 px-6 w-full border rounded-lg flex justify-between items-center">
           <div className="flex flex-col gap-4">
-            {data.files.highResolution instanceof File ? (
-              <div>
-                <p>Hi-Res File:</p>
-                <p className="flex justify-between items-center gap-2 font-bold">
-                  {data.files.highResolution.name}
-                </p>
-                <p className="text-sm text-slate-400">
-                  Size: {convertByteToMb(data.files.highResolution.size)} MB
-                </p>
-              </div>
-            ) : (
-              <div>
-                <p>Hi-Res File:</p>
-                <p className="text-gray-400">No new photo selected</p>
-              </div>
-            )}
-            {data.files.lowResolution instanceof File ? (
-              <div>
-                <p>Hi-Res File:</p>
-                <p className="flex justify-between items-center gap-2 font-bold">
-                  {data.files.lowResolution.name}
-                </p>
-                <p className="text-sm text-slate-400">
-                  Size: {convertByteToMb(data.files.lowResolution.size)} MB
-                </p>
-              </div>
-            ) : (
-              <div>
-                <p>Hi-Res File:</p>
-                <p className="text-gray-400">No new photo selected</p>
-              </div>
-            )}
+            <UploadFile label="Hi-Res File:" file={data.files.highResolution} />
+            <UploadFile label="Lo-Res File:" file={data.files.lowResolution} />
+            <UploadFile label="Thumbnail File:" file={data.files.thumbnail} />
           </div>
 
           <button
@@ -107,5 +78,33 @@ export const Summary = () => {
         </button>
       </div>
     </div>
+  );
+};
+
+const UploadFile = (props: {
+  label: string;
+  file: FormState['data']['files'][keyof FormState['data']['files']];
+}) => {
+  const { label, file } = props;
+
+  return (
+    <>
+      {file instanceof File ? (
+        <div>
+          <p>{label}</p>
+          <p className="flex justify-between items-center gap-2 font-bold">
+            {file.name}
+          </p>
+          <p className="text-sm text-slate-400">
+            Size: {convertByteToMb(file.size)} MB
+          </p>
+        </div>
+      ) : (
+        <div>
+          <p>{label}</p>
+          <p className="text-gray-400">No new photo selected</p>
+        </div>
+      )}
+    </>
   );
 };

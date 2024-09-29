@@ -10,10 +10,14 @@ import type { RouterOutputs } from '@/server/trpc';
 
 type PhotoImageSrc = {
   media: {
+    thumbnail?: Omit<SelectFiles, 'resolution'>;
     lowResolution?: Omit<SelectFiles, 'resolution'>;
     highResolution?: Omit<SelectFiles, 'resolution'>;
   };
 };
+
+// TODO consistent naming
+export type FileResolution = SelectFiles['resolution'];
 
 export type Photograph = PhotoImageSrc &
   SelectPhoto & {

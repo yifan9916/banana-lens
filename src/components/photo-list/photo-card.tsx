@@ -24,13 +24,13 @@ export const PhotoCard = (props: Props) => {
   return (
     <li className="rounded-2xl overflow-hidden">
       <div onClick={handleClick} className="flex h-full flex-col">
-        {photo.media.lowResolution?.url && (
+        {photo.media.thumbnail?.url && (
           <Image
             unoptimized
             alt={title}
             // TODO
             // placeholder="blur"
-            src={photo.media.lowResolution?.url}
+            src={photo.media.thumbnail.url}
             width={214}
             height={321}
             quality={50}
