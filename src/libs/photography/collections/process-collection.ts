@@ -1,5 +1,4 @@
 import { collectionCovers } from '../data/collections';
-import { collectionPhotos } from '../data/photos';
 import { processFiles } from '../photos/process-photo';
 
 import type { CollectionWithPhotos, CollectionOutput } from '../types';
@@ -22,7 +21,6 @@ export const processCollection = (
           key: collection.key,
         },
         key: p.photo.key,
-        src: collectionPhotos[collection.key][p.photo.key],
         status: p.photo.status,
         views: p.photo.views,
         createdAt: p.photo.createdAt,
