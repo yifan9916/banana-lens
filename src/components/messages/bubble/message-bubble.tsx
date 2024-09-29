@@ -3,7 +3,7 @@
 import { type ForwardedRef, forwardRef } from 'react';
 import Image from 'next/image';
 
-import Profile from '@/public/photography/profile.jpg';
+import Profile from '@/public/photography/profile.webp';
 
 import { type Reaction, Reactions } from '../reactions/reactions';
 
