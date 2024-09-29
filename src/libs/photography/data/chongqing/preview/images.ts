@@ -1,4 +1,4 @@
-export { default as Chongqing01 } from '@/public/photography/chongqing/preview/chongqing-01.jpg';
+export { default as Chongqing01 } from '@/public/photography/chongqing/preview/chongqing-01.webp';
 export { default as Chongqing02 } from '@/public/photography/chongqing/preview/chongqing-02.jpg';
 export { default as Chongqing03 } from '@/public/photography/chongqing/preview/chongqing-03.jpg';
 export { default as Chongqing04 } from '@/public/photography/chongqing/preview/chongqing-04.jpg';
